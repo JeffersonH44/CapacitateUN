@@ -1,2 +1,0 @@
-# CapacitateUN
-ArqSoft2016

@@ -1,11 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <h:head>
+        <title>Banco</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <panel>
+            <h:form>
+                <h1>BANCO</h1>
+                <hr/>   
+                <br/>
+                <h:commandLink action="createAccount" value="Crear Cuenta"/>
+                <br/>
+                <br/>
+                <h:commandLink action="manageAccount" value="Administrar Cuenta"/>
+                <br/>
+                <br/>
+                <h:commandLink action="createUser" value="Crear usuario"/>
+            </h:form>
+        </panel>
+        <br />
+        <h:link outcome="/user/List" value="Show All User Items"/>
+    </h:body>
+
 </html>
+

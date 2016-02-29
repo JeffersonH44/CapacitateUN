@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Administrar Cuenta</title>
+    </h:head>
+    <h:body>
+        <panel>
+            <h1>BANCO</h1>
+            <hr/>
+            <h3>Administrar Cuenta</h3>    
+            <h:form>
+                <h4>Consignar</h4> 
+                <h:panelGrid columns="2">                      
+                    <label>Número de Cuenta:</label>
+                    <h:inputText value="#{manageAccountBean.accountNumberConsign}" required="true" requiredMessage="¡El número de cuenta es requerido!"/>
+                    <label>Valor a Consignar:</label>
+                    <h:inputText value="#{manageAccountBean.value}" required="true" requiredMessage="¡El valor a consignar es requerido!"/>
+                </h:panelGrid>
+                <br/>
+                <label>Mensaje: </label>
+                <h:outputText value="#{manageAccountBean.consignMessage}"/>
+                <br/>
+                <br/>
+                <h:commandButton action="#{manageAccountBean.consign()}" value="Consignar"/>
+            </h:form>
+            <h:form>
+                <h4>Consultar Saldo</h4>
+                <h:panelGrid columns="2">
+                    <label>Número de Cuenta:</label>
+                    <h:inputText value="#{manageAccountBean.accountNumberExtractBalance}" required="true" requiredMessage="¡El número de cuenta es requerido!"/>
+                </h:panelGrid>
+                <br/>
+                <label>Mensaje: </label>
+                <h:outputText value="#{manageAccountBean.extractMessage}"/>
+                <br/>
+                <br/>
+                <h:commandButton action="#{manageAccountBean.extractBalance()}" value="Consultar"/>
+            </h:form>
+            <h:form>
+                <h4>Verificar Transacción</h4>   
+                <h:panelGrid columns="2">
+                    <label>Número de la Transacción:</label>
+                    <h:inputText value="#{manageAccountBean.transactionNumber}" required="true" requiredMessage="¡El número de la transacción es requerido!"/>
+                </h:panelGrid>
+                <br/>
+                <label>Mensaje: </label>
+                <h:outputText value="#{manageAccountBean.transactionMessage}"/>
+                <br/>
+                <br/>
+                <h:commandButton action="#{manageAccountBean.extractTransaction()}" value="Verificar"/>
+            </h:form>
+        </panel>
+        <br/>
+        <a href="index.xhtml">Inicio</a>
+    </h:body>
+</html>
+
