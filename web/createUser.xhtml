@@ -2,39 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/login.css" rel="stylesheet"/>
     <h:head>
         <title>Crear Cuenta</title>
     </h:head>
-    <h:body>   
-        <panel>
-            <h:form>
-                <h1>BANCO</h1>
-                <hr/>
-                <h2>Crear Cuenta</h2>   
-                <h:panelGrid columns="2">
-                    <label>Nombre:</label>
-                    <h:inputText value="#{createUserBean.firstname}" required="true" requiredMessage="¡El nombre es requerido!"/>
-                    <label>Apellidos:</label>
-                    <h:inputText value="#{createUserBean.lastname}" required="true" requiredMessage="¡El documento es requerido!"/>
-                    <label>Documento:</label>
-                    <h:inputText value="#{createUserBean.id}" required="true" requiredMessage="¡La contraseña es requerida!"/>                                                
-                    <label>Usuario:</label>
-                    <h:inputText value="#{createUserBean.username}" required="true" requiredMessage="¡La contraseña es requerida!"/>                                                
-                    <label>Password:</label>
-                    <h:inputSecret value="#{createUserBean.password}" required="true" requiredMessage="¡La contraseña es requerida!"/>                                                
-                </h:panelGrid>
-                <br/>
-                <h:commandButton action="#{createUserBean.createUser()}" value="Crear"/>
-                <br/>
-                <br/>
-                <label>Mensaje: </label>
-                <h:outputText value="#{createUserBean.message}"/>
-                <br/>
-                <br/>
-                <a href="index.xhtml">Inicio</a>
-                <br/>  
-            </h:form>
-        </panel>
+    <h:body>
+        <div class="container">
+            <div class="login">
+                    <h4>CapacitateUN</h4>
+                        <hr></hr>
+                            <h:form class="login-inner">
+                                <h:inputText type="text" class="form-control" id="firstname" placeholder="Nombres" value="#{createUserBean.firstname}"/>
+                                <h:inputText type="text" class="form-control" id="lastname" placeholder="Apellidos" value="#{createUserBean.lastname}"/>
+                                <h:inputText type="number" class="form-control" id="id" placeholder="Cédula" value="#{createUserBean.id}"/>
+                                <h:inputText type="text" class="form-control" id="username" placeholder="Usuario" value="#{createUserBean.username}"/>
+                                <h:inputSecret type="password" class="form-control password" id="password" placeholder="Contraseña" value="#{createUserBean.password}"/>
+                                <h:commandButton class="btn btn-block btn-lg btn-success submit" action="#{createUserBean.createUser()}" type="submit" value="Registrarse"/>
+                            </h:form>
+            </div>
+        </div>
     </h:body>
 </html>
 

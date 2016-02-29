@@ -3,27 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <h:head>
-        <title>Banco</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
+    <link href="css/login.css" rel="stylesheet"/>
     <h:body>
-        <panel>
-            <h:form>
-                <h1>BANCO</h1>
-                <hr/>   
-                <br/>
-                <h:commandLink action="createAccount" value="Crear Cuenta"/>
-                <br/>
-                <br/>
-                <h:commandLink action="manageAccount" value="Administrar Cuenta"/>
-                <br/>
-                <br/>
-                <h:commandLink action="createUser" value="Crear usuario"/>
-            </h:form>
-        </panel>
-        <br />
-        <h:link outcome="/user/List" value="Show All User Items"/>
+        <div class="container">
+            <div class="login">
+                    <h4>CapacitateUN</h4>
+                        <hr></hr>
+                            <h:form class="login-inner">
+                                <input type="text" class="form-control email" id="email-input" placeholder="Usuario"></input>
+                                <input type="password" class="form-control password" id="password-input" placeholder="Contraseña"></input>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
+                                            </label>
+                                <input class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
+                            </h:form>
+                        <h:form>
+                            <h:commandLink action="createUser" class="btn btn-sm btn-primary register" value="Regístrate"/>
+                            <h:commandLink class="btn btn-sm btn-default forgot" value="¿Perdiste tu contraseña?"/>
+                        </h:form>
+            </div>
+        </div>
     </h:body>
 
 </html>
