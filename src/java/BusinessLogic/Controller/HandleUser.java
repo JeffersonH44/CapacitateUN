@@ -33,4 +33,15 @@ public class HandleUser {
         }        
     }
     
+    public String loginUser(String username, String password) {
+        UserDAO userDAO = new UserDAO();
+        
+        User user = userDAO.searchByUsername(username);
+        if(user.getPassword().equals(password)) {
+            return "inicio de sesión exitoso";
+        } else {
+            return "no se ha inciado sesión";
+        }
+    }
+    
 }

@@ -27,9 +27,9 @@ public class UserDAO {
         em.getTransaction().begin();
         
         //try {
-            em.persist(user);
-            em.getTransaction().commit();
-            return true;
+        em.persist(user);
+        em.getTransaction().commit();
+        return true;
         //} catch(RollbackException e) {
         //    em.getTransaction().rollback();
         //    return false;
@@ -38,53 +38,14 @@ public class UserDAO {
         //}
     }
     
-    public User searchByUserId(int Id) {
+    public User searchByUsername(String username) {
         
         EntityManager em = emf1.createEntityManager();
         User user = null;
+        Query query = em.createNamedQuery("User.findByUsername");
+        query.setParameter("username", username);
         
-        try {
-            user = em.find(User.class
-                    , Id);
-        } catch (Exception e){
-        } finally {
-            em.close();
-            return user;
-        }
-    }
-    
-    
-    /*public void edit(User user){
-        User userNew;
-        EntityManager em = emf1.createEntityManager();  
-        em.getTransaction().begin();
-        try {
-           userNew = em.merge(em.find(User.class, user.getId())); 
-            userNew.setBalance(user.getBalance());
-            em.getTransaction().commit();
-        } catch (Exception e){
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public boolean editBalance(Long userNumber, int consigmentValue) {
-        User userNew;
-        EntityManager em = emf1.createEntityManager();  
-        em.getTransaction().begin();
-        boolean success = true;
-        
-        try {
-            userNew = em.merge(em.find(User.class, userNumber)); 
-            userNew.setBalance(userNew.getBalance()+ consigmentValue);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            success = false;
-        } finally {
-            em.close();
-            return success;
-        }
-    }*/    
+        user = (User) query.getSingleResult();
+        return user;
+    }  
 }
