@@ -38,6 +38,8 @@ public class HandleUser {
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
+            LoginService login = new LoginService();
+            login.login(user);
             return user;
         } else {
             return null;
