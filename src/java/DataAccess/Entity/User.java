@@ -35,6 +35,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    public static final int USER = 1;
+    public static final int TRAINER = 2;
+    public static final int ADMIN = 3;
+    
     @Id
     @Basic(optional = false)
     @NotNull(message = "ID")

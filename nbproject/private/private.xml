@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Proyecto/CapacitateUN/web/createUser.xhtml</file>
             <file>file:/C:/Proyecto/CapacitateUN/web/index.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/UserLoginBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/Entity/User.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/HandleUser.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CreateAccountBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CreateUserBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/web/createAccount.xhtml</file>
             <file>file:/C:/Proyecto/CapacitateUN/web/css/login.css</file>

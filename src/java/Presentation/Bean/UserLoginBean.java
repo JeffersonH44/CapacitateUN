@@ -6,6 +6,7 @@
 package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
+import DataAccess.Entity.User;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -20,6 +21,7 @@ public class UserLoginBean {
     private String username;
     private String password;
     private String message;
+    private User user;
 
     /**
      * @return the username
@@ -63,11 +65,24 @@ public class UserLoginBean {
         this.message = message;
     }
     
-    public void login() {
-        HandleUser userManager = new HandleUser();
-        message = userManager.loginUser(username, password);
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
     
-    
-   
+    public String login() {
+        HandleUser userManager = new HandleUser();
+        user = userManager.loginUser(username, password);
+        message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";   
+        return "login.xhtml";
+    }
 }

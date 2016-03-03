@@ -13,10 +13,10 @@ import DataAccess.Entity.User;
  */
 public class HandleUser {
     
-    public String createUser(String firstname, String lastname, String username, int role, String password, int Id){
+    public String createUser(String firstname, String lastname, String username, String password, int Id){
         
         User user = new User();
-        user.setRole(role);
+        user.setRole(User.USER);
         user.setId(Id);
         user.setPassword(password);
         user.setUsername(username);
@@ -33,14 +33,14 @@ public class HandleUser {
         }        
     }
     
-    public String loginUser(String username, String password) {
+    public User loginUser(String username, String password) {
         UserDAO userDAO = new UserDAO();
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
-            return "inicio de sesión exitoso";
+            return user;
         } else {
-            return "no se ha inciado sesión";
+            return null;
         }
     }
     

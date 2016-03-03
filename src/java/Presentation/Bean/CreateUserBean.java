@@ -6,6 +6,7 @@
 package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
+import DataAccess.Entity.User;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -107,8 +108,9 @@ public class CreateUserBean {
         this.id = id;
     }
     
-    public void createUser() {
+    public String createUser() {
         HandleUser hu = new HandleUser();
-        message = hu.createUser(firstname, lastname, username, 1, password, id);
+        message = hu.createUser(firstname, lastname, username, password, id);
+        return "index.xhtml";
     }
 }

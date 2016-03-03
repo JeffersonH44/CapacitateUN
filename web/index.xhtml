@@ -18,14 +18,16 @@
                                         </label>
                             <input jsf:action="#{userLoginBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
                         </form>
-                        <div>
+                        <form jsf:id="form-buttons">
                             <div class="input-group-btn" jsf:id="form-options">
-                                <input jsf:action="createUser" class="btn btn-sm btn-primary register" value="Regístrate"/>
-                                <input class="btn btn-sm btn-default forgot" value="¿Perdiste tu contraseña?"/>
+                                <button jsf:action="createUser" class="btn btn-sm btn-primary register" value="Regístrate">Regístrate</button>
+                                <button jsf:action="createUser" class="btn btn-sm btn-default forgot" value="¿Perdiste tu contraseña?">¿Perdiste tu contraseña?</button>
+                              
                             </div>
-                        </div>
+                        </form>
                         <hr style="border-top: 0.5px; border-bottom: 0.5px"></hr>
                         <div class="alert alert-success" role="alert" jsf:id="message" >#{userLoginBean.message}</div>
+                        <div class="alert alert-success" role="alert" jsf:id="role" >#{userLoginBean.user.role}</div>
             </div>
         </div>
     </h:body>
