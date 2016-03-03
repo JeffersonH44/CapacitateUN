@@ -35,22 +35,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    public static final int USER = 1;
+    public static final int TRAINER = 2;
+    public static final int ADMIN = 3;
+    
     @Id
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "ID")
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "role")
     @Column(name = "role")
     private int role;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 16)
+    @NotNull(message = "username")
+    @Size(min = 8, max = 16)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "password")
     @Size(min = 1, max = 32)
     @Column(name = "password")
     private String password;
