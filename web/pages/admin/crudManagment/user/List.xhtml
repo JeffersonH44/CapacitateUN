@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <ui:composition template="../admin.xhtml">
+    <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
             <form jsf:id="list-form">
                 <h:panelGroup id="messagePanel" layout="block">
@@ -66,12 +66,32 @@
                             </div>  
                         </h:column>
                     </h:dataTable>
-                    <h:outputText value="Mostrando #{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1}/#{userController.pagination.itemsCount}"/>
-                    <h:commandLink action="#{userController.previous}" value="#{bundle.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>
-                    <h:commandLink action="#{userController.next}" value="#{bundle.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h:commandButton action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}" styleClass="btn btn-primary"/>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <h:outputText value="Mostrando #{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1} de #{userController.pagination.itemsCount}"/>
+                        </div>
+                        
+                        <div class="col-sm-4" align="right" >
+                            <ul class="pagination" style="margin: 0px 0;">
+                                <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                    <h:commandLink action="#{userController.previous}" value="#{bundle.Previous} #{userController.pagination.pageSize}" 
+                                             disabled="#{!userController.pagination.hasPreviousPage}" styleClass="paginate_button previous"/>
+                                </li>
+                                <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                    <h:commandLink action="#{userController.next}" value="#{bundle.Next} #{userController.pagination.pageSize}" 
+                                                 disabled="#{!userController.pagination.hasNextPage}" styleClass="paginate_button next"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
                 </h:panelGroup>
                 <br />
-                <h:commandButton action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}" styleClass="btn btn-primary"/>
+                
                 <br />
                 <br />
             </form>

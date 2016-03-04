@@ -3,41 +3,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditUserTitle}"></h:outputText>
-        </ui:define>
+    <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditUserLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{userController.selected.id}" title="#{bundle.EditUserTitle_id}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.EditUserLabel_role}" for="role" />
-                    <h:inputText id="role" value="#{userController.selected.role}" title="#{bundle.EditUserTitle_role}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_role}"/>
-                    <h:outputLabel value="#{bundle.EditUserLabel_username}" for="username" />
-                    <h:inputText id="username" value="#{userController.selected.username}" title="#{bundle.EditUserTitle_username}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_username}"/>
-                    <h:outputLabel value="#{bundle.EditUserLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{userController.selected.password}" title="#{bundle.EditUserTitle_password}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_password}"/>
-                    <h:outputLabel value="#{bundle.EditUserLabel_firstname}" for="firstname" />
-                    <h:inputText id="firstname" value="#{userController.selected.firstname}" title="#{bundle.EditUserTitle_firstname}" />
-                    <h:outputLabel value="#{bundle.EditUserLabel_lastname}" for="lastname" />
-                    <h:inputText id="lastname" value="#{userController.selected.lastname}" title="#{bundle.EditUserTitle_lastname}" />
-                </h:panelGrid>
-                <h:commandLink action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditUserViewLink}"/>
-                <br />
-                <h:commandLink action="#{userController.prepareList}" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditUserIndexLink}" />
-            </h:form>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form role="form" jsf:id="edit-form">
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_id}" for="id" />
+                            <h:inputText class="form-control" id="id" value="#{userController.selected.id}" title="#{bundle.EditUserTitle_id}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_id}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_role}" for="role" />
+                            <h:inputText class="form-control" id="role" value="#{userController.selected.role}" title="#{bundle.EditUserTitle_role}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_role}"/>
+                        </div>    
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_username}" for="username" />
+                            <h:inputText class="form-control" id="username" value="#{userController.selected.username}" title="#{bundle.EditUserTitle_username}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_username}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_password}" for="password" />
+                            <h:inputText class="form-control" id="password" value="#{userController.selected.password}" title="#{bundle.EditUserTitle_password}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_password}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_firstname}" for="firstname" />
+                            <h:inputText class="form-control" id="firstname" value="#{userController.selected.firstname}" title="#{bundle.EditUserTitle_firstname}" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_lastname}" for="lastname" />
+                            <h:inputText class="form-control" id="lastname" value="#{userController.selected.lastname}" title="#{bundle.EditUserTitle_lastname}" />
+                        </div>
+                        <h:commandLink class="btn btn-success" action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink class="btn btn-primary" action="#{userController.prepareList}" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
+                        <div class="divider"/>
+                        <h:link class="btn btn-info" outcome="View" value="#{bundle.EditUserViewLink}"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-default" outcome="/index" value="#{bundle.EditUserIndexLink}"/>
+                    </form>
+                </div>
+                
+            </div>
+            
+                    
+                    
+                    
+                    
+                    
+                
         </ui:define>
     </ui:composition>
 
