@@ -40,9 +40,9 @@
                         </div>
                         <h:commandLink class="btn btn-success" action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
                         <h:outputText value=" "/>
-                        <h:commandLink class="btn btn-primary" action="#{userController.prepareList}" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
+                        <h:link class="btn btn-primary" outcome="View" value="#{bundle.EditUserViewLink}"/>
                         <div class="divider"/>
-                        <h:link class="btn btn-info" outcome="View" value="#{bundle.EditUserViewLink}"/>
+                        <h:commandLink class="btn btn-info" action="#{userController.prepareList}" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
                         <h:outputText value=" "/>
                         <h:link class="btn btn-default" outcome="/index" value="#{bundle.EditUserIndexLink}"/>
                     </form>

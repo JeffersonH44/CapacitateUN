@@ -8,16 +8,14 @@
 
     <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <form jsf:id="list-form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListCoursesEmpty}" rendered="#{coursesController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{coursesController.items.rowCount > 0}">
-                    <h:outputText value="#{coursesController.pagination.pageFirstItem + 1}..#{coursesController.pagination.pageLastItem + 1}/#{coursesController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{coursesController.previous}" value="#{bundle.Previous} #{coursesController.pagination.pageSize}" rendered="#{coursesController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{coursesController.next}" value="#{bundle.Next} #{coursesController.pagination.pageSize}" rendered="#{coursesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{coursesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{coursesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                 styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCoursesTitle_id}"/>
@@ -46,20 +44,39 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{coursesController.prepareView}" value="#{bundle.ListCoursesViewLink}"/>
+                            <h:commandLink action="#{coursesController.prepareView}" value="#{bundle.ListCoursesViewLink}" class="btn btn-info"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{coursesController.prepareEdit}" value="#{bundle.ListCoursesEditLink}"/>
+                            <h:commandLink action="#{coursesController.prepareEdit}" value="#{bundle.ListCoursesEditLink}" class="btn btn-primary"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{coursesController.destroy}" value="#{bundle.ListCoursesDestroyLink}"/>
+                            <h:commandLink action="#{coursesController.destroy}" value="#{bundle.ListCoursesDestroyLink}" class="btn btn-danger"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{coursesController.prepareCreate}" value="#{bundle.ListCoursesCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListCoursesIndexLink}"/>
-            </h:form>
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h:commandButton action="#{coursesController.prepareCreate}" value="#{bundle.ListCoursesCreateLink}" styleClass="btn btn-primary"/>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h:outputText value="Mostrando #{coursesController.pagination.pageFirstItem + 1}..#{coursesController.pagination.pageLastItem + 1} de #{coursesController.pagination.itemsCount}"/>
+                    </div>
+
+                    <div class="col-sm-4" align="right" >
+                        <ul class="pagination" style="margin: 0px 0;">
+                            <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                <h:commandLink action="#{coursesController.previous}" value="#{bundle.Previous}" 
+                                         disabled="#{!coursesController.pagination.hasPreviousPage}" styleClass="paginate_button previous"/>
+                            </li>
+                            <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                <h:commandLink action="#{coursesController.next}" value="#{bundle.Next}" 
+                                             disabled="#{!coursesController.pagination.hasNextPage}" styleClass="paginate_button next"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </form>
         </ui:define>
     </ui:composition>
 

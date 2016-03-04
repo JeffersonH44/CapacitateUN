@@ -3,37 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateCoursesLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{coursesController.selected.id}" title="#{bundle.CreateCoursesTitle_id}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.CreateCoursesLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{coursesController.selected.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_name}"/>
-                    <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" for="topicID" />
-                    <h:selectOneMenu id="topicID" value="#{coursesController.selected.topicID}" title="#{bundle.CreateCoursesTitle_topicID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_topicID}">
-                        <f:selectItems value="#{topicController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateCoursesLabel_trainerID}" for="trainerID" />
-                    <h:selectOneMenu id="trainerID" value="#{coursesController.selected.trainerID}" title="#{bundle.CreateCoursesTitle_trainerID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_trainerID}">
-                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{coursesController.create}" value="#{bundle.CreateCoursesSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{coursesController.prepareList}" value="#{bundle.CreateCoursesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateCoursesIndexLink}"/>
-            </h:form>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form role="form" jsf:id="create-form">
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_id}" for="id" />
+                            <h:inputText class="form-control" id="id" value="#{coursesController.selected.id}" title="#{bundle.CreateCoursesTitle_id}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_id}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_name}" for="name" />
+                            <h:inputText class="form-control" id="name" value="#{coursesController.selected.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_name}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" for="topicID" />
+                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{coursesController.selected.topicID}" title="#{bundle.CreateCoursesTitle_topicID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_topicID}">
+                                <f:selectItems value="#{topicController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </div>  
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_trainerID}" for="trainerID" />
+                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="trainerID" value="#{coursesController.selected.trainerID}" title="#{bundle.CreateCoursesTitle_trainerID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_trainerID}">
+                                <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <h:commandLink class="btn btn-success" action="#{coursesController.create}" value="#{bundle.CreateCoursesSaveLink}" />
+                        <h:outputText value=" "/>
+                        <h:commandLink class="btn btn-info" action="#{coursesController.prepareList}" value="#{bundle.CreateCoursesShowAllLink}" immediate="true"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-default" outcome="/index" value="#{bundle.CreateCoursesIndexLink}"/>
+                    </form>
+                </div>
+            </div>
         </ui:define>
     </ui:composition>
 

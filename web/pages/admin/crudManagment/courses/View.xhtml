@@ -3,38 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewCoursesLabel_id}"/>
-                    <h:outputText value="#{coursesController.selected.id}" title="#{bundle.ViewCoursesTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewCoursesLabel_name}"/>
-                    <h:outputText value="#{coursesController.selected.name}" title="#{bundle.ViewCoursesTitle_name}"/>
-                    <h:outputText value="#{bundle.ViewCoursesLabel_topicID}"/>
-                    <h:outputText value="#{coursesController.selected.topicID}" title="#{bundle.ViewCoursesTitle_topicID}"/>
-                    <h:outputText value="#{bundle.ViewCoursesLabel_trainerID}"/>
-                    <h:outputText value="#{coursesController.selected.trainerID}" title="#{bundle.ViewCoursesTitle_trainerID}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{coursesController.destroyAndView}" value="#{bundle.ViewCoursesDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewCoursesEditLink}"/>
-                <br />
-                <h:commandLink action="#{coursesController.prepareCreate}" value="#{bundle.ViewCoursesCreateLink}" />
-                <br />
-                <h:commandLink action="#{coursesController.prepareList}" value="#{bundle.ViewCoursesShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewCoursesIndexLink}"/>
+            <form jsf:id="view-form">
+                <div class="form-group">
+                    <label>#{bundle.ViewCoursesLabel_id} #{coursesController.selected.id}</label>
+                </div>
+                <div class="form-group">
+                    <label>#{bundle.ViewCoursesLabel_name} #{coursesController.selected.name}</label>
+                </div>
+                <div class="form-group">
+                    <label>#{bundle.ViewCoursesLabel_topicID} #{coursesController.selected.topicID}</label>
+                </div>
+                <div class="form-group">
+                    <label>#{bundle.ViewCoursesLabel_trainerID} #{coursesController.selected.trainerID}</label>
+                </div>
+                
+                <h:commandLink class="btn btn-danger" action="#{coursesController.destroyAndView}" value="#{bundle.ViewCoursesDestroyLink}"/>
+                <h:outputText value=" "/>
+                <h:link class="btn btn-primary" outcome="Edit" value="#{bundle.ViewCoursesEditLink}"/>
+                <h:outputText value=" "/>
+                <h:commandLink class="btn btn-success" action="#{coursesController.prepareCreate}" value="#{bundle.ViewCoursesCreateLink}" />
+                <div class="divider"/>
+                <h:commandLink class="btn btn-info" action="#{coursesController.prepareList}" value="#{bundle.ViewCoursesShowAllLink}"/>
+                <h:outputText value=" "/>
+                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ViewCoursesIndexLink}"/>
 
-            </h:form>
+            </form>
         </ui:define>
     </ui:composition>
 
