@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListUserTitle}"></h:outputText>
-        </ui:define>
+    <ui:composition template="../admin.xhtml">
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <form jsf:id="list-form">
                 <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    <h:messages styleClass="alert" errorClass="alert-danger" infoClass="alert-success" layout="table"/>
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListUserEmpty}" rendered="#{userController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{userController.items.rowCount > 0}">
-                    <h:outputText value="#{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1}/#{userController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{userController.previous}" value="#{bundle.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{userController.next}" value="#{bundle.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{userController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{userController.items}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                 rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px"
+                                 styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUserTitle_id}"/>
@@ -58,22 +55,26 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
+                                <h:outputText value="Acciones"/>
                             </f:facet>
-                            <h:commandLink action="#{userController.prepareView}" value="#{bundle.ListUserViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{userController.prepareEdit}" value="#{bundle.ListUserEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{userController.destroy}" value="#{bundle.ListUserDestroyLink}"/>
+                            <div>
+                                <h:commandButton action="#{userController.prepareView}" value="#{bundle.ListUserViewLink}" styleClass="btn btn-info"/>
+                                <h:outputText value=" "/>
+                                <h:commandButton action="#{userController.prepareEdit}" value="#{bundle.ListUserEditLink}" styleClass="btn btn-primary"/>
+                                <h:outputText value=" "/>
+                                <h:commandButton action="#{userController.destroy}" value="#{bundle.ListUserDestroyLink}" styleClass="btn btn-danger"/>
+                            </div>  
                         </h:column>
                     </h:dataTable>
+                    <h:outputText value="Mostrando #{userController.pagination.pageFirstItem + 1}..#{userController.pagination.pageLastItem + 1}/#{userController.pagination.itemsCount}"/>
+                    <h:commandLink action="#{userController.previous}" value="#{bundle.Previous} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasPreviousPage}"/>
+                    <h:commandLink action="#{userController.next}" value="#{bundle.Next} #{userController.pagination.pageSize}" rendered="#{userController.pagination.hasNextPage}"/>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}"/>
+                <h:commandButton action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}" styleClass="btn btn-primary"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ListUserIndexLink}"/>
-            </h:form>
+            </form>
         </ui:define>
     </ui:composition>
 
