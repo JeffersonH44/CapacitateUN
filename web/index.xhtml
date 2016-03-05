@@ -8,29 +8,31 @@
     <h:body>
         <div class="container">
             <div class="login">
-                    <h4>CapacitateUN</h4>
-                        <hr></hr>
-                        <form class="login-inner" jsf:id="form-login">
-                            <input type="text" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}"></input>
-                            <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}"></input>
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
-                                        </label>
-                            <input jsf:action="#{userLoginBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
-                        </form>
-                        <form jsf:id="form-buttons">
-                            <div class="input-group-btn" jsf:id="form-options">
-                                <button jsf:action="createUser" class="btn btn-sm btn-primary register" value="Regístrate">Regístrate</button>
-                                <button jsf:action="createUser" class="btn btn-sm btn-default forgot" value="¿Perdiste tu contraseña?">¿Perdiste tu contraseña?</button>
-                              
-                            </div>
-                        </form>
-                        <hr style="border-top: 0.5px; border-bottom: 0.5px"></hr>
-                        <div class="alert alert-success" role="alert" jsf:id="message" >#{userLoginBean.message}</div>
-                        <div class="alert alert-success" role="alert" jsf:id="role" >#{userLoginBean.user.role}</div>
+                <h4>CapacitateUN</h4>
+                <hr></hr>
+                <form class="login-inner" jsf:id="form-login">
+                    <input type="text" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}"></input>
+                    <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}"></input>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
+                    </label>
+                    <input jsf:action="#{userLoginBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
+                </form>
+                <form jsf:id="form-buttons">
+                    <div class="input-group-btn" jsf:id="form-options">
+                        <button jsf:action="createUser" class="btn btn-sm btn-primary register" value="Regístrate">Regístrate</button>
+                        <button jsf:action="createUser" class="btn btn-sm btn-default forgot" value="¿Perdiste tu contraseña?">¿Perdiste tu contraseña?</button>
+
+                    </div>
+                </form>
+                <hr style="border-top: 0.5px; border-bottom: 0.5px"></hr>
+                <div class="alert alert-success" role="alert" jsf:id="message" >#{userLoginBean.message}</div>
+                <div class="alert alert-success" role="alert" jsf:id="role" >#{userLoginBean.user.role}</div>
             </div>
         </div>
     </h:body>
+
+
 
 </html>
 

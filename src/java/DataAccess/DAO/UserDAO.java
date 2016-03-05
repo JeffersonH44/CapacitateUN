@@ -24,11 +24,11 @@ public class UserDAO {
     public boolean persist(User user) {
         
         EntityManager em = emf1.createEntityManager();
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         
         //try {
         em.persist(user);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
         return true;
         //} catch(RollbackException e) {
         //    em.getTransaction().rollback();

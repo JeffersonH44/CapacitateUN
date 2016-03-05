@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="../../admin.xhtml">
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form role="form" jsf:id="create-form">
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_id}" for="id" />
+                            <h:inputText class="form-control" id="id" value="#{userController.selected.id}" title="#{bundle.CreateUserTitle_id}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_id}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_role}" for="role" />
+                            <h:inputText class="form-control" id="role" value="#{userController.selected.role}" title="#{bundle.CreateUserTitle_role}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_role}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_username}" for="username" />
+                            <h:inputText class="form-control" id="username" value="#{userController.selected.username}" title="#{bundle.CreateUserTitle_username}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_username}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />
+                            <h:inputText class="form-control" id="password" value="#{userController.selected.password}" title="#{bundle.CreateUserTitle_password}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_password}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_firstname}" for="firstname" />
+                            <h:inputText class="form-control" id="firstname" value="#{userController.selected.firstname}" title="#{bundle.CreateUserTitle_firstname}" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateUserLabel_lastname}" for="lastname" />
+                            <h:inputText class="form-control" id="lastname" value="#{userController.selected.lastname}" title="#{bundle.CreateUserTitle_lastname}" />
+                        </div>
+                        <h:commandLink class="btn btn-success" action="#{userController.create}" value="#{bundle.CreateUserSaveLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink class="btn btn-info" action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" immediate="true"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-default" outcome="/index" value="#{bundle.CreateUserIndexLink}"/>
+                    </form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

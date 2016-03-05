@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="../../admin.xhtml">
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form role="form" jsf:id="edit-form">
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_id}" for="id" />
+                            <h:inputText class="form-control" id="id" value="#{userController.selected.id}" title="#{bundle.EditUserTitle_id}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_id}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_role}" for="role" />
+                            <h:inputText class="form-control" id="role" value="#{userController.selected.role}" title="#{bundle.EditUserTitle_role}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_role}"/>
+                        </div>    
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_username}" for="username" />
+                            <h:inputText class="form-control" id="username" value="#{userController.selected.username}" title="#{bundle.EditUserTitle_username}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_username}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_password}" for="password" />
+                            <h:inputText class="form-control" id="password" value="#{userController.selected.password}" title="#{bundle.EditUserTitle_password}" required="true" requiredMessage="#{bundle.EditUserRequiredMessage_password}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_firstname}" for="firstname" />
+                            <h:inputText class="form-control" id="firstname" value="#{userController.selected.firstname}" title="#{bundle.EditUserTitle_firstname}" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.EditUserLabel_lastname}" for="lastname" />
+                            <h:inputText class="form-control" id="lastname" value="#{userController.selected.lastname}" title="#{bundle.EditUserTitle_lastname}" />
+                        </div>
+                        <h:commandLink class="btn btn-success" action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-primary" outcome="View" value="#{bundle.EditUserViewLink}"/>
+                        <div class="divider"/>
+                        <h:commandLink class="btn btn-info" action="#{userController.prepareList}" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-default" outcome="/index" value="#{bundle.EditUserIndexLink}"/>
+                    </form>
+                </div>
+                
+            </div>
+            
+                    
+                    
+                    
+                    
+                    
+                
+        </ui:define>
+    </ui:composition>
+
+</html>
