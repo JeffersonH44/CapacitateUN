@@ -28,4 +28,14 @@ public class LoggedBean {
             return user.getRole();
         }
     }
+    
+    public String getLoggedUserNames() {
+        User user = login.getUserLogged();
+        
+        if(user == null) {
+            return "";
+        } else {
+            return user.getFirstname() + " " + user.getLastname();
+        }
+    }
 }

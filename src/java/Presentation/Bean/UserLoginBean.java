@@ -82,7 +82,15 @@ public class UserLoginBean {
     public String login() {
         HandleUser userManager = new HandleUser();
         user = userManager.loginUser(username, password);
-        message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";   
-        return "login.xhtml";
+        message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "faces/pages/admin/adminIndex.xhtml";
+            case User.USER:
+                return "login.xhtml";
+            default:
+                return "login.xhtml";
+        }
+        
     }
 }
