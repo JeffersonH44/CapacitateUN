@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUserRegisterTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserRegisterLabel_registerID}" for="registerID" />
+                    <h:inputText id="registerID" value="#{userRegisterController.selected.registerID}" title="#{bundle.CreateUserRegisterTitle_registerID}" required="true" requiredMessage="#{bundle.CreateUserRegisterRequiredMessage_registerID}"/>
+                    <h:outputLabel value="#{bundle.CreateUserRegisterLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{userRegisterController.selected.status}" title="#{bundle.CreateUserRegisterTitle_status}" required="true" requiredMessage="#{bundle.CreateUserRegisterRequiredMessage_status}"/>
+                    <h:outputLabel value="#{bundle.CreateUserRegisterLabel_coursesID}" for="coursesID" />
+                    <h:selectOneMenu id="coursesID" value="#{userRegisterController.selected.coursesID}" title="#{bundle.CreateUserRegisterTitle_coursesID}" required="true" requiredMessage="#{bundle.CreateUserRegisterRequiredMessage_coursesID}">
+                        <f:selectItems value="#{coursesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUserRegisterLabel_userID}" for="userID" />
+                    <h:selectOneMenu id="userID" value="#{userRegisterController.selected.userID}" title="#{bundle.CreateUserRegisterTitle_userID}" required="true" requiredMessage="#{bundle.CreateUserRegisterRequiredMessage_userID}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userRegisterController.create}" value="#{bundle.CreateUserRegisterSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userRegisterController.prepareList}" value="#{bundle.CreateUserRegisterShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUserRegisterIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

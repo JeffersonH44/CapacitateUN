@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/UserLoginBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/prueba.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/crudManagment/courses/Create.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/UserRegisternBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/HandleUser.java</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/adminIndex.xhtml</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/createUser.xhtml</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/login.xhtml</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/admin.xhtml</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/createAccount.xhtml</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/index.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/LoginService.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/HandleUserRegister.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,7 +5,7 @@
  */
 package Presentation.Bean;
 
-import DataAccess.Entity.Courses;
+import DataAccess.Entity.UserRegister;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Administrador
  */
 @Stateless
-public class CoursesFacade extends AbstractFacade<Courses> {
+public class UserRegisterFacade extends AbstractFacade<UserRegister> {
 
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class CoursesFacade extends AbstractFacade<Courses> {
         return em;
     }
 
-    public CoursesFacade() {
-        super(Courses.class);
+    public UserRegisterFacade() {
+        super(UserRegister.class);
     }
     
 }

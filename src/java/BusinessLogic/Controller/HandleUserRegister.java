@@ -5,13 +5,16 @@
 package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserRegisterDAO;
+import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
+import DataAccess.Entity.UserRegister;
 
 /**
  *
  * @author ArqSoft
  */
-public class HandleUser {
+public class HandleUserRegister {
     
     public String createUser(String firstname, String lastname, String username, String password, int Id){
         
@@ -33,26 +36,21 @@ public class HandleUser {
         }        
     }
     
-    public User loginUser(String username, String password) {
-        UserDAO userDAO = new UserDAO();
+    public Object[] searchAll() {
+        UserRegisterDAO userDAO = new UserRegisterDAO();
         
-        User user = userDAO.searchByUsername(username);
-        if(user.getPassword().equals(password)) {
-            LoginService login = new LoginService();
-            login.login(user);
-            return user;
-        } else {
-            return null;
-        }
+       Object[] resultList = userDAO.searchAll();
+        return resultList;
     }
     
-    public User searchUser(Integer idUser) {
+    public Object[] searchIdCourses(Courses idCourses ) {
         
-        UserDAO userDAO = new UserDAO();
-        User user = userDAO.searchByUserId(idUser);
+        UserRegisterDAO userRegisterDAO = new UserRegisterDAO();
         
-        return user;
-        
+        Object[] resultList = userRegisterDAO.searchIdCourses(idCourses);
+        return resultList;
     }
+    
+    
     
 }

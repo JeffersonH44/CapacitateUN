@@ -48,4 +48,16 @@ public class UserDAO {
         user = (User) query.getSingleResult();
         return user;
     }  
+    public User searchByUserId(Integer idUser) {
+        
+        EntityManager em = emf1.createEntityManager();
+        User user = null;
+        Query query = em.createNamedQuery("User.findById");
+        query.setParameter("id", idUser);
+        
+        user = (User) query.getSingleResult();
+        return user;
+    }
+    
 }
+

@@ -1,9 +1,9 @@
 package Presentation.JSF;
 
-import DataAccess.Entity.Courses;
+import DataAccess.Entity.Topic;
 import Presentation.JSF.util.JsfUtil;
 import Presentation.JSF.util.PaginationHelper;
-import Presentation.Bean.CoursesFacade;
+import Presentation.Bean.TopicFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,32 +18,32 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
-@Named("coursesController")
+@Named("topicController")
 @SessionScoped
-public class CoursesController implements Serializable {
+public class TopicController implements Serializable {
 
-
-    private Courses current;
+    private Topic current;
     private DataModel items = null;
-    @EJB private Presentation.Bean.CoursesFacade ejbFacade;
+    @EJB
+    private Presentation.Bean.TopicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public CoursesController() {
+    public TopicController() {
     }
 
-    public Courses getSelected() {
+    public Topic getSelected() {
         if (current == null) {
-            current = new Courses();
+            current = new Topic();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private CoursesFacade getFacade() {
+    private TopicFacade getFacade() {
         return ejbFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -55,7 +55,7 @@ public class CoursesController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -68,13 +68,13 @@ public class CoursesController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Courses)getItems().getRowData();
+        current = (Topic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Courses();
+        current = new Topic();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -82,7 +82,7 @@ public class CoursesController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/bundle").getString("CoursesCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/bundle").getString("TopicCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/bundle").getString("PersistenceErrorOccured"));
@@ -91,7 +91,7 @@ public class CoursesController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Courses)getItems().getRowData();
+        current = (Topic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -99,16 +99,16 @@ public class CoursesController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CoursesUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/bundle").getString("TopicUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
     public String destroy() {
-        current = (Courses)getItems().getRowData();
+        current = (Topic) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -132,9 +132,9 @@ public class CoursesController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CoursesDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/bundle").getString("TopicDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/bundle").getString("PersistenceErrorOccured"));
         }
     }
 
@@ -142,14 +142,14 @@ public class CoursesController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -185,25 +185,24 @@ public class CoursesController implements Serializable {
     }
 
     public SelectItem[] getItemsAvailableSelectOne() {
-        
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Courses getCourses(java.lang.Integer id) {
+    public Topic getTopic(java.lang.Integer id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass=Courses.class)
-    public static class CoursesControllerConverter implements Converter {
+    @FacesConverter(forClass = Topic.class)
+    public static class TopicControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CoursesController controller = (CoursesController)facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "coursesController");
-            return controller.getCourses(getKey(value));
+            TopicController controller = (TopicController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "topicController");
+            return controller.getTopic(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -223,11 +222,11 @@ public class CoursesController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Courses) {
-                Courses o = (Courses) object;
+            if (object instanceof Topic) {
+                Topic o = (Topic) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Courses.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Topic.class.getName());
             }
         }
 

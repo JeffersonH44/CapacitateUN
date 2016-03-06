@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/login.css" rel="stylesheet"/>
+    <h:body>
+        <div class="container">
+            <div class="login">
+                <h4>CapacitateUN</h4>
+                <hr></hr>
+                <form class="login-inner" jsf:id="form-login">
+                    <h:selectOneMenu class="btn btn-default dropdown-toggle" id="trainerID" value="#{coursesController.selected.trainerID}" >
+                        <f:selectItems value="#{coursesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputText value="#{userRegisternBean.username}"/>
+                    
+                    <h:outputText value=" ____  Estadisticas"/>
+                    <label class="checkbox-inline">
+                        
+                    </label>
+                    <input jsf:action="#{userRegisternBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
+                </form>
+                
+                <hr style="border-top: 0.5px; border-bottom: 0.5px"></hr>
+            </div>
+        </div>
+    </h:body>
+
+
+
+</html>
