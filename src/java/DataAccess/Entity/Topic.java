@@ -34,7 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Topic.findAll", query = "SELECT t FROM Topic t"),
     @NamedQuery(name = "Topic.findById", query = "SELECT t FROM Topic t WHERE t.id = :id"),
     @NamedQuery(name = "Topic.findByArea", query = "SELECT t FROM Topic t WHERE t.area = :area"),
-    @NamedQuery(name = "Topic.findByName", query = "SELECT t FROM Topic t WHERE t.name = :name")})
+    @NamedQuery(name = "Topic.findByName", query = "SELECT t FROM Topic t WHERE t.name = :name"),
+    @NamedQuery(name = "Topic.findByTrainer", query = "SELECT DISTINCT t FROM Topic AS t JOIN ExperienceRegister AS er WHERE er.userID = :trainer_id")
+})
 public class Topic implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -132,7 +134,6 @@ public class Topic implements Serializable {
 
     @Override
     public String toString() {
-        return "DataAccess.Entity.Topic[ id=" + id + " ]";
+        return "Área: " + area + ", Tema: " + name;
     }
-    
 }

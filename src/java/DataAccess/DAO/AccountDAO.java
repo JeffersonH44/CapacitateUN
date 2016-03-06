@@ -18,11 +18,11 @@ import javax.persistence.Query;
 public class AccountDAO {
     
     
-    public EntityManagerFactory emf1 = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
     
     public Account persist(Account account) {
         
-        EntityManager em = emf1.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
         try {
@@ -38,7 +38,7 @@ public class AccountDAO {
     
     public Account searchByAccountNumber(Long accountNumber) {
         
-        EntityManager em = emf1.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         Account account = null;
         
         try {
@@ -53,7 +53,7 @@ public class AccountDAO {
     
     public Account searchByDocument(BigInteger document) {
         
-        EntityManager em = emf1.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         Account account = null;
         Query q = em.createNamedQuery("Cuenta.findByCedula");
         q.setParameter(1, document);
@@ -69,7 +69,7 @@ public class AccountDAO {
     
     public void edit(Account account){
         Account acountNew;
-        EntityManager em = emf1.createEntityManager();  
+        EntityManager em = emf.createEntityManager();  
         em.getTransaction().begin();
         try {
            acountNew = em.merge(em.find(Account.class, account.getAccountNumber())); 
@@ -84,7 +84,7 @@ public class AccountDAO {
     
     public boolean editBalance(Long accountNumber, int consigmentValue) {
         Account accountNew;
-        EntityManager em = emf1.createEntityManager();  
+        EntityManager em = emf.createEntityManager();  
         em.getTransaction().begin();
         boolean success = true;
         

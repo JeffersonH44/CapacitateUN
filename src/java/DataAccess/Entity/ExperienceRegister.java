@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ExperienceRegister.findAll", query = "SELECT e FROM ExperienceRegister e"),
-    @NamedQuery(name = "ExperienceRegister.findByRegisterID", query = "SELECT e FROM ExperienceRegister e WHERE e.registerID = :registerID")})
+    @NamedQuery(name = "ExperienceRegister.findByRegisterID", query = "SELECT e FROM ExperienceRegister e WHERE e.registerID = :registerID")
+})
 public class ExperienceRegister implements Serializable {
 
     private static final long serialVersionUID = 1L;

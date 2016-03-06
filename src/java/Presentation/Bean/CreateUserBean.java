@@ -7,6 +7,7 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -16,7 +17,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class CreateUserBean {
+public class CreateUserBean implements Serializable {
     private String firstname;
     private String lastname;
     private String username;

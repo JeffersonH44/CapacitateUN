@@ -7,6 +7,7 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.LoginService;
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -16,7 +17,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class LoggedBean {
+public class LoggedBean implements Serializable {
     LoginService login = new LoginService();
     
     public int getLoggedUserRole() {
@@ -36,6 +37,16 @@ public class LoggedBean {
             return "";
         } else {
             return user.getFirstname() + " " + user.getLastname();
+        }
+    }
+    
+    public int getLoggedUserID() {
+        User user = login.getUserLogged();
+        
+        if(user == null) {
+            return -1;
+        } else {
+            return user.getId();
         }
     }
 }

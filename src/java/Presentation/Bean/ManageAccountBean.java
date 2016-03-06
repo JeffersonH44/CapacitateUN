@@ -7,6 +7,7 @@ package Presentation.Bean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import BusinessLogic.Controller.HandleAccount;
+import java.io.Serializable;
 
 /**
  *
@@ -14,7 +15,7 @@ import BusinessLogic.Controller.HandleAccount;
  */
 @ManagedBean
 @ViewScoped
-public class ManageAccountBean {
+public class ManageAccountBean implements Serializable {
 
     private Long accountNumberConsign;
     private Long accountNumberExtractBalance;

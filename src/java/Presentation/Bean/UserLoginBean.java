@@ -7,6 +7,7 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -17,7 +18,7 @@ import javax.faces.bean.ViewScoped;
 
 @ViewScoped
 @ManagedBean
-public class UserLoginBean {
+public class UserLoginBean implements Serializable {
     private String username;
     private String password;
     private String message;
@@ -86,11 +87,11 @@ public class UserLoginBean {
         switch (user.getRole()) {
             case User.ADMIN:
                 return "faces/pages/admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "faces/pages/trainer/trainerIndex.xhtml";
             case User.USER:
-                return "login.xhtml";
-            default:
-                return "login.xhtml";
+                return "faces/pages/user/userIndex.xhtml";
         }
-        
+        return "";
     }
 }
