@@ -15,8 +15,7 @@
                         <hr></hr>
                         <form class="login-inner" jsf:id="form">
                                 <input type="text" class="form-control" id="name" placeholder="nombre de la experiencia" jsf:value="#{createExperienceBean.name}"/>
-                                <input type="text" class="form-control" id="area" placeholder="Area" jsf:value="#{createExperienceBean.area}"/>
-                                <h:selectOneMenu value="#{createExperienceBean.area}">
+                                <h:selectOneMenu  class ="btn btn-primary dropdown-toggle" value="#{createExperienceBean.area}">
                                     <f:selectItem itemValue="vuelo" itemLabel="Vuelo" />
                                     <f:selectItem itemValue="conduccion" itemLabel="conducción" />
                                     <f:selectItem itemValue="deporte" itemLabel="deporte" />
