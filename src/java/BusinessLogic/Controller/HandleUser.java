@@ -6,12 +6,16 @@ package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
+import javax.ejb.EJB;
 
 /**
  *
  * @author ArqSoft
  */
 public class HandleUser {
+    
+    @EJB
+    private UserDAO userDAO;
     
     public String createUser(String firstname, String lastname, String username, String password, int Id){
         
@@ -23,8 +27,6 @@ public class HandleUser {
         user.setFirstname(firstname);
         user.setLastname(lastname);
         
-        
-        UserDAO userDAO = new UserDAO();
         boolean saved = userDAO.persist(user);
         if (saved) {
             return "el usuario con ID: " + user.getId()+ " ha sido guardado con exito .";
@@ -34,7 +36,6 @@ public class HandleUser {
     }
     
     public User loginUser(String username, String password) {
-        UserDAO userDAO = new UserDAO();
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
