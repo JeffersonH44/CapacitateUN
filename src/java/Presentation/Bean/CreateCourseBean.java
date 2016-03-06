@@ -94,7 +94,6 @@ public class CreateCourseBean implements Serializable {
     public String createCourse() {
         LoginService login = new LoginService();
         user = login.getUserLogged();
-        topic = availableTopics.get(0);
         
         CoursesRegister cr = new CoursesRegister();
         message = cr.createCourse(name, topic, user);

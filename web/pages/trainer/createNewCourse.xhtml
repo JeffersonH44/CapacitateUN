@@ -20,6 +20,12 @@ and open the template in the editor.
                                 <h:outputLabel value="Nombre del curso" for="name" />
                                 <h:inputText class="form-control" id="name" value="#{createCourseBean.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El nombre es obligatorio"/>
                             </div> 
+                            <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" for="topicID" />
+                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{createCourseBean.topic}" title="#{bundle.CreateCoursesTitle_topicID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_topicID}">
+                                    <f:selectItems value="#{createCourseBean.availableTopics}"/>
+                                </h:selectOneMenu>
+                            </div>  
                             <h:commandLink class="btn btn-success" action="#{createCourseBean.createCourse()}" value="Crear" />
                         </form>
                     </div>
