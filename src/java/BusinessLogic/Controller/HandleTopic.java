@@ -19,8 +19,11 @@ public class HandleTopic {
         topic.setName(name);
         topic.setArea(area);
         
-        
         TopicDAO topicDAO = new TopicDAO();
+        /*Topic Qname = topicDAO.searchByName(name);
+        if (topic == Qname){
+            return topic;
+        }*/
         boolean saved = topicDAO.persist(topic);
         if (saved) {
             return topic;

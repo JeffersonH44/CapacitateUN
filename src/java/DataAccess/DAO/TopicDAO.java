@@ -46,5 +46,16 @@ public class TopicDAO {
         
         topic = (Topic) query.getSingleResult();
         return topic;
-    }  
+    }
+    
+    public Topic searchByArea(String area) {
+        
+        EntityManager em = emf1.createEntityManager();
+        Topic topic = null;
+        Query query = em.createNamedQuery("Topic.findByArea");
+        query.setParameter("area", area);
+        
+        topic = (Topic) query.getSingleResult();
+        return topic;
+    }
 }
