@@ -8,14 +8,14 @@ package Presentation.Bean;
 import BusinessLogic.Controller.HandleUser;
 import DataAccess.Entity.User;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Jefferson
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class CreateUserBean {
     private String firstname;
     private String lastname;

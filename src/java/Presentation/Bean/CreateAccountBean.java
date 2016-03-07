@@ -9,13 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import BusinessLogic.Controller.HandleAccount;
 import BusinessLogic.Controller.HandleUser;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author ArqSoft
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class CreateAccountBean {
     
      private String name;

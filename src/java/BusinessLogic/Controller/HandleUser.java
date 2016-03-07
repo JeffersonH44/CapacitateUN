@@ -27,9 +27,9 @@ public class HandleUser {
         UserDAO userDAO = new UserDAO();
         boolean saved = userDAO.persist(user);
         if (saved) {
-            return "el usuario con ID: " + user.getId()+ " ha sido guardado con exito .";
+            return "el usuario con ID: " + user.getId() + " ha sido guardado con exito.";
         } else {
-            return "fallo en la creación de usuario";
+            return "fallo en la creación de usuario.";
         }        
     }
     
