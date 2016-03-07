@@ -8,31 +8,40 @@ package Presentation.Bean;
 import BusinessLogic.Controller.CoursesRegister;
 import BusinessLogic.Controller.HandleUser;
 import BusinessLogic.Controller.LoginService;
+import DataAccess.DAO.CoursesDAO;
+import DataAccess.DAO.TopicDAO;
+import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Jefferson
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class CreateCourseBean implements Serializable {
     private String name;
     private Topic topic;
     private User user;
     private String message;
     private List<Topic> availableTopics;
+    private int selectedIndex;
+    @EJB
+    private CoursesDAO courseDAO;
+    @EJB
+    private TopicDAO topicDAO;
     
     @PostConstruct
     public void init() {
         CoursesRegister cr = new CoursesRegister();
-        availableTopics = cr.getAvailableTopics();
+        availableTopics = cr.getAvailableTopics(topicDAO);
     }
 
     /**
@@ -91,12 +100,33 @@ public class CreateCourseBean implements Serializable {
         this.availableTopics = availableTopics;
     }
     
+    /**
+     * @return the selectedIndex
+     */
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    /**
+     * @param selectedIndex the selectedIndex to set
+     */
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
+    }
+    
     public String createCourse() {
         LoginService login = new LoginService();
         user = login.getUserLogged();
         
         CoursesRegister cr = new CoursesRegister();
-        message = cr.createCourse(name, topic, user);
+        Courses course = cr.createCourse(name, availableTopics.get(selectedIndex), user);
+        
+        boolean saved = courseDAO.persist(course);
+        if(saved) {
+            message = "El curso " + name + " ha sido creado exitosamente!";
+        } else {
+            message = "El curso no se ha podido crear!";
+        }
         
         return "trainerIndex.xhtml";
     }

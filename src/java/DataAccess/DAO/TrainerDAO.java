@@ -7,21 +7,21 @@ package DataAccess.DAO;
 
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
  *
  * @author Jefferson
  */
+@Stateless
 public class TrainerDAO {
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    @PersistenceContext(unitName = "BancoPersistenceU")
+    private EntityManager em;
     
     public User searchByCourse(Courses course) {
-        EntityManager em = emf.createEntityManager();
-        
         User trainer;
         Query q = em.createNamedQuery("User.findById");
         q.setParameter("id", course.getTrainerID());

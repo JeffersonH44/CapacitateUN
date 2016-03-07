@@ -20,43 +20,37 @@ import java.util.List;
  */
 public class CoursesRegister {
     
-    public String addRegistry(Courses course, User user) {
+    public UserRegister addRegistry(Courses course, User user) {
         
         UserRegister registry = new UserRegister();
         registry.setCoursesID(course);
         registry.setUserID(user);
         registry.setStatus(UserRegister.ACTIVE);
         
-        UserRegisterDAO registryDAO = new UserRegisterDAO();
-        boolean saved = registryDAO.persist(registry);
-        
-        if(saved) {
-            return "El registro sobre el curso " + course.getName() + " ha sido exitoso!";
-        } else { 
-            return "No se ha podido completar el registro";
-        }
+        return registry;
     }
     
-    public String createCourse(String name, Topic topicID, User trainerID) {
+    public Courses createCourse(String name, Topic topicID, User trainerID) {
         Courses course = new Courses();
         course.setName(name);
         course.setTopicID(topicID);
         course.setTrainerID(trainerID);
         
-        CoursesDAO courseDAO = new CoursesDAO();
-        boolean saved = courseDAO.persist(course);
-        if(saved) {
-            return "El curso " + name + " ha sido creado exitosamente!";
-        } else {
-            return "El curso no se ha podido crear!";
-        }
+        return course;
     }
     
-    public List<Topic> getAvailableTopics() {
+    public List<Topic> getAvailableTopics(TopicDAO topicDAO) {
         LoginService login = new LoginService();
         User user = login.getUserLogged();
-        TopicDAO topicDAO = new TopicDAO();
+        //TopicDAO topicDAO = new TopicDAO();
         
         return topicDAO.getTopicsByTrainer(user);
+    }
+    
+    public List<Courses> getCoursesByUser(CoursesDAO courseDAO) {
+        LoginService login = new LoginService();
+        User user = login.getUserLogged();
+        
+        return courseDAO.getByUser(user);
     }
 }

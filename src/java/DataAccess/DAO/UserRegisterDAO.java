@@ -6,19 +6,21 @@
 package DataAccess.DAO;
 
 import DataAccess.Entity.UserRegister;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Jefferson
  */
+@Stateless
 public class UserRegisterDAO {
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    
+    @PersistenceContext(unitName = "BancoPersistenceU")
+    private EntityManager em;
     
     public boolean persist(UserRegister registry) {
-        EntityManager em = emf.createEntityManager();
         em.persist(registry);
         return true;
     }

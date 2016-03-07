@@ -6,20 +6,40 @@
 package DataAccess.DAO;
 
 import DataAccess.Entity.Courses;
+import DataAccess.Entity.User;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author Jefferson
  */
+@Stateless
 public class CoursesDAO {
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    @PersistenceContext(unitName = "BancoPersistenceU")
+    private EntityManager em;
     
     public boolean persist(Courses course) {
-        EntityManager em = emf.createEntityManager();
         em.persist(course);
         return true;
+    }
+    
+    public Courses getById(int id) {
+        TypedQuery<Courses> q = em.createNamedQuery("Courses.findById", Courses.class);
+        q.setParameter("id", id);
+        
+        Courses course = q.getSingleResult();
+        return course;
+    }
+    
+    public List<Courses> getByUser(User user) {
+        TypedQuery<Courses> q = em.createNamedQuery("Courses.findByUser", Courses.class);
+        q.setParameter("trainer_id", user);
+        
+        List<Courses> myCourses = q.getResultList();
+        return myCourses;
     }
 }

@@ -15,22 +15,26 @@ and open the template in the editor.
             <ui:define name="body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <form role="form" jsf:id="create-form">
+                        <h:form role="form" id="create-form">
                             <div class="form-group">
-                                <h:outputLabel value="Nombre del curso" for="name" />
-                                <h:inputText class="form-control" id="name" value="#{createCourseBean.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El nombre es obligatorio"/>
+                                <h:outputLabel value="Nombre del curso" />
+                                <h:inputText class="form-control" value="#{createCourseBean.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El nombre es obligatorio"/>
                             </div> 
+                            <h:inputHidden id="selectedIndex" value="#{createCourseBean.selectedIndex}"/>
                             <div class="form-group">
-                            <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" for="topicID" />
-                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{createCourseBean.topic}" title="#{bundle.CreateCoursesTitle_topicID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_topicID}">
-                                    <f:selectItems value="#{createCourseBean.availableTopics}"/>
+                                <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" />
+                                <h:selectOneMenu class="form-control" converter="#{topicConverter}" value="#{createCourseBean.topic}" title="Tema" required="true" requiredMessage="El tema es obligatorio">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                                    <f:selectItems value="#{createCourseBean.availableTopics}" var="topic" itemValue="#{topic}"/>
                                 </h:selectOneMenu>
                             </div>  
-                            <h:commandLink class="btn btn-success" action="#{createCourseBean.createCourse()}" value="Crear" />
-                        </form>
+                            <h:commandButton class="btn btn-success" action="#{createCourseBean.createCourse}" value="Crear"/> 
+                        </h:form>
                     </div>
                 </div>
             </ui:define>
         </ui:composition>
     </h:body>
+    
+    
 </html>

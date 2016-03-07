@@ -3,14 +3,38 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/TopicDAO.java</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/crudManagment/courses/View.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/baseTemplate.xhtml</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/conf/persistence.xml</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/CoursesDAO.java</file>
-            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/crudManagment/courses/Create.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/Entity/User.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/trainer/trainerIndex.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CreateAccountBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/LoggedBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/crudManagment/courses/List.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/UserDAO.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/UserLoginBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CreateCourseBean.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/web/pages/trainer/createNewCourse.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/TopicConverter.java</file>
             <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/CoursesRegister.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/LoginService.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/Entity/Courses.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/TrainerDAO.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/AccountDAO.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/Entity/Topic.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/TransactionDAO.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/crudManagment/courses/Create.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/BusinessLogic/Controller/HandleUser.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/ManageAccountBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CreateUserBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/Entity/UserRegister.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/DataAccess/DAO/UserRegisterDAO.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/CoursesFacade.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/Bean/TrainerBean.java</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/admin.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/admin/adminIndex.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/web/pages/trainer/trainer.xhtml</file>
+            <file>file:/C:/Proyecto/CapacitateUN/src/java/Presentation/JSF/UserController.java</file>
         </group>
     </open-files>
 </project-private>
