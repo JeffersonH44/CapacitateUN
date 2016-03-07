@@ -1,18 +1,27 @@
 /*
+<<<<<<< HEAD
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
+=======
+ * To change this template, choose Tools | Templates
+>>>>>>> ExperienceManagement
  * and open the template in the editor.
  */
 package DataAccess.DAO;
 
+<<<<<<< HEAD
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
 import java.util.List;
+=======
+import DataAccess.Entity.Topic;
+>>>>>>> ExperienceManagement
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+<<<<<<< HEAD
 import javax.persistence.TypedQuery;
 
 /**
