@@ -88,6 +88,6 @@ public class CreateExperienceBean {
         } else {
             message = "fallo en la creación de experiencia";
         }
-        return "faces/index.xhtml";
+        return "pages/trainer/trainerIndex.xhtml";
     }
 }
