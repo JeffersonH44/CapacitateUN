@@ -6,29 +6,30 @@ package DataAccess.DAO;
 
 import DataAccess.Entity.ExperienceRegister;
 import DataAccess.Entity.User;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.RollbackException;
 
 /**
  *
  * @author Manu
  */
+@Stateless
 public class ExperienceDAO {
     
-    
-    public EntityManagerFactory emf1 = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    @PersistenceContext(unitName = "BancoPersistenceU")
+    private EntityManager em;
+    //public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
     
     public boolean persist(ExperienceRegister experience) {
         
-        EntityManager em = emf1.createEntityManager();
-        em.getTransaction().begin();
+        //EntityManager em = emf1.createEntityManager();
+        //em.getTransaction().begin();
         
         //try {
         em.persist(experience);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
         return true;
         //} catch(RollbackException e) {
         //    em.getTransaction().rollback();
@@ -40,12 +41,12 @@ public class ExperienceDAO {
     
     public ExperienceRegister searchByTrainerID( User Trainer) {
         
-        EntityManager em = emf1.createEntityManager();
+        //EntityManager em = emf1.createEntityManager();
         ExperienceRegister experienceRegister = null;
         Query query = em.createNamedQuery("ExperienceRegister.findByTrainerID");
         query.setParameter("TrainerID", Trainer.getId());
         
         experienceRegister = (ExperienceRegister) query.getSingleResult();
         return experienceRegister;
-    }  
+    }
 }

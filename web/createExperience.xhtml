@@ -5,7 +5,7 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/login.css" rel="stylesheet"/>
+    <link  rel="stylesheet"/>
     <head>
         <title>Registrar Experiencia</title>
     </head>
@@ -20,7 +20,7 @@
                                     <f:selectItem itemValue="conduccion" itemLabel="conducción" />
                                     <f:selectItem itemValue="deporte" itemLabel="deporte" />
                                 </h:selectOneMenu>
-                            <button class="btn btn-block btn-lg btn-success submit" jsf:action="#{createExperienceBean.createExperience()}">Registrar</button>
+                            <button href="faces/index.xhtml" class="btn btn-block btn-lg btn-success submit" jsf:action="#{createExperienceBean.createExperience()}">Registrar</button>
                         </form>
                     <label>Mensaje: </label>
                     <h:outputText value="#{createExperienceBean.message}"/>

@@ -9,30 +9,35 @@
  */
 package DataAccess.DAO;
 
-<<<<<<< HEAD
+
 import DataAccess.Entity.Courses;
-import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
 import java.util.List;
-=======
+import javax.ejb.Stateless;
 import DataAccess.Entity.Topic;
->>>>>>> ExperienceManagement
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-<<<<<<< HEAD
 import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Jefferson
+ * @author Manu
  */
+@Stateless
 public class TopicDAO {
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    @PersistenceContext(unitName = "BancoPersistenceU")
+    private EntityManager em;
+    //public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
+    
+    public boolean persist(Topic topic) {
+        //em = emf.createEntityManager();
+        em.persist(topic);
+        return true;
+    }
     
     public Topic searchByCourse(Courses course) {
-        EntityManager em = emf.createEntityManager();
+        //EntityManager em = emf.createEntityManager();
         
         Topic topic;
         Query q = em.createNamedQuery("Topic.findById");
@@ -44,7 +49,7 @@ public class TopicDAO {
     }
     
     public List<Topic> getTopicsByTrainer(User trainer) {
-        EntityManager em = emf.createEntityManager();
+        //EntityManager em = emf.createEntityManager();
         
         TypedQuery<Topic> q = em.createNamedQuery("Topic.findByTrainer", Topic.class);
         q.setParameter("trainer_id", trainer);

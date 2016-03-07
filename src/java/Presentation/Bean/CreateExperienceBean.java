@@ -8,12 +8,17 @@ package Presentation.Bean;
 import BusinessLogic.Controller.HandleExperience;
 import BusinessLogic.Controller.HandleTopic;
 import BusinessLogic.Controller.LoginService;
+import DataAccess.DAO.ExperienceDAO;
+import DataAccess.DAO.TopicDAO;
+import DataAccess.Entity.ExperienceRegister;
+import DataAccess.Entity.Topic;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author Jefferson
+ * @author Manu
  */
 @ManagedBean
 @ViewScoped
@@ -21,6 +26,10 @@ public class CreateExperienceBean {
     private String name;
     private String area;
     private String message;
+    @EJB
+    private ExperienceDAO experienceDAO;
+    @EJB
+    private TopicDAO    topicDao;
 
     /**
      * @return the name
@@ -68,7 +77,17 @@ public class CreateExperienceBean {
         HandleTopic topicHandler = new HandleTopic();
         HandleExperience he = new HandleExperience();
         LoginService user = new LoginService();
-        message = he.CreateExperience(topicHandler.createTopic(name, area), user.getUserLogged());
-        return "index.xhtml";
+        
+        Topic topic = topicHandler.createTopic(name, area);
+        topicDao.persist(topic);
+        ExperienceRegister exp = he.CreateExperience(topic, user.getUserLogged());
+        boolean saved = experienceDAO.persist(exp);
+        
+        if (saved) {
+            message = "la expereriencia con ID: " + exp.getRegisterID()+ " ha sido guardada con exito .";
+        } else {
+            message = "fallo en la creación de experiencia";
+        }
+        return "faces/index.xhtml";
     }
 }

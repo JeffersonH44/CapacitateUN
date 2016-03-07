@@ -4,12 +4,11 @@
  */
 package BusinessLogic.Controller;
 
-import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.Topic;
 
 /**
  *
- * @author ArqSoft
+ * @author Manu
  */
 public class HandleTopic {
     
@@ -18,19 +17,9 @@ public class HandleTopic {
         Topic topic = new Topic();
         topic.setName(name);
         topic.setArea(area);
-        
-        TopicDAO topicDAO = new TopicDAO();
-        /*Topic Qname = topicDAO.searchByName(name);
-        if (topic == Qname){
+        if(name.length()<50 && area.length()<50){
             return topic;
-        }*/
-        boolean saved = topicDAO.persist(topic);
-        if (saved) {
-            return topic;
-        } else {
-            return null;
-        }        
+        }
+        return null;
     }
-    
-    
 }
