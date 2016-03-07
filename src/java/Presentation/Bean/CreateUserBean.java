@@ -6,8 +6,10 @@
 package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
+import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -24,6 +26,8 @@ public class CreateUserBean implements Serializable {
     private String password;
     private String message;
     private int id;
+    @EJB
+    private UserDAO userDAO;
 
     /**
      * @return the firstname
@@ -110,8 +114,22 @@ public class CreateUserBean implements Serializable {
     }
     
     public String createUser() {
+        User user;
+        HandleUser hu = new HandleUser();
+        user = hu.createUser(firstname, lastname, username, password, id);
+        boolean saved = userDAO.persist(user);
+        if(saved) {
+            message = "El usuario se ha creado correctamente";
+        } else {
+            message = "El usuario no se ha podido crear";
+        }
+        
+        return "index.xhtml";
+    }
+    /*
+    public String createUser() {
         HandleUser hu = new HandleUser();
         message = hu.createUser(firstname, lastname, username, password, id);
         return "index.xhtml";
-    }
+    }*/
 }

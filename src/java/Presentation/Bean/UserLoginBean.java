@@ -6,8 +6,10 @@
 package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
+import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -23,6 +25,8 @@ public class UserLoginBean implements Serializable {
     private String password;
     private String message;
     private User user;
+    @EJB
+    private UserDAO userDAO;
 
     /**
      * @return the username
@@ -82,7 +86,7 @@ public class UserLoginBean implements Serializable {
     
     public String login() {
         HandleUser userManager = new HandleUser();
-        user = userManager.loginUser(username, password);
+        user = userManager.loginUser(username, password, userDAO);
         message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
         switch (user.getRole()) {
             case User.ADMIN:

@@ -14,10 +14,7 @@ import javax.ejb.EJB;
  */
 public class HandleUser {
     
-    @EJB
-    private UserDAO userDAO;
-    
-    public String createUser(String firstname, String lastname, String username, String password, int Id){
+    public User createUser(String firstname, String lastname, String username, String password, int Id){
         
         User user = new User();
         user.setRole(User.USER);
@@ -27,15 +24,10 @@ public class HandleUser {
         user.setFirstname(firstname);
         user.setLastname(lastname);
         
-        boolean saved = userDAO.persist(user);
-        if (saved) {
-            return "el usuario con ID: " + user.getId()+ " ha sido guardado con exito .";
-        } else {
-            return "fallo en la creación de usuario";
-        }        
+        return user;
     }
     
-    public User loginUser(String username, String password) {
+    public User loginUser(String username, String password, UserDAO userDAO) {
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
