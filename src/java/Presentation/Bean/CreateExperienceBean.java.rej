@@ -1,0 +1,9 @@
+diff a/src/java/Presentation/Bean/CreateExperienceBean.java b/src/java/Presentation/Bean/CreateExperienceBean.java	(rejected hunks)
+@@ -88,6 +88,6 @@
+         } else {
+             message = "fallo en la creación de experiencia";
+         }
+-        return "pages/trainer/trainerIndex.xhtml";
++        return "trainerIndex.xhtml";
+     }
+ }

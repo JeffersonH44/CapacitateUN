@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="trainerIndex.xhtml">
+            <ui:define name="body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h:form role="form" id="create-form">
+                            <div class="form-group">
+                                <h:outputLabel value="Nombre del curso" />
+                                <h:inputText class="form-control" value="#{createCourseBean.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El nombre es obligatorio"/>
+                            </div> 
+                            <h:inputHidden id="selectedIndex" value="#{createCourseBean.selectedIndex}"/>
+                            <div class="form-group">
+                                <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" />
+                                <h:selectOneMenu class="form-control" converter="#{topicConverter}" value="#{createCourseBean.topic}" title="Tema" required="true" requiredMessage="El tema es obligatorio">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                                    <f:selectItems value="#{createCourseBean.availableTopics}" var="topic" itemValue="#{topic}"/>
+                                </h:selectOneMenu>
+                            </div>  
+                            <h:commandButton class="btn btn-success" action="#{createCourseBean.createCourse}" value="Crear"/> 
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+    
+</html>

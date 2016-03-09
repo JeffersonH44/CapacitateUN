@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import BusinessLogic.Controller.HandleAccount;
 import BusinessLogic.Controller.HandleUser;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class CreateAccountBean {
+public class CreateAccountBean implements Serializable {
     
      private String name;
      private BigInteger document;

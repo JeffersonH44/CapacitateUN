@@ -8,11 +8,68 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="trainer.xhtml">
         <ui:define name="body">
             <form jsf:id="main-form">
-                hello world!
+                <h2> Mis cursos </h2>
+                <div class="row" jsf:id="my-courses-table">
+                    <h:panelGroup class="col-md-8" rendered="#{trainerBean.myCourses.size() > 0}">
+                        <h:dataTable value="#{trainerBean.myCourses}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id. del curso"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tema"/>
+                                </f:facet>
+                                <h:outputText value="#{item.topicID}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </div>
+                
+                <div class="row col-md-8"> 
+                    <h:link outcome="/pages/trainer/createNewCourse.xhtml" class="btn btn-primary">Crear nuevo curso</h:link>
+                </div>
+                
+                <div class="row"/>
+                
+                <div class="row" jsf:id="my-experiences-table">
+                    <h2>Mis experiencias</h2>
+                    <h:panelGroup class="col-md-8" rendered="#{trainerBean.myExperience.size() > 0}">
+                        <h:dataTable value="#{trainerBean.myExperience}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Área"/>
+                                </f:facet>
+                                <h:outputText value="#{item.area}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tema"/>
+                                </f:facet>
+                                <h:outputText value="#{item.name}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </div>
+                
+                <div class="row col-md-8"> 
+                    <h:link outcome="/pages/trainer/createExperience.xhtml" class="btn btn-primary">Registrar nueva experiencia</h:link>
+                </div>
             </form>
         </ui:define>
     </ui:composition>

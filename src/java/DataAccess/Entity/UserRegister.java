@@ -18,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UserRegister.findByRegisterID", query = "SELECT u FROM UserRegister u WHERE u.registerID = :registerID"),
     @NamedQuery(name = "UserRegister.findByStatus", query = "SELECT u FROM UserRegister u WHERE u.status = :status")})
 public class UserRegister implements Serializable {
+    
+    public static short ACTIVE = 1;
+    public static short RETIRED = 0;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,9 +44,8 @@ public class UserRegister implements Serializable {
     private Integer registerID;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "status")
-    private String status;
+    private short status;
     @JoinColumn(name = "courses_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Courses coursesID;
@@ -59,7 +60,7 @@ public class UserRegister implements Serializable {
         this.registerID = registerID;
     }
 
-    public UserRegister(Integer registerID, String status) {
+    public UserRegister(Integer registerID, short status) {
         this.registerID = registerID;
         this.status = status;
     }
@@ -72,11 +73,11 @@ public class UserRegister implements Serializable {
         this.registerID = registerID;
     }
 
-    public String getStatus() {
+    public short getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(short status) {
         this.status = status;
     }
 

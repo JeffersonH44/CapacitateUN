@@ -6,7 +6,10 @@
 package Presentation.Bean;
 
 import BusinessLogic.Controller.HandleUser;
+import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
+import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -17,11 +20,13 @@ import javax.faces.bean.SessionScoped;
 
 @SessionScoped
 @ManagedBean
-public class UserLoginBean {
+public class UserLoginBean implements Serializable {
     private String username;
     private String password;
     private String message;
     private User user;
+    @EJB
+    private UserDAO userDAO;
 
     /**
      * @return the username
@@ -81,16 +86,16 @@ public class UserLoginBean {
     
     public String login() {
         HandleUser userManager = new HandleUser();
-        user = userManager.loginUser(username, password);
+        user = userManager.loginUser(username, password, userDAO);
         message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
         switch (user.getRole()) {
             case User.ADMIN:
                 return "faces/pages/admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "faces/pages/trainer/trainerIndex.xhtml";
             case User.USER:
-                return "login.xhtml";
-            default:
-                return "login.xhtml";
+                return "faces/pages/user/userIndex.xhtml";
         }
-        
+        return "";
     }
 }

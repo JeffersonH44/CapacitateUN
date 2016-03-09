@@ -6,6 +6,7 @@ package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
+import javax.ejb.EJB;
 
 /**
  *
@@ -13,7 +14,7 @@ import DataAccess.Entity.User;
  */
 public class HandleUser {
     
-    public String createUser(String firstname, String lastname, String username, String password, int Id){
+    public User createUser(String firstname, String lastname, String username, String password, int Id){
         
         User user = new User();
         user.setRole(User.USER);
@@ -23,18 +24,11 @@ public class HandleUser {
         user.setFirstname(firstname);
         user.setLastname(lastname);
         
-        
-        UserDAO userDAO = new UserDAO();
-        boolean saved = userDAO.persist(user);
-        if (saved) {
-            return "el usuario con ID: " + user.getId() + " ha sido guardado con exito.";
-        } else {
-            return "fallo en la creación de usuario.";
-        }        
+        return user;
+
     }
     
-    public User loginUser(String username, String password) {
-        UserDAO userDAO = new UserDAO();
+    public User loginUser(String username, String password, UserDAO userDAO) {
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
