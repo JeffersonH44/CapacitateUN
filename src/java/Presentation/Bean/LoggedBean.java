@@ -9,14 +9,14 @@ import BusinessLogic.Controller.LoginService;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Jefferson
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class LoggedBean implements Serializable {
     LoginService login = new LoginService();
     
