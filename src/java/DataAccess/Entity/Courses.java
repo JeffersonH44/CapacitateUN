@@ -6,9 +6,8 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Courses.findAll", query = "SELECT c FROM Courses c"),
     @NamedQuery(name = "Courses.findById", query = "SELECT c FROM Courses c WHERE c.id = :id"),
     @NamedQuery(name = "Courses.findByName", query = "SELECT c FROM Courses c WHERE c.name = :name"),
-    @NamedQuery(name = "Courses.findByUser", query = "select c from Courses c WHERE c.trainerID = :trainer_id")
+    @NamedQuery(name = "Courses.findByDate", query = "SELECT c FROM Courses c WHERE c.date = :date"),
+    @NamedQuery(name = "Courses.findByUser", query = "SELECT c FROM Courses c WHERE c.trainerID = :trainer_id")
 })
 public class Courses implements Serializable {
 
@@ -51,14 +51,17 @@ public class Courses implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
     @JoinColumn(name = "topic_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Topic topicID;
     @JoinColumn(name = "trainer_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private User trainerID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "coursesID")
-    private Collection<UserRegister> userRegisterCollection;
 
     public Courses() {
     }
@@ -67,9 +70,10 @@ public class Courses implements Serializable {
         this.id = id;
     }
 
-    public Courses(Integer id, String name) {
+    public Courses(Integer id, String name, Date date) {
         this.id = id;
         this.name = name;
+        this.date = date;
     }
 
     public Integer getId() {
@@ -88,6 +92,15 @@ public class Courses implements Serializable {
         this.name = name;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        
+        this.date = date;
+    }
+
     public Topic getTopicID() {
         return topicID;
     }
@@ -102,15 +115,6 @@ public class Courses implements Serializable {
 
     public void setTrainerID(User trainerID) {
         this.trainerID = trainerID;
-    }
-
-    @XmlTransient
-    public Collection<UserRegister> getUserRegisterCollection() {
-        return userRegisterCollection;
-    }
-
-    public void setUserRegisterCollection(Collection<UserRegister> userRegisterCollection) {
-        this.userRegisterCollection = userRegisterCollection;
     }
 
     @Override
@@ -135,7 +139,7 @@ public class Courses implements Serializable {
 
     @Override
     public String toString() {
-        return "DataAccess.Entity.Courses[ id=" + id + " ]";
+        return "id: " + id + " Nombre: " + name;
     }
     
 }

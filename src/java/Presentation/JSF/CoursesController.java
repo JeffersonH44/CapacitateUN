@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("coursesController")
 @SessionScoped
 public class CoursesController implements Serializable {
 
+
     private Courses current;
     private DataModel items = null;
-    @EJB
-    private Presentation.Bean.CoursesFacade ejbFacade;
+    @EJB private Presentation.Bean.CoursesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,7 +44,6 @@ public class CoursesController implements Serializable {
     private CoursesFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -55,7 +55,7 @@ public class CoursesController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -68,7 +68,7 @@ public class CoursesController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Courses) getItems().getRowData();
+        current = (Courses)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -91,7 +91,7 @@ public class CoursesController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Courses) getItems().getRowData();
+        current = (Courses)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -108,7 +108,7 @@ public class CoursesController implements Serializable {
     }
 
     public String destroy() {
-        current = (Courses) getItems().getRowData();
+        current = (Courses)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -142,14 +142,14 @@ public class CoursesController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -192,7 +192,7 @@ public class CoursesController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Courses.class)
+    @FacesConverter(forClass=Courses.class)
     public static class CoursesControllerConverter implements Converter {
 
         @Override
@@ -200,7 +200,7 @@ public class CoursesController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CoursesController controller = (CoursesController) facesContext.getApplication().getELResolver().
+            CoursesController controller = (CoursesController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "coursesController");
             return controller.getCourses(getKey(value));
         }
@@ -226,7 +226,7 @@ public class CoursesController implements Serializable {
                 Courses o = (Courses) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Courses.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Courses.class.getName());
             }
         }
 

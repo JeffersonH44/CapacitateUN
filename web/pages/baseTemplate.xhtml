@@ -28,6 +28,9 @@ and open the template in the editor.
         <!-- Custom Fonts -->
         <h:outputStylesheet name="bower_components/font-awesome/css/font-awesome.min.css" />
         
+        <!-- Datetime picker CSS -->
+        <h:outputStylesheet name="css/bootstrap-datetimepicker.min.css"/>
+        
         <!-- jQuery -->
         <h:outputScript name="bower_components/jquery/dist/jquery.min.js"/>
 
@@ -41,6 +44,10 @@ and open the template in the editor.
         <h:outputScript name="bower_components/raphael/raphael-min.js"/>
         <h:outputScript name="bower_components/morrisjs/morris.min.js"/>
         <h:outputScript name="js/morris-data.js"/>
+        
+        <!-- Datetime picker JavaScript -->
+        <h:outputScript name="js/bootstrap-datetimepicker.js" />
+        <h:outputScript name="js/locales/bootstrap-datetimepicker.es.js"/>
 
         <!-- Custom Theme JavaScript -->
         <h:outputScript name="dist/js/sb-admin-2.js"/>
@@ -155,4 +162,10 @@ and open the template in the editor.
             </div>
         </div>
     </h:body>
+    
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({
+            format: "mm/dd/yyyy HH:ii:ss"
+        });
+    </script> 
 </html>

@@ -19,21 +19,29 @@
                     <label>#{bundle.ViewCoursesLabel_name} #{coursesController.selected.name}</label>
                 </div>
                 <div class="form-group">
+                    <label>#{bundle.ViewCoursesLabel_date} #{coursesController.selected.date}</label>
+                </div>
+                <div class="form-group">
                     <label>#{bundle.ViewCoursesLabel_topicID} #{coursesController.selected.topicID}</label>
                 </div>
                 <div class="form-group">
                     <label>#{bundle.ViewCoursesLabel_trainerID} #{coursesController.selected.trainerID}</label>
                 </div>
                 
-                <h:commandLink class="btn btn-danger" action="#{coursesController.destroyAndView}" value="#{bundle.ViewCoursesDestroyLink}"/>
-                <h:outputText value=" "/>
-                <h:link class="btn btn-primary" outcome="Edit" value="#{bundle.ViewCoursesEditLink}"/>
-                <h:outputText value=" "/>
-                <h:commandLink class="btn btn-success" action="#{coursesController.prepareCreate}" value="#{bundle.ViewCoursesCreateLink}" />
-                <div class="divider"/>
-                <h:commandLink class="btn btn-info" action="#{coursesController.prepareList}" value="#{bundle.ViewCoursesShowAllLink}"/>
-                <h:outputText value=" "/>
-                <h:link class="btn btn-default" outcome="/index" value="#{bundle.ViewCoursesIndexLink}"/>
+                <div class="form-group">
+                    <h:commandLink class="btn btn-danger" action="#{coursesController.destroyAndView}" value="#{bundle.ViewCoursesDestroyLink}"/>
+                    <h:outputText value=" "/>
+                    <h:link class="btn btn-primary" outcome="Edit" value="#{bundle.ViewCoursesEditLink}"/>
+                    <h:outputText value=" "/>
+                    <h:commandLink class="btn btn-success" action="#{coursesController.prepareCreate}" value="#{bundle.ViewCoursesCreateLink}" />
+                </div>
+                
+                <div class="form-group">
+                    <h:commandLink class="btn btn-info" action="#{coursesController.prepareList}" value="#{bundle.ViewCoursesShowAllLink}"/>
+                    <h:outputText value=" "/>
+                    <h:link class="btn btn-default" outcome="/index" value="#{bundle.ViewCoursesIndexLink}"/>
+                </div>
+                
 
             </form>
         </ui:define>

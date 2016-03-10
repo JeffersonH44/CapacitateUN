@@ -6,16 +6,20 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname"),
 })
 public class User implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainerID")
+    private Collection<Courses> coursesCollection;
 
     private static final long serialVersionUID = 1L;
     
@@ -151,7 +158,16 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "DataAccess.Entity.User[ id=" + id + " ]";
+        return firstname + " " + lastname;
+    }
+
+    @XmlTransient
+    public Collection<Courses> getCoursesCollection() {
+        return coursesCollection;
+    }
+
+    public void setCoursesCollection(Collection<Courses> coursesCollection) {
+        this.coursesCollection = coursesCollection;
     }
     
 }
