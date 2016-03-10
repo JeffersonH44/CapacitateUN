@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation.Bean;
+package Presentation.Bean.Client;
 
-import BusinessLogic.Controller.HandleUser;
+import BusinessLogic.Controller.UserRegister;
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
@@ -117,7 +117,7 @@ public class CreateUserBean implements Serializable {
     
     public String createUser() {
         User user;
-        HandleUser hu = new HandleUser();
+        UserRegister hu = new UserRegister();
         user = hu.createUser(firstname, lastname, username, password, id);
         boolean saved = userDAO.persist(user);
         if(saved) {

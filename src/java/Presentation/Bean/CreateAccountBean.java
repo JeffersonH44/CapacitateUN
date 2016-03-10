@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import BusinessLogic.Controller.HandleAccount;
-import BusinessLogic.Controller.HandleUser;
+import BusinessLogic.Controller.UserRegister;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 

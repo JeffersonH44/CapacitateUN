@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation.Bean;
+package Presentation.Bean.Trainer;
 
 import BusinessLogic.Controller.HandleExperience;
 import BusinessLogic.Controller.HandleTopic;
-import BusinessLogic.Controller.LoginService;
+import BusinessLogic.Controller.PrivilegeVerifier;
 import DataAccess.DAO.ExperienceDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.ExperienceRegister;
@@ -76,7 +76,7 @@ public class CreateExperienceBean {
     public String createExperience() {
         HandleTopic topicHandler = new HandleTopic();
         HandleExperience he = new HandleExperience();
-        LoginService user = new LoginService();
+        PrivilegeVerifier user = new PrivilegeVerifier();
         
         Topic topic = topicHandler.createTopic(name, area);
         topicDao.persist(topic);

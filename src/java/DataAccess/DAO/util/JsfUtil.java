@@ -1,4 +1,4 @@
-package Presentation.JSF.util;
+package DataAccess.DAO.util;
 
 import java.util.List;
 import javax.faces.application.FacesMessage;

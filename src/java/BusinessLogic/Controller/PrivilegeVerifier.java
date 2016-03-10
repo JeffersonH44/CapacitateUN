@@ -13,7 +13,7 @@ import javax.faces.context.FacesContext;
  *
  * @author Jefferson
  */
-public class LoginService {
+public class PrivilegeVerifier {
     
     void login(User user) {
         if(user == null) throw new IllegalArgumentException("Invalid user");

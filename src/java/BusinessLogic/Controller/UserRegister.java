@@ -12,7 +12,7 @@ import javax.ejb.EJB;
  *
  * @author ArqSoft
  */
-public class HandleUser {
+public class UserRegister {
     
     public User createUser(String firstname, String lastname, String username, String password, int Id){
         
@@ -32,7 +32,7 @@ public class HandleUser {
         
         User user = userDAO.searchByUsername(username);
         if(user.getPassword().equals(password)) {
-            LoginService login = new LoginService();
+            PrivilegeVerifier login = new PrivilegeVerifier();
             login.login(user);
             return user;
         } else {

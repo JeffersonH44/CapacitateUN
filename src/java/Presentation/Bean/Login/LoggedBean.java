@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation.Bean;
+package Presentation.Bean.Login;
 
-import BusinessLogic.Controller.LoginService;
+import BusinessLogic.Controller.PrivilegeVerifier;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class LoggedBean implements Serializable {
-    LoginService login = new LoginService();
+    PrivilegeVerifier login = new PrivilegeVerifier();
     
     public int getLoggedUserRole() {
         User user = login.getUserLogged();

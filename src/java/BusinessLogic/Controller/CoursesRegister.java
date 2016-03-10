@@ -5,6 +5,7 @@
  */
 package BusinessLogic.Controller;
 
+import BusinessLogic.Controller.PrivilegeVerifier;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.DAO.UserRegisterDAO;
@@ -40,7 +41,7 @@ public class CoursesRegister {
     }
     
     public List<Topic> getAvailableTopics(TopicDAO topicDAO) {
-        LoginService login = new LoginService();
+        PrivilegeVerifier login = new PrivilegeVerifier();
         User user = login.getUserLogged();
         //TopicDAO topicDAO = new TopicDAO();
         
@@ -48,7 +49,7 @@ public class CoursesRegister {
     }
     
     public List<Courses> getCoursesByUser(CoursesDAO courseDAO) {
-        LoginService login = new LoginService();
+        PrivilegeVerifier login = new PrivilegeVerifier();
         User user = login.getUserLogged();
         
         return courseDAO.getByUser(user);

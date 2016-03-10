@@ -1,4 +1,4 @@
-package Presentation.JSF.util;
+package DataAccess.DAO.util;
 
 import javax.faces.model.DataModel;
 

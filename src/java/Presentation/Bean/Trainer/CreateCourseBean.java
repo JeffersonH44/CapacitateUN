@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation.Bean;
+package Presentation.Bean.Trainer;
 
 import BusinessLogic.Controller.CoursesRegister;
-import BusinessLogic.Controller.HandleUser;
-import BusinessLogic.Controller.LoginService;
+import BusinessLogic.Controller.UserRegister;
+import BusinessLogic.Controller.PrivilegeVerifier;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.Courses;
@@ -115,7 +115,7 @@ public class CreateCourseBean implements Serializable {
     }
     
     public String createCourse() {
-        LoginService login = new LoginService();
+        PrivilegeVerifier login = new PrivilegeVerifier();
         user = login.getUserLogged();
         
         CoursesRegister cr = new CoursesRegister();

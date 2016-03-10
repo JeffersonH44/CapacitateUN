@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation.Bean;
+package Presentation.Bean.Login;
 
-import BusinessLogic.Controller.HandleUser;
+import BusinessLogic.Controller.UserRegister;
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
@@ -85,7 +85,7 @@ public class UserLoginBean implements Serializable {
     }
     
     public String login() {
-        HandleUser userManager = new HandleUser();
+        UserRegister userManager = new UserRegister();
         user = userManager.loginUser(username, password, userDAO);
         message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
         switch (user.getRole()) {
