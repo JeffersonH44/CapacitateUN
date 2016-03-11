@@ -90,7 +90,6 @@ public class UserRegisterBean {
         return "userIndex.xhtml";
     }
     
-    @TransactionAttribute(REQUIRES_NEW)
     public String removeRegister() {
         CoursesRegister cr = new CoursesRegister();
         PrivilegeVerifier login = new PrivilegeVerifier();

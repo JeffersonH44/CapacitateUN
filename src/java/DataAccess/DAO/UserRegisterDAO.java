@@ -33,14 +33,12 @@ public class UserRegisterDAO {
     
     public boolean update(UserRegister registry) {
         
-        UserRegister er = em.find(UserRegister.class, registry.getRegisterID());
-        er.setStatus(registry.getStatus());
-        /*
-        Query q = em.createQuery("UPDATE UserRegister ur SET ur.status = 'retirado' WHERE ur.registerID = :register_id");
-        q.setParameter("register_id", registry.getRegisterID());
-        int result = q.executeUpdate();
+        TypedQuery<UserRegister> q = em.createNamedQuery("UserRegister.findRegister", UserRegister.class);
+        q.setParameter("course_id", registry.getCoursesID());
+        q.setParameter("user_id", registry.getUserID());
         
-        return result == 1;*/
+        UserRegister ur = q.getSingleResult();
+        ur.setStatus(registry.getStatus());
         
         return true;
     }
