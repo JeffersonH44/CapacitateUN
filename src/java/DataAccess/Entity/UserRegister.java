@@ -35,12 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     //@NamedQuery(name = "UserRegister.findByUser", query = "SELECT u.coursesID FROM UserRegister u JOIN Course c WHERE u.userID = :userID")
 })
 public class UserRegister implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "status")
-    private String status;
     
     public static String ACTIVE = "activo";
     public static String RETIRED = "retirado";
@@ -57,6 +51,11 @@ public class UserRegister implements Serializable {
     @JoinColumn(name = "user_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private User userID;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "status")
+    private String status;
 
     public UserRegister() {
     }

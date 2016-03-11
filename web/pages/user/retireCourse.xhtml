@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="user.xhtml">
+        <ui:define name="body">
+            <form jsf:id="main-form">
+                <h2>Retirarse del curso</h2>
+                <div class="form-group">
+                    <h:outputLabel value="Curso:" for="topicID" />
+                    <h:selectOneMenu class="btn btn-danger dropdown-toggle" id="topicID" value="#{userRegisterBean.course}" required="true" requiredMessage="Selecciona un curso">
+                        <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                        <f:selectItems value="#{userBean.myRegisteredCourses}"/>
+                    </h:selectOneMenu>
+                </div>
+                <h:commandButton class="btn btn-primary" action="#{userRegisterBean.createRegister()}" value="Retirarse"/> 
+            </form>
+        </ui:define>
+    </ui:composition>
+</html>

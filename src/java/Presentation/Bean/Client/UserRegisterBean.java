@@ -12,6 +12,8 @@ import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
 import DataAccess.Entity.UserRegister;
 import javax.ejb.EJB;
+import javax.ejb.TransactionAttribute;
+import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -86,6 +88,26 @@ public class UserRegisterBean {
         }
         
         return "userIndex.xhtml";
+    }
+    
+    @TransactionAttribute(REQUIRES_NEW)
+    public String removeRegister() {
+        CoursesRegister cr = new CoursesRegister();
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        User user = login.getUserLogged();
+                
+        UserRegister ur = cr.removeRegister(user, course);
+        
+        boolean changed = registerDAO.update(ur);
+        
+        if(changed) {
+            message = "Se ha retirado exitosamente";
+        } else {
+            message = "No se ha podido retirar del curso";
+        }
+        
+        return "userIndex.xhtml";
+        
     }
 
 }

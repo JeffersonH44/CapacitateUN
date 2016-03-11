@@ -55,13 +55,6 @@ public class CoursesRegister {
         return courseDAO.getByTrainer(user);
     }
     
-    /*private List<Integer> getUserRegistry(UserRegisterDAO registryDAO) {
-        PrivilegeVerifier login = new PrivilegeVerifier();
-        User user = login.getUserLogged();
-        
-        return registryDAO.getUserRegistry(user);
-    }*/
-    
     public List<Courses> getRegisteredCoursesByUser(CoursesDAO courseDAO ) {
         PrivilegeVerifier login = new PrivilegeVerifier();
         User user = login.getUserLogged();
@@ -81,6 +74,15 @@ public class CoursesRegister {
         ur.setCoursesID(course);
         ur.setUserID(user);
         ur.setStatus(UserRegister.ACTIVE);
+        
+        return ur;
+    }
+    
+    public UserRegister removeRegister(User user, Courses course) {
+        UserRegister ur = new UserRegister();
+        ur.setCoursesID(course);
+        ur.setUserID(user);
+        ur.setStatus(UserRegister.RETIRED);
         
         return ur;
     }

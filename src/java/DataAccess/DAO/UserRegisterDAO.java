@@ -11,7 +11,9 @@ import DataAccess.Entity.UserRegister;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -26,6 +28,20 @@ public class UserRegisterDAO {
     
     public boolean persist(UserRegister registry) {
         em.persist(registry);
+        return true;
+    }
+    
+    public boolean update(UserRegister registry) {
+        
+        UserRegister er = em.find(UserRegister.class, registry.getRegisterID());
+        er.setStatus(registry.getStatus());
+        /*
+        Query q = em.createQuery("UPDATE UserRegister ur SET ur.status = 'retirado' WHERE ur.registerID = :register_id");
+        q.setParameter("register_id", registry.getRegisterID());
+        int result = q.executeUpdate();
+        
+        return result == 1;*/
+        
         return true;
     }
     
