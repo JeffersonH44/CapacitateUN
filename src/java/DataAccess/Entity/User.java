@@ -138,32 +138,7 @@ public class User implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return firstname + " " + lastname;
-    }
-
+    
     @XmlTransient
     public Collection<Courses> getCoursesCollection() {
         return coursesCollection;
@@ -190,5 +165,29 @@ public class User implements Serializable {
     public void setExperienceRegisterCollection(Collection<ExperienceRegister> experienceRegisterCollection) {
         this.experienceRegisterCollection = experienceRegisterCollection;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof User)) {
+            return false;
+        }
+        User other = (User) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return firstname + " " + lastname;
+    }
 }

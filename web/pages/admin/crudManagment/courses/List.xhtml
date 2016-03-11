@@ -10,58 +10,62 @@
         <ui:define name="body">
             
             <form jsf:id="list-form">
-                <h2>Lista de cursos</h2>
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListCoursesEmpty}" rendered="#{coursesController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{coursesController.items.rowCount > 0}">
-                    <h:dataTable value="#{coursesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" 
-                                 styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCoursesTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCoursesTitle_name}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.name}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCoursesTitle_date}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCoursesTitle_topicID}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.topicID}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCoursesTitle_trainerID}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.trainerID}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{coursesController.prepareView}" value="#{bundle.ListCoursesViewLink}" class="btn btn-info"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{coursesController.prepareEdit}" value="#{bundle.ListCoursesEditLink}" class="btn btn-primary"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{coursesController.destroy}" value="#{bundle.ListCoursesDestroyLink}" class="btn btn-danger"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
+                
+                <div class="row">
+                    <h2>Lista de cursos</h2>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListCoursesEmpty}" rendered="#{coursesController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{coursesController.items.rowCount > 0}">
+                        <h:dataTable value="#{coursesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_id}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_name}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_date}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_topicID}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.topicID}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_trainerID}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.trainerID}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{coursesController.prepareView}" value="#{bundle.ListCoursesViewLink}" class="btn btn-info"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{coursesController.prepareEdit}" value="#{bundle.ListCoursesEditLink}" class="btn btn-primary"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{coursesController.destroy}" value="#{bundle.ListCoursesDestroyLink}" class="btn btn-danger"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </div>
+                
                 
                 <div class="row">
                     <div class="col-sm-4">
