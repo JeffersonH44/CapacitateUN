@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusinessLogic.Controller;
+package BusinessLogic.CourseManagement;
 
-import BusinessLogic.Controller.PrivilegeVerifier;
+import BusinessLogic.UserManagement.PrivilegeVerifier;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.DAO.UserRegisterDAO;
@@ -48,10 +48,40 @@ public class CoursesRegister {
         return topicDAO.getTopicsByTrainer(user);
     }
     
-    public List<Courses> getCoursesByUser(CoursesDAO courseDAO) {
+    public List<Courses> getCoursesByTrainer(CoursesDAO courseDAO) {
         PrivilegeVerifier login = new PrivilegeVerifier();
         User user = login.getUserLogged();
         
-        return courseDAO.getByUser(user);
+        return courseDAO.getByTrainer(user);
+    }
+    
+    /*private List<Integer> getUserRegistry(UserRegisterDAO registryDAO) {
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        User user = login.getUserLogged();
+        
+        return registryDAO.getUserRegistry(user);
+    }*/
+    
+    public List<Courses> getRegisteredCoursesByUser(CoursesDAO courseDAO ) {
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        User user = login.getUserLogged();
+        
+        return courseDAO.getRegisteredCoursesByUser(user);
+    }
+    
+    public List<Courses> getUnregisteredCoursesByUser(CoursesDAO courseDAO) {
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        User user = login.getUserLogged();
+        
+        return courseDAO.getUnregisteredCoursesByUser(user);
+    }
+    
+    public UserRegister createRegister(User user, Courses course) {
+        UserRegister ur = new UserRegister();
+        ur.setCoursesID(course);
+        ur.setUserID(user);
+        ur.setStatus(UserRegister.ACTIVE);
+        
+        return ur;
     }
 }

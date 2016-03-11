@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusinessLogic.Controller;
+package BusinessLogic.UserManagement;
 
 import DataAccess.Entity.User;
 import java.util.Map;

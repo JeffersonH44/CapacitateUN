@@ -35,16 +35,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Transaction.findByDate", query = "SELECT t FROM Transaction t WHERE t.date = :date")})
 public class Transaction implements Serializable {
 
+    @Column(name = "amount")
+    private Integer amount;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "transactionNumber")
     private Long transactionNumber;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "amount")
-    private int amount;
     @Basic(optional = false)
     @NotNull
     @Column(name = "date")
@@ -75,13 +74,6 @@ public class Transaction implements Serializable {
         this.transactionNumber = transactionNumber;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
     public Date getDate() {
         return date;
@@ -122,6 +114,14 @@ public class Transaction implements Serializable {
     @Override
     public String toString() {
         return "DataAccess.Entity.Transaction[ transactionNumber=" + transactionNumber + " ]";
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
     
 }

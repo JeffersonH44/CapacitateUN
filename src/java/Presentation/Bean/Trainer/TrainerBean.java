@@ -5,7 +5,7 @@
  */
 package Presentation.Bean.Trainer;
 
-import BusinessLogic.Controller.CoursesRegister;
+import BusinessLogic.CourseManagement.CoursesRegister;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.Courses;
@@ -34,7 +34,7 @@ public class TrainerBean {
     @PostConstruct
     public void init() {
         CoursesRegister cr = new CoursesRegister();
-        myCourses = cr.getCoursesByUser(coursesDAO);
+        myCourses = cr.getCoursesByTrainer(coursesDAO);
         setMyExperience(cr.getAvailableTopics(topicDAO));
     }
 

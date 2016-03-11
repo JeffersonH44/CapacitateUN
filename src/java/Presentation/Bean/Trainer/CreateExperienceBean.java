@@ -5,9 +5,9 @@
  */
 package Presentation.Bean.Trainer;
 
-import BusinessLogic.Controller.HandleExperience;
-import BusinessLogic.Controller.HandleTopic;
-import BusinessLogic.Controller.PrivilegeVerifier;
+import BusinessLogic.TopicManagement.HandleExperience;
+import BusinessLogic.TopicManagement.HandleTopic;
+import BusinessLogic.UserManagement.PrivilegeVerifier;
 import DataAccess.DAO.ExperienceDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.ExperienceRegister;

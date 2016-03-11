@@ -6,8 +6,10 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +19,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,7 +40,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Courses.findById", query = "SELECT c FROM Courses c WHERE c.id = :id"),
     @NamedQuery(name = "Courses.findByName", query = "SELECT c FROM Courses c WHERE c.name = :name"),
     @NamedQuery(name = "Courses.findByDate", query = "SELECT c FROM Courses c WHERE c.date = :date"),
-    @NamedQuery(name = "Courses.findByUser", query = "SELECT c FROM Courses c WHERE c.trainerID = :trainer_id")
+    @NamedQuery(name = "Courses.findByUser", query = "SELECT c FROM Courses c WHERE c.trainerID = :trainer_id"),
+    @NamedQuery(name = "Courses.findRegisteredCourses", query = "SELECT c FROM UserRegister ur JOIN ur.coursesID c WHERE ur.userID = :user_id"),
+    @NamedQuery(name = "Courses.findUnregisteredCourses", query = "SELECT c FROM Courses AS c WHERE NOT EXISTS (SELECT ur FROM UserRegister AS ur WHERE ur.coursesID = c AND ur.userID = :user_id)")
 })
 public class Courses implements Serializable {
 
@@ -62,6 +68,8 @@ public class Courses implements Serializable {
     @JoinColumn(name = "trainer_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private User trainerID;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "coursesID")
+    private Collection<UserRegister> userRegisterCollection;
 
     public Courses() {
     }
@@ -97,7 +105,6 @@ public class Courses implements Serializable {
     }
 
     public void setDate(Date date) {
-        
         this.date = date;
     }
 
@@ -115,6 +122,15 @@ public class Courses implements Serializable {
 
     public void setTrainerID(User trainerID) {
         this.trainerID = trainerID;
+    }
+    
+    @XmlTransient
+    public Collection<UserRegister> getUserRegisterCollection() {
+        return userRegisterCollection;
+    }
+
+    public void setUserRegisterCollection(Collection<UserRegister> userRegisterCollection) {
+        this.userRegisterCollection = userRegisterCollection;
     }
 
     @Override
@@ -141,5 +157,4 @@ public class Courses implements Serializable {
     public String toString() {
         return "id: " + id + " Nombre: " + name;
     }
-    
 }

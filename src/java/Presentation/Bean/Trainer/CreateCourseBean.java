@@ -5,9 +5,9 @@
  */
 package Presentation.Bean.Trainer;
 
-import BusinessLogic.Controller.CoursesRegister;
-import BusinessLogic.Controller.UserRegister;
-import BusinessLogic.Controller.PrivilegeVerifier;
+import BusinessLogic.CourseManagement.CoursesRegister;
+import BusinessLogic.UserManagement.UserRegister;
+import BusinessLogic.UserManagement.PrivilegeVerifier;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.DAO.TopicDAO;
 import DataAccess.Entity.Courses;

@@ -5,7 +5,7 @@
  */
 package Presentation.Bean.Login;
 
-import BusinessLogic.Controller.PrivilegeVerifier;
+import BusinessLogic.UserManagement.PrivilegeVerifier;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;

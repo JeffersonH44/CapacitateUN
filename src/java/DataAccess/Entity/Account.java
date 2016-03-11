@@ -6,6 +6,7 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -37,20 +38,17 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Account.findByPassword", query = "SELECT a FROM Account a WHERE a.password = :password")})
 public class Account implements Serializable {
 
+    @Column(name = "balance")
+    private Integer balance;
+    @Column(name = "document")
+    private long document;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "accountNumber")
     private Long accountNumber;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "balance")
-    private int balance;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "document")
-    private long document;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -87,21 +85,6 @@ public class Account implements Serializable {
         this.accountNumber = accountNumber;
     }
 
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public long getDocument() {
-        return document;
-    }
-
-    public void setDocument(long document) {
-        this.document = document;
-    }
 
     public String getName() {
         return name;
@@ -151,6 +134,22 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         return "DataAccess.Entity.Account[ accountNumber=" + accountNumber + " ]";
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public long getDocument() {
+        return document;
+    }
+
+    public void setDocument(long document) {
+        this.document = document;
     }
     
 }

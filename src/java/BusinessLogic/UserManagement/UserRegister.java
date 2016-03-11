@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusinessLogic.Controller;
+package BusinessLogic.UserManagement;
 
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;

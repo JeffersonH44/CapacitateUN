@@ -8,11 +8,20 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="user.xhtml">
         <ui:define name="body">
             <form jsf:id="main-form">
-                
+                <h2>Regístrate en un curso</h2>
+                <div class="form-group">
+                    <h:outputLabel value="Curso:" for="topicID" />
+                    <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{userRegisterBean.course}" required="true" requiredMessage="Selecciona un curso">
+                        <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                        <f:selectItems value="#{userBean.unregisteredCourses}"/>
+                    </h:selectOneMenu>
+                </div>
+                <h:commandButton class="btn btn-success" action="#{userRegisterBean.createRegister()}" value="Crear"/> 
             </form>
         </ui:define>
     </ui:composition>

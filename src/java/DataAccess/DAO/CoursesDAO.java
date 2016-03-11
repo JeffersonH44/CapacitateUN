@@ -35,11 +35,27 @@ public class CoursesDAO {
         return course;
     }
     
-    public List<Courses> getByUser(User user) {
+    public List<Courses> getByTrainer(User user) {
         TypedQuery<Courses> q = em.createNamedQuery("Courses.findByUser", Courses.class);
         q.setParameter("trainer_id", user);
         
         List<Courses> myCourses = q.getResultList();
         return myCourses;
+    }
+    
+    public List<Courses> getRegisteredCoursesByUser(User user) { 
+        TypedQuery<Courses> q = em.createNamedQuery("Courses.findRegisteredCourses", Courses.class);
+        q.setParameter("user_id", user);
+        
+        List<Courses> myRegisteredCourses = q.getResultList();
+        return myRegisteredCourses;
+    }
+    
+    public List<Courses> getUnregisteredCoursesByUser(User user) { 
+        TypedQuery<Courses> q = em.createNamedQuery("Courses.findUnregisteredCourses", Courses.class);
+        q.setParameter("user_id", user);
+        
+        List<Courses> myRegisteredCourses = q.getResultList();
+        return myRegisteredCourses;
     }
 }

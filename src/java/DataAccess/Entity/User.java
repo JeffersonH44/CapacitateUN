@@ -39,9 +39,6 @@ import javax.xml.bind.annotation.XmlTransient;
 })
 public class User implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainerID")
-    private Collection<Courses> coursesCollection;
-
     private static final long serialVersionUID = 1L;
     
     public static final int USER = 1;
@@ -73,6 +70,12 @@ public class User implements Serializable {
     @Size(max = 20)
     @Column(name = "lastname")
     private String lastname;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
+    private Collection<UserRegister> userRegisterCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
+    private Collection<ExperienceRegister> experienceRegisterCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainerID")
+    private Collection<Courses> coursesCollection;
 
     public User() {
     }
@@ -168,6 +171,24 @@ public class User implements Serializable {
 
     public void setCoursesCollection(Collection<Courses> coursesCollection) {
         this.coursesCollection = coursesCollection;
+    }
+
+    @XmlTransient
+    public Collection<UserRegister> getUserRegisterCollection() {
+        return userRegisterCollection;
+    }
+
+    public void setUserRegisterCollection(Collection<UserRegister> userRegisterCollection) {
+        this.userRegisterCollection = userRegisterCollection;
+    }
+
+    @XmlTransient
+    public Collection<ExperienceRegister> getExperienceRegisterCollection() {
+        return experienceRegisterCollection;
+    }
+
+    public void setExperienceRegisterCollection(Collection<ExperienceRegister> experienceRegisterCollection) {
+        this.experienceRegisterCollection = experienceRegisterCollection;
     }
     
 }

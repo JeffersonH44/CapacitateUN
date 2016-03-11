@@ -7,8 +7,8 @@ package Presentation.Bean;
 import java.math.BigInteger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import BusinessLogic.Controller.HandleAccount;
-import BusinessLogic.Controller.UserRegister;
+import BusinessLogic.HandleAccount;
+import BusinessLogic.UserManagement.UserRegister;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 

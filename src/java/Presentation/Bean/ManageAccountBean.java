@@ -6,7 +6,7 @@ package Presentation.Bean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import BusinessLogic.Controller.HandleAccount;
+import BusinessLogic.HandleAccount;
 import java.io.Serializable;
 
 /**

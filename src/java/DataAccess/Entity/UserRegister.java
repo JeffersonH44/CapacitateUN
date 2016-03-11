@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,11 +31,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "UserRegister.findAll", query = "SELECT u FROM UserRegister u"),
     @NamedQuery(name = "UserRegister.findByRegisterID", query = "SELECT u FROM UserRegister u WHERE u.registerID = :registerID"),
-    @NamedQuery(name = "UserRegister.findByStatus", query = "SELECT u FROM UserRegister u WHERE u.status = :status")})
+    @NamedQuery(name = "UserRegister.findByStatus", query = "SELECT u FROM UserRegister u WHERE u.status = :status")
+    //@NamedQuery(name = "UserRegister.findByUser", query = "SELECT u.coursesID FROM UserRegister u JOIN Course c WHERE u.userID = :userID")
+})
 public class UserRegister implements Serializable {
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "status")
+    private String status;
     
-    public static short ACTIVE = 1;
-    public static short RETIRED = 0;
+    public static String ACTIVE = "activo";
+    public static String RETIRED = "retirado";
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,10 +51,6 @@ public class UserRegister implements Serializable {
     @Basic(optional = false)
     @Column(name = "register_ID")
     private Integer registerID;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "status")
-    private short status;
     @JoinColumn(name = "courses_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Courses coursesID;
@@ -60,7 +65,7 @@ public class UserRegister implements Serializable {
         this.registerID = registerID;
     }
 
-    public UserRegister(Integer registerID, short status) {
+    public UserRegister(Integer registerID, String status) {
         this.registerID = registerID;
         this.status = status;
     }
@@ -73,13 +78,6 @@ public class UserRegister implements Serializable {
         this.registerID = registerID;
     }
 
-    public short getStatus() {
-        return status;
-    }
-
-    public void setStatus(short status) {
-        this.status = status;
-    }
 
     public Courses getCoursesID() {
         return coursesID;
@@ -120,6 +118,14 @@ public class UserRegister implements Serializable {
     @Override
     public String toString() {
         return "DataAccess.Entity.UserRegister[ registerID=" + registerID + " ]";
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
 }

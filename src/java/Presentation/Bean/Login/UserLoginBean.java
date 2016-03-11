@@ -5,7 +5,7 @@
  */
 package Presentation.Bean.Login;
 
-import BusinessLogic.Controller.UserRegister;
+import BusinessLogic.UserManagement.UserRegister;
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
