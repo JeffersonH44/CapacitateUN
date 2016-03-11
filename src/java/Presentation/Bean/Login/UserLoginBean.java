@@ -98,4 +98,10 @@ public class UserLoginBean implements Serializable {
         }
         return "";
     }
+    
+    public String logout() {
+        UserRegister userManager = new UserRegister();
+        userManager.logoutUser();
+        return "/index.xhtml";
+    }
 }

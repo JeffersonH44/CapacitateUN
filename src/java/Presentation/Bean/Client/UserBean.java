@@ -26,12 +26,14 @@ public class UserBean {
     private CoursesDAO courseDAO;
     private List<Courses> myRegisteredCourses;
     private List<Courses> unregisteredCourses;
+    private List<Courses> myRegisteredCoursesByDate;
     
     @PostConstruct
     public void update() {
         CoursesRegister cr = new CoursesRegister();
         myRegisteredCourses = cr.getRegisteredCoursesByUser(courseDAO);
         setUnregisteredCourses(cr.getUnregisteredCoursesByUser(courseDAO));
+        setMyRegisteredCoursesByDate(cr.getRegisteredCoursesByDate(courseDAO));
     }
 
     /**
@@ -61,5 +63,19 @@ public class UserBean {
      */
     public void setUnregisteredCourses(List<Courses> unregisteredCourses) {
         this.unregisteredCourses = unregisteredCourses;
+    }
+
+    /**
+     * @return the myRegisteredCoursesByDate
+     */
+    public List<Courses> getMyRegisteredCoursesByDate() {
+        return myRegisteredCoursesByDate;
+    }
+
+    /**
+     * @param myRegisteredCoursesByDate the myRegisteredCoursesByDate to set
+     */
+    public void setMyRegisteredCoursesByDate(List<Courses> myRegisteredCoursesByDate) {
+        this.myRegisteredCoursesByDate = myRegisteredCoursesByDate;
     }
 }

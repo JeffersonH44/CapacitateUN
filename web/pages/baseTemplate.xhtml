@@ -63,7 +63,7 @@ and open the template in the editor.
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">CapacitateUN</a>
+                    <a class="navbar-brand" href="#{loggedBean.mainPageByLoggedUser}">CapacitateUN</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -74,56 +74,25 @@ and open the template in the editor.
                             <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-alerts">
+                            <ui:repeat value="#{userBean.myRegisteredCoursesByDate}" var="item">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-tag fa-fw"></i> #{item.name}
+                                            <span class="pull-right text-muted small">#{item.date}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                            </ui:repeat>
+                            
+                            
                             <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-comment fa-fw"></i> New Comment
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-tasks fa-fw"></i> New Task
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>See All Alerts</strong>
+                                <h:link outcome="/pages/user/nextCourses.xhtml" class="text-center">
+                                    <strong>Próximos cursos</strong>
                                     <i class="fa fa-angle-right"></i>
-                                </a>
+                                </h:link>
+                                
                             </li>
                         </ul>
                         <!-- /.dropdown-alerts -->
@@ -139,7 +108,8 @@ and open the template in the editor.
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><h:link outcome="/index.xhtml" ><i class="fa fa-sign-out fa-fw"></i> Logout</h:link>
+                            <li>
+                                <h:link outcome="/index.xhtml" ><i class="fa fa-sign-out fa-fw"></i>Salir</h:link>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->

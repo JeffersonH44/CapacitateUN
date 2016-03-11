@@ -13,6 +13,7 @@ import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
 import DataAccess.Entity.UserRegister;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,5 +86,12 @@ public class CoursesRegister {
         ur.setStatus(UserRegister.RETIRED);
         
         return ur;
+    }
+    
+    public List<Courses> getRegisteredCoursesByDate(CoursesDAO courseDAO ) {
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        User user = login.getUserLogged();
+        
+        return courseDAO.getRegisteredCoursesByDate(user, new Date());
     }
 }

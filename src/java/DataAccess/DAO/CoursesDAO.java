@@ -7,6 +7,7 @@ package DataAccess.DAO;
 
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -54,6 +55,15 @@ public class CoursesDAO {
     public List<Courses> getUnregisteredCoursesByUser(User user) { 
         TypedQuery<Courses> q = em.createNamedQuery("Courses.findUnregisteredCourses", Courses.class);
         q.setParameter("user_id", user);
+        
+        List<Courses> myRegisteredCourses = q.getResultList();
+        return myRegisteredCourses;
+    }
+    
+    public List<Courses> getRegisteredCoursesByDate(User user, Date date) { 
+        TypedQuery<Courses> q = em.createNamedQuery("Courses.findRegisteredCoursesByDate", Courses.class);
+        q.setParameter("user_id", user);
+        q.setParameter("date", date);
         
         List<Courses> myRegisteredCourses = q.getResultList();
         return myRegisteredCourses;

@@ -35,6 +35,7 @@
                         <div class="form-group">
                             <h:outputLabel value="#{bundle.EditCoursesLabel_topicID}" for="topicID" />
                             <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{coursesController.selected.topicID}" title="#{bundle.EditCoursesTitle_topicID} " required="true" requiredMessage="#{bundle.EditCoursesRequiredMessage_topicID}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
                                 <f:selectItems value="#{topicController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
                         </div>

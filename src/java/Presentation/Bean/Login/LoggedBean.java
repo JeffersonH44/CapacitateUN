@@ -49,4 +49,19 @@ public class LoggedBean implements Serializable {
             return user.getId();
         }
     }
+    
+    public String getMainPageByLoggedUser() {
+        User user = login.getUserLogged();
+        
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "http://localhost:8080/CapacitateUN/faces/pages/admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "http://localhost:8080/CapacitateUN/faces/pages/trainer/trainerIndex.xhtml";
+            case User.USER:
+                return "http://localhost:8080/CapacitateUN/faces/pages/user/userIndex.xhtml";
+        }
+        
+        return "";
+    }
 }

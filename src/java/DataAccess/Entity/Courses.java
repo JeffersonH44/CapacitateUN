@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Courses.findByDate", query = "SELECT c FROM Courses c WHERE c.date = :date"),
     @NamedQuery(name = "Courses.findByUser", query = "SELECT c FROM Courses c WHERE c.trainerID = :trainer_id"),
     @NamedQuery(name = "Courses.findRegisteredCourses", query = "SELECT c FROM UserRegister ur JOIN ur.coursesID c WHERE ur.userID = :user_id"),
-    @NamedQuery(name = "Courses.findUnregisteredCourses", query = "SELECT c FROM Courses AS c WHERE NOT EXISTS (SELECT ur FROM UserRegister AS ur WHERE ur.coursesID = c AND ur.userID = :user_id)")
+    @NamedQuery(name = "Courses.findUnregisteredCourses", query = "SELECT c FROM Courses AS c WHERE NOT EXISTS (SELECT ur FROM UserRegister AS ur WHERE ur.coursesID = c AND ur.userID = :user_id)"),
+    @NamedQuery(name = "Courses.findRegisteredCoursesByDate", query = "SELECT c FROM UserRegister ur JOIN ur.coursesID c WHERE ur.userID = :user_id and ur.coursesID.date > :date ORDER BY ur.coursesID.date")
 })
 public class Courses implements Serializable {
 

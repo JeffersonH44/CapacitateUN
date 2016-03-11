@@ -40,4 +40,10 @@ public class UserRegister {
         }
     }
     
+    public boolean logoutUser() {
+        PrivilegeVerifier login = new PrivilegeVerifier();
+        login.logout();
+        return true;
+    }
+    
 }

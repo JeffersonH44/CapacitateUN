@@ -23,6 +23,12 @@ public class PrivilegeVerifier {
         sessionMap.put("USER_LOGGED", user);
     }
     
+    void logout() {
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        
+        sessionMap.remove("USER_LOGGED");
+    }
+    
     public User getUserLogged() {
         Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
         
@@ -30,4 +36,5 @@ public class PrivilegeVerifier {
         // TODO: retrieve from database
         return user;
     }
+    
 }
