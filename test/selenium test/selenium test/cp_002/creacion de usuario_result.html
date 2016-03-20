@@ -76,12 +76,12 @@ div.footer {
 <div class="summary">
     <h1>Test Case Summary</h1>
     <div class="block">
-        <h2 class="done">
+        <h2 class="failed">
         
-            <i class="icon-ok"></i> DONE
+            <i class="icon-remove"></i> FAILED
         
         </h2>
-        <p><i class="icon-time"></i> 2016/03/07 08:09:33</p>
+        <p><i class="icon-time"></i> 2016/03/11 07:11:48</p>
         <table class="pure-table">
         <thead><tr>
             <th class="done">Done</th>
@@ -90,10 +90,10 @@ div.footer {
             <th class="total">Total</th>
         </tr></thead>
         <tbody><tr>
-            <td class="done">5</td>
-            <td class="failed">0</td>
+            <td class="done">9</td>
+            <td class="failed">1</td>
             <td class="undefined">0</td>
-            <td class="total">5</td>
+            <td class="total">10</td>
         </tr></tbody>
         </table>
     </div>
@@ -102,7 +102,7 @@ div.footer {
 
 
 <div class="testcase">
-    <h1 class="testcase-name">login</h1>
+    <h1 class="testcase-name">Creacion de usuario</h1>
     <div class="block">
     
         
@@ -111,7 +111,7 @@ div.footer {
                     
                         <i class="icon-ok"></i>
                     
-                    Login
+                    Oprimir boton crear
                 </p>
 
                 <table class="pure-table pure-table-striped testcase-commands">
@@ -129,8 +129,20 @@ div.footer {
                                 <i class="icon-ok"></i>
                             
                         </td>
-                        <td class="testcase-command">selectWindow</td>
-                        <td class="testcase-target">null</td>
+                        <td class="testcase-command">open</td>
+                        <td class="testcase-target">http://localhost:8080/CapacitateUN</td>
+                        <td class="testcase-value"></td>
+                    </tr>
+                    
+                
+                    <tr class="done">
+                        <td class="testcase-result">
+                            
+                                <i class="icon-ok"></i>
+                            
+                        </td>
+                        <td class="testcase-command">clickAndWait</td>
+                        <td class="testcase-target">name=form-buttons:j_idt8</td>
                         <td class="testcase-value"></td>
                     </tr>
                     
@@ -142,7 +154,55 @@ div.footer {
                             
                         </td>
                         <td class="testcase-command">type</td>
-                        <td class="testcase-target">id=email-input</td>
+                        <td class="testcase-target">id=firstname</td>
+                        <td class="testcase-value">JorgeA</td>
+                    </tr>
+                    
+                
+                    <tr class="done">
+                        <td class="testcase-result">
+                            
+                                <i class="icon-ok"></i>
+                            
+                        </td>
+                        <td class="testcase-command">click</td>
+                        <td class="testcase-target">id=lastname</td>
+                        <td class="testcase-value"></td>
+                    </tr>
+                    
+                
+                    <tr class="done">
+                        <td class="testcase-result">
+                            
+                                <i class="icon-ok"></i>
+                            
+                        </td>
+                        <td class="testcase-command">type</td>
+                        <td class="testcase-target">id=lastname</td>
+                        <td class="testcase-value">Bonilla Bohorquez</td>
+                    </tr>
+                    
+                
+                    <tr class="done">
+                        <td class="testcase-result">
+                            
+                                <i class="icon-ok"></i>
+                            
+                        </td>
+                        <td class="testcase-command">type</td>
+                        <td class="testcase-target">id=id</td>
+                        <td class="testcase-value">1030622885</td>
+                    </tr>
+                    
+                
+                    <tr class="done">
+                        <td class="testcase-result">
+                            
+                                <i class="icon-ok"></i>
+                            
+                        </td>
+                        <td class="testcase-command">type</td>
+                        <td class="testcase-target">id=username</td>
                         <td class="testcase-value">jorge4138</td>
                     </tr>
                     
@@ -154,7 +214,7 @@ div.footer {
                             
                         </td>
                         <td class="testcase-command">type</td>
-                        <td class="testcase-target">id=password-input</td>
+                        <td class="testcase-target">id=password</td>
                         <td class="testcase-value">123456789</td>
                     </tr>
                     
@@ -164,12 +224,12 @@ div.footer {
         
     
         
-            <div class="command-group done">
+            <div class="command-group failed">
                 <p>
                     
-                        <i class="icon-ok"></i>
+                        <i class="icon-remove"></i>
                     
-                    Oprimir boton Entrar
+                    Oprimir Registrarse
                 </p>
 
                 <table class="pure-table pure-table-striped testcase-commands">
@@ -188,19 +248,19 @@ div.footer {
                             
                         </td>
                         <td class="testcase-command">clickAndWait</td>
-                        <td class="testcase-target">name=form-login:j_idt7</td>
+                        <td class="testcase-target">name=form:j_idt9</td>
                         <td class="testcase-value"></td>
                     </tr>
                     
                 
-                    <tr class="done">
+                    <tr class="failed">
                         <td class="testcase-result">
                             
-                                <i class="icon-ok"></i>
+                                <i class="icon-remove"></i>
                             
                         </td>
-                        <td class="testcase-command">echo</td>
-                        <td class="testcase-target">&quot;Manejo&quot;</td>
+                        <td class="testcase-command">assertTextPresent</td>
+                        <td class="testcase-target">El usuario ya está creado</td>
                         <td class="testcase-value"></td>
                     </tr>
                     

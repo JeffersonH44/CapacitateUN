@@ -135,8 +135,10 @@ and open the template in the editor.
     
     <script type="text/javascript">
         $(".form_datetime").datetimepicker({
-            format: "mm/dd/yyyy HH:ii:ss",
+            format: "mm/dd/yyyy hh:ii:ss",
             language: 'es'
-        });
+        }).prop("readonly", true);
+        
+        
     </script> 
 </html>

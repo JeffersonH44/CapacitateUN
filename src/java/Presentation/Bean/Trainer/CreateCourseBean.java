@@ -14,6 +14,7 @@ import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -30,9 +31,10 @@ public class CreateCourseBean implements Serializable {
     private String name;
     private Topic topic;
     private User user;
-    private String message;
+    private Date date;
     private List<Topic> availableTopics;
-    private int selectedIndex;
+    
+    private String message;
     @EJB
     private CoursesDAO courseDAO;
     @EJB
@@ -101,17 +103,17 @@ public class CreateCourseBean implements Serializable {
     }
     
     /**
-     * @return the selectedIndex
+     * @return the date
      */
-    public int getSelectedIndex() {
-        return selectedIndex;
+    public Date getDate() {
+        return date;
     }
 
     /**
-     * @param selectedIndex the selectedIndex to set
+     * @param date the date to set
      */
-    public void setSelectedIndex(int selectedIndex) {
-        this.selectedIndex = selectedIndex;
+    public void setDate(Date date) {
+        this.date = date;
     }
     
     public String createCourse() {
@@ -119,7 +121,7 @@ public class CreateCourseBean implements Serializable {
         user = login.getUserLogged();
         
         CoursesRegister cr = new CoursesRegister();
-        Courses course = cr.createCourse(name, availableTopics.get(selectedIndex), user);
+        Courses course = cr.createCourse(name, topic, user, date);
         
         boolean saved = courseDAO.persist(course);
         if(saved) {
@@ -130,4 +132,6 @@ public class CreateCourseBean implements Serializable {
         
         return "trainerIndex.xhtml";
     }
+
+
 }

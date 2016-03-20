@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/CapacitateUN/" />
+<title>Creacion de usuario</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Creacion de usuario</td></tr>
+</thead><tbody>
+<!--Oprimir boton crear-->
+<tr>
+	<td>open</td>
+	<td>http://localhost:8080/CapacitateUN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=form-buttons:j_idt8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstname</td>
+	<td>JorgeA</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=lastname</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastname</td>
+	<td>Bonilla Bohorquez</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id</td>
+	<td>1030622885</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>jorge4138</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>123456789</td>
+</tr>
+<!--Oprimir Registrarse-->
+<tr>
+	<td>clickAndWait</td>
+	<td>name=form:j_idt9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Usuario creado con exito</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
