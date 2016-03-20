@@ -22,9 +22,9 @@
                             <h:outputLabel value="Área"></h:outputLabel>
                             <h:selectOneMenu  class ="form-control btn btn-primary dropdown-toggle" value="#{createExperienceBean.area}">
                                 <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
-                                <f:selectItem itemValue="vuelo" itemLabel="Vuelo" />
-                                <f:selectItem itemValue="conduccion" itemLabel="conducción" />
-                                <f:selectItem itemValue="deporte" itemLabel="deporte" />
+                                <f:selectItem itemValue="Vuelo" itemLabel="Vuelo" />
+                                <f:selectItem itemValue="Conducción" itemLabel="Conducción" />
+                                <f:selectItem itemValue="Deporte" itemLabel="Deporte" />
                             </h:selectOneMenu>
                         </div>
                         <h:commandButton value="Crear" class="btn btn-success" action="#{createExperienceBean.createExperience()}"/>
