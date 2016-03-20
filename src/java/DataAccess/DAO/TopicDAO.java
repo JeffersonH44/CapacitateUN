@@ -39,6 +39,15 @@ public class TopicDAO {
         return true;
     }
     
+    public boolean update(Topic topic) {
+        Topic dbTopic = this.getById(topic.getId());
+        
+        dbTopic.setArea(topic.getArea());
+        dbTopic.setName(topic.getName());
+        
+        return true;
+    }
+    
     public Topic searchByCourse(Courses course) {
         //EntityManager em = emf.createEntityManager();
         

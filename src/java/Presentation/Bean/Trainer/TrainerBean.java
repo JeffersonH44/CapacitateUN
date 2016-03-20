@@ -121,21 +121,25 @@ public class TrainerBean implements Serializable {
     
     public String editTopic(Topic selectedTopic) {
         this.setCurrentTopic(selectedTopic);
+        this.initConversation();
         return "editTopic.xhtml?faces-redirect=true";
     }
     
     public String saveCourseChanges() {
         this.endConversation();
-        
         coursesDAO.update(currentCourse);
-        
-        //this.update();
         return "trainerIndex.xhtml";
     }
     
     public String removeCourse(Courses course) {
         coursesDAO.remove(course);
         return "trainerIndex.xhtml?faces-redirect=true";
+    }
+    
+    public String saveTopicChanges() {
+        this.endConversation();
+        topicDAO.update(currentTopic);
+        return "trainerIndex.xhtml";
     }
     
 }

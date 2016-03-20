@@ -13,9 +13,9 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="trainerIndex.xhtml">
             <ui:define name="body">
-                <h2>Editar curso</h2>
                 <div class="row">
                     <div class="col-lg-4">
+                        <h2>Editar curso</h2>
                         <h:form role="form" id="edit-form">
                             <div class="form-group">
                                 <h:outputLabel value="Id del curso" />
@@ -41,6 +41,24 @@ and open the template in the editor.
                             <h:commandButton class="btn btn-success" action="#{trainerBean.saveCourseChanges()}" value="Guardar cambios"/>
                         </h:form>
                     </div>
+                    <h:panelGroup class="col-md-4" rendered="#{trainerBean.currentCourse.userRegisterCollection.size() > 0}">
+                        <h2>Estudiantes</h2>
+                        <h:dataTable value="#{trainerBean.currentCourse.userRegisterCollection}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombres"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.firstname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Apellidos"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.lastname}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
                 </div>
             </ui:define>
         </ui:composition>
