@@ -4,13 +4,18 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/CapacitateUN/" />
-<title>login</title>
+<title>manejo_de_usuario</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">login</td></tr>
+<tr><td rowspan="1" colspan="3">manejo_de_usuario</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost:8080/CapacitateUN/</td>
+	<td></td>
+</tr>
 <!--Login-->
 <tr>
 	<td>selectWindow</td>
@@ -33,12 +38,17 @@
 	<td>name=form-login:j_idt7</td>
 	<td></td>
 </tr>
+<!--Ingresar Manejo de usuario-->
 <tr>
-	<td>echo</td>
-	<td>&quot;Manejo&quot;</td>
+	<td>clickAndWait</td>
+	<td>link=Manejo de usuarios</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>click</td>
+	<td>name=list-form:j_idt44:0:j_idt70</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

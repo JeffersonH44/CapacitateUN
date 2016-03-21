@@ -28,6 +28,24 @@ public class CoursesDAO {
         return true;
     }
     
+    public boolean update(Courses course) {
+        Courses dbCourse = this.getById(course.getId());
+        
+        dbCourse.setDate(course.getDate());
+        dbCourse.setName(course.getName());
+        dbCourse.setTopicID(course.getTopicID());
+        
+        return true;
+    }
+    
+    public boolean remove(Courses course) {
+        Courses dbCourse = this.getById(course.getId());
+        
+        em.remove(dbCourse);
+        
+        return true;
+    }
+    
     public Courses getById(int id) {
         TypedQuery<Courses> q = em.createNamedQuery("Courses.findById", Courses.class);
         q.setParameter("id", id);

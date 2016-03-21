@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/CapacitateUN/" />
+<title>manejo_de_usuario</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">manejo_de_usuario</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost:8080/CapacitateUN/</td>
+	<td></td>
+</tr>
+<!--Login-->
+<tr>
+	<td>type</td>
+	<td>id=email-input</td>
+	<td>jorge4138</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password-input</td>
+	<td>123456789</td>
+</tr>
+<!--Oprimir boton Entrar-->
+<tr>
+	<td>clickAndWait</td>
+	<td>name=form-login:j_idt7</td>
+	<td></td>
+</tr>
+<!--Ingresar Manejo de usuario-->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manejo de usuarios</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=list-form:j_idt50:1:j_idt74</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=edit-form:password</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>La contraseña es incorrecta</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

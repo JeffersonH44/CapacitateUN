@@ -32,11 +32,12 @@ public class CoursesRegister {
         return registry;
     }
     
-    public Courses createCourse(String name, Topic topicID, User trainerID) {
+    public Courses createCourse(String name, Topic topicID, User trainerID, Date date) {
         Courses course = new Courses();
         course.setName(name);
         course.setTopicID(topicID);
         course.setTrainerID(trainerID);
+        course.setDate(date);
         
         return course;
     }

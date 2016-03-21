@@ -88,20 +88,41 @@ public class UserLoginBean implements Serializable {
         UserRegister userManager = new UserRegister();
         user = userManager.loginUser(username, password, userDAO);
         message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
-        switch (user.getRole()) {
-            case User.ADMIN:
-                return "faces/pages/admin/adminIndex.xhtml";
-            case User.TRAINER:
-                return "faces/pages/trainer/trainerIndex.xhtml";
-            case User.USER:
-                return "faces/pages/user/userIndex.xhtml";
-        }
-        return "";
+        
+        return "faces/pages/" + this.getIndexPageByUser();
     }
     
     public String logout() {
         UserRegister userManager = new UserRegister();
         userManager.logoutUser();
+        
         return "/index.xhtml";
+    }
+    
+        
+    public String editUser() {
+        return "faces/pages/editUser.xhtml";
+    }
+    
+    public String updateUser() {
+        userDAO.update(user);
+        this.logout();
+        
+        this.password = user.getPassword();
+        this.login();
+        return this.getIndexPageByUser();
+        
+    }
+    
+    private String getIndexPageByUser() {
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "trainer/trainerIndex.xhtml";
+            case User.USER:
+                return "user/userIndex.xhtml";
+        }
+        return "";
     }
 }
