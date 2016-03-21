@@ -6,7 +6,6 @@
 package BusinessLogic.CourseManagement;
 
 import BusinessLogic.UserManagement.PrivilegeVerifier;
-import DataAccess.DAO.CoursesDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
 import com.itextpdf.text.BaseColor;
@@ -31,12 +30,12 @@ import java.text.DateFormat;
  * @author manu
  */
 public class CertificateGenerator {
-    public void createPDF(int courseID){
+    public boolean createPDF(Courses course){
         try{
             User user = new PrivilegeVerifier().getUserLogged();
-            //Courses course = new CoursesDAO().getById(courseID);
+            
             Document document=new Document();
-            File file = new File("C:\\proyecto\\CapacitateUN\\certificate.pdf");
+            File file = new File("C:\\proyecto\\CapacitateUN\\web\\pages\\user\\certificate.pdf");
             PdfWriter.getInstance(document,new FileOutputStream(file));
             document.open();
             
@@ -71,19 +70,19 @@ public class CertificateGenerator {
             paragraph.add( user.getFirstname()+ " " + user.getLastname());
             paragraph.add(" identificado con cedula "+ user.getId());
             paragraph.add(" se encuentra registrado en el curso ");
-           // if (course != null){
-            //    paragraph.add(course.getName());
-            //}else{
+            if (course != null){
+                paragraph.add(course.getName());
+            }else{
                 paragraph.add("curso no encontrado");
-            //}
+            }
             paragraph.add(" al momento de expedición de este certificado.");
             paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
             document.add(paragraph);
             document.close();
-        }catch (FileNotFoundException e) {
-                e.printStackTrace();
-        }catch (DocumentException e) {
+            return true;
+        }catch (FileNotFoundException | DocumentException e) {
                 e.printStackTrace();
         }
+        return false;
     }
 }
