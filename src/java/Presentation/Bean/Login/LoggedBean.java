@@ -64,4 +64,20 @@ public class LoggedBean implements Serializable {
         
         return "";
     }
+    
+    public String getTemplateByLoggedUser() {
+        User user = login.getUserLogged();
+        
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "admin/admin.xhtml";
+            case User.TRAINER:
+                return "trainer/trainer.xhtml";
+            case User.USER:
+                return "user/user.xhtml";
+        }
+        
+        return "";
+        
+    }
 }
