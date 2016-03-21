@@ -36,8 +36,8 @@ public class CertificateGenerator {
             User user = new PrivilegeVerifier().getUserLogged();
             //Courses course = new CoursesDAO().getById(courseID);
             Document document=new Document();
-            File file = new File("certificate.pdf");
-            PdfWriter.getInstance(document,new FileOutputStream("file"));
+            File file = new File("C:\\proyecto\\CapacitateUN\\certificate.pdf");
+            PdfWriter.getInstance(document,new FileOutputStream(file));
             document.open();
             
             Font font = new Font(Font.FontFamily.COURIER);
@@ -69,7 +69,7 @@ public class CertificateGenerator {
             paragraph.setFont(font);
             paragraph.add("El sistema CapacitateUN certifica que ");
             paragraph.add( user.getFirstname()+ " " + user.getLastname());
-            paragraph.add("identificado con cedula "+ user.getId());
+            paragraph.add(" identificado con cedula "+ user.getId());
             paragraph.add(" se encuentra registrado en el curso ");
            // if (course != null){
             //    paragraph.add(course.getName());

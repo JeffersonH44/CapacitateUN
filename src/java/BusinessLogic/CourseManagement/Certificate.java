@@ -41,19 +41,21 @@ public class Certificate extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/pdf");
         CertificateGenerator cg = new CertificateGenerator();
-        //cg.createPDF(1, request.getParameterNames());
-        try{
+        cg.createPDF(1);
+        /*try{
         Document document = new Document();
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
-        document.add((Element) request.getParameterNames());
-        /*FileInputStream fileInputStream = new FileInputStream("certificate.pdf");
+        document.add((Element) request.getParameterNames());*/
+        FileInputStream fileInputStream = new FileInputStream("C:\\proyecto\\CapacitateUN\\certificate.pdf");
         try (OutputStream responseOutputStream = response.getOutputStream()) {
             int bytes;
             while ((bytes = fileInputStream.read()) != -1) {
                 responseOutputStream.write(bytes);
             }
-        }*/}catch(Exception e){}
+        }
+        //document.close();
+        //}catch(Exception e){}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
