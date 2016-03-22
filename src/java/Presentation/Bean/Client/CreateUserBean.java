@@ -14,11 +14,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
+ * Bean encargado de la creación del usuario.
  * @author Jefferson
  */
 @ManagedBean
-
 @SessionScoped
 public class CreateUserBean implements Serializable {
 
@@ -115,6 +114,11 @@ public class CreateUserBean implements Serializable {
         this.id = id;
     }
     
+    /**
+     * Método que recibe los argumentos de la vista (createUser.xhtml) y crea un 
+     * nuevo usuario.
+     * @return La página inicial.
+     */
     public String createUser() {
         User user;
         UserRegister hu = new UserRegister();
@@ -128,10 +132,4 @@ public class CreateUserBean implements Serializable {
         
         return "index.xhtml";
     }
-    /*
-    public String createUser() {
-        HandleUser hu = new HandleUser();
-        message = hu.createUser(firstname, lastname, username, password, id);
-        return "index.xhtml";
-    }*/
 }

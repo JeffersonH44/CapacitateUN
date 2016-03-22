@@ -6,7 +6,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
-
+/**
+ * Clase auto-generada.
+ * @author Jefferson
+ */
 public class JsfUtil {
 
     public static SelectItem[] getSelectItems(List<?> entities, boolean selectOne) {

@@ -18,7 +18,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
+/**
+ * Clase encargada del CRUD de usuario para el administrador (clase auto-generada).
+ * @author Jefferson
+ */
 @Named("userController")
 @SessionScoped
 public class UserController implements Serializable {

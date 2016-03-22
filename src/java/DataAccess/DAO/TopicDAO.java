@@ -24,7 +24,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Clase encargada del acceso a datos de los tópicos de las capacitaciones
  * @author Manu
  */
 @Stateless
@@ -33,12 +33,22 @@ public class TopicDAO {
     private EntityManager em;
     //public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
     
+    /**
+     * Guarda un nuevo tópico dentro de la base de datos.
+     * @param topic - tópico a guardar
+     * @return verdadero en caso de que se guarde exitosamente.
+     */
     public boolean persist(Topic topic) {
         //em = emf.createEntityManager();
         em.persist(topic);
         return true;
     }
     
+    /**
+     * Actualiza un tópico de acuerdo a un id, se puede modificar el área y el nombre del tópico.
+     * @param topic - tópico a actualizar.
+     * @return verdadero en caso de que se actualice correctamente.
+     */
     public boolean update(Topic topic) {
         Topic dbTopic = this.getById(topic.getId());
         
@@ -48,6 +58,11 @@ public class TopicDAO {
         return true;
     }
     
+    /**
+     * Obtiene el tópico de un curso.
+     * @param course - curso a obtener el tópico
+     * @return Tópico asociado al curso o null en caso de no encontrarlo.
+     */
     public Topic searchByCourse(Courses course) {
         //EntityManager em = emf.createEntityManager();
         
@@ -60,6 +75,11 @@ public class TopicDAO {
         return topic;
     }
     
+    /**
+     * Obtiene la lista de tópicos que maneja el capacitador.
+     * @param trainer - capacitador
+     * @return lista con los tópicos encontrados.
+     */
     public List<Topic> getTopicsByTrainer(User trainer) {
         //EntityManager em = emf.createEntityManager();
         TypedQuery<Topic> q = em.createNamedQuery("Topic.findByTrainer", Topic.class);
@@ -69,6 +89,11 @@ public class TopicDAO {
         return result;
     }
     
+    /**
+     * Obtiene un tópico a partir del identificador.
+     * @param id - identificador del tópico.
+     * @return Tópico encontrado o null en caso contrario.
+     */
     public Topic getById(int id) {
         TypedQuery<Topic> q = em.createNamedQuery("Topic.findById", Topic.class);
         q.setParameter("id", id);

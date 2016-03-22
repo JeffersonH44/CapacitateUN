@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAccess.DAO;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
- *
+ * Fachada abstracta para los DAO del CRUD (Clase autogenerada)
  * @author Jefferson
  */
 public abstract class AbstractFacade<T> {

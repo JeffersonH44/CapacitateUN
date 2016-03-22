@@ -18,7 +18,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 /**
- *
+ * Bean encargado del manejo de registros de cursos que se inscriben los 
+ * usuarios
  * @author Jefferson
  */
 
@@ -73,12 +74,16 @@ public class UserRegisterBean {
         this.message = message;
     }
     
+    /**
+     * Crea una nueva inscripción a partir de la página registerCourse.xhtml.
+     * @return index del usuario cliente.
+     */
     public String createRegister() {
         CoursesRegister cr = new CoursesRegister();
         PrivilegeVerifier login = new PrivilegeVerifier();
         User user = login.getUserLogged();
                 
-        UserRegister ur = cr.createRegister(user, course);
+        UserRegister ur = cr.addRegistry(course, user);
         
         boolean saved = registerDAO.persist(ur);
         if(saved) {
@@ -90,6 +95,10 @@ public class UserRegisterBean {
         return "userIndex.xhtml";
     }
     
+    /**
+     * Realiza el retiro de un curso del usuario (retireCourse.xhtml).
+     * @return la página principal del usuario.
+     */
     public String removeRegister() {
         CoursesRegister cr = new CoursesRegister();
         PrivilegeVerifier login = new PrivilegeVerifier();

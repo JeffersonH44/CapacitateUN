@@ -17,7 +17,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 /**
- *
+ * Bean encargado de la vista principal de los cliente de la aplicación.
  * @author Jefferson
  */
 @ManagedBean
@@ -29,6 +29,10 @@ public class UserBean {
     private List<Courses> unregisteredCourses;
     private List<Courses> myRegisteredCoursesByDate;
     
+    /**
+     * Método para actualizar las listas de cursos de los usuarios para la
+     * página inicial.
+     */
     @PostConstruct
     public void update() {
         CoursesRegister cr = new CoursesRegister();
