@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="trainerIndex.xhtml">
+            <ui:define name="body">
+                <h2>Editar experiencia</h2>
+                <div class="col-lg-4">
+                    <form class="login-inner" jsf:id="form">
+                        <div class="form-group">
+                            <h:outputLabel value="Nombre de la experiencia"></h:outputLabel>
+                            <h:inputText class="form-control" id="name" value="#{trainerBean.currentTopic.name}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="Área"></h:outputLabel>
+                            <h:selectOneMenu  class ="form-control btn btn-primary dropdown-toggle" value="#{trainerBean.currentTopic.area}">
+                                <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                                <f:selectItem itemValue="Vuelo" itemLabel="Vuelo" />
+                                <f:selectItem itemValue="Conducción" itemLabel="Conducción" />
+                                <f:selectItem itemValue="Deporte" itemLabel="Deporte" />
+                            </h:selectOneMenu>
+                        </div>
+                        <h:commandButton value="Crear" class="btn btn-success" action="#{trainerBean.saveTopicChanges()}"/>
+                    </form>
+                </div>
+                
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
