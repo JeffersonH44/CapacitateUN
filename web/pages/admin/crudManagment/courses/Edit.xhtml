@@ -18,10 +18,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <form role="form" jsf:id="edit-form">
-                        <div class="form-group">
-                            <h:outputLabel value="#{bundle.EditCoursesLabel_id}" for="id" />
-                            <h:inputText class="form-control" id="id" value="#{coursesController.selected.id}" title="#{bundle.EditCoursesTitle_id}" required="true" requiredMessage="#{bundle.EditCoursesRequiredMessage_id}"/>
-                        </div>
+                        
                         <div class="form-group">
                             <h:outputLabel value="#{bundle.EditCoursesLabel_name}" for="name" />
                             <h:inputText class="form-control" id="name" value="#{coursesController.selected.name}" title="#{bundle.EditCoursesTitle_name}" required="true" requiredMessage="#{bundle.EditCoursesRequiredMessage_name}"/>
