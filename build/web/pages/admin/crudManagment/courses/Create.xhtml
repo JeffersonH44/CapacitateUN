@@ -15,17 +15,14 @@
             <div class="row">
                 <div class="col-lg-4">
                     <form role="form" jsf:id="create-form">
-                        <div class="form-group">
-                            <h:outputLabel value="#{bundle.CreateCoursesLabel_id}" for="id" />
-                            <h:inputText class="form-control" id="id" value="#{coursesController.selected.id}" title="#{bundle.CreateCoursesTitle_id}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_id}"/>
-                        </div>
+                        
                         <div class="form-group">
                             <h:outputLabel value="#{bundle.CreateCoursesLabel_name}" for="name" />
                             <h:inputText class="form-control" id="name" value="#{coursesController.selected.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_name}"/>
                         </div>
                         <div class="form-group">
-                            <h:outputLabel value="#{bundle.CreateCoursesLabel_date}" for="date" />
-                            <h:inputText id="date" class="form-control form_datetime" readonly="true" value="#{coursesController.selected.date}" title="#{bundle.CreateCoursesTitle_date}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_date}">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_date}" />
+                            <h:inputText id="date" class="form-control form_datetime" value="#{coursesController.selected.date}" title="#{bundle.CreateCoursesTitle_date}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_date}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:inputText>
                         </div>
