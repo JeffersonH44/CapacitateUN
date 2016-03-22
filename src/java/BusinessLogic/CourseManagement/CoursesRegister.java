@@ -39,7 +39,6 @@ public class CoursesRegister {
         course.setTrainerID(trainerID);
         course.setDate(date);
         
-        
         return course;
     }
     

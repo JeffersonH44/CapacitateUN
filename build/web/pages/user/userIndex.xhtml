@@ -23,6 +23,7 @@ and open the template in the editor.
                                     <h:outputText value="Id. del curso"/>
                                 </f:facet>
                                 <h:outputText value="#{item.id}"/>
+                                
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -48,11 +49,17 @@ and open the template in the editor.
                                 </f:facet>
                                 <h:outputText value="#{item.trainerID.firstname}"/>
                             </h:column>
+                            <h:column>
+                                 <f:facet name="header">
+                                    <h:outputText value="Opciones"/>
+                                </f:facet>
+                                <h:commandLink action="#{certificateBean.generateCertification(item)}" value="obtener certificado" class="btn btn-primary" />
+                            </h:column>
                         </h:dataTable>
                     </h:panelGroup>
                 </div>
-                <h:link class="btn btn-primary" outcome="registerCourse.xhtml"> Registrarse en nuevo curso </h:link>
             </form>
+            <h:link class="btn btn-primary" outcome="registerCourse.xhtml"> Registrarse en nuevo curso </h:link>
         </ui:define>
     </ui:composition>
 </html>
