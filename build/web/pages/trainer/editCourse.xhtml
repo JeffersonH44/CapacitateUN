@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="trainerIndex.xhtml">
+            <ui:define name="body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h2>Editar curso</h2>
+                        <h:form role="form" id="edit-form">
+                            <div class="form-group">
+                                <h:outputLabel value="Id del curso" />
+                                <h:inputText class="form-control" value="#{trainerBean.currentCourse.id}" readonly="true" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El id es obligatorio"/>
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel value="Nombre del curso" />
+                                <h:inputText class="form-control" value="#{trainerBean.currentCourse.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="El nombre es obligatorio"/>
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" />
+                                <h:selectOneMenu class="form-control" converter="#{topicConverter}" value="#{trainerBean.currentCourse.topicID}" title="Tema" required="true" requiredMessage="El tema es obligatorio">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccionar" noSelectionOption="true"/>
+                                    <f:selectItems value="#{createCourseBean.availableTopics}" var="topic" itemValue="#{topic}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel value="#{bundle.CreateCoursesLabel_date}"/>
+                                <h:inputText class="form-control form_datetime" value="#{trainerBean.currentCourse.date}" title="#{bundle.CreateCoursesTitle_date}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss"/>
+                                </h:inputText>
+                            </div>
+                            <h:commandButton class="btn btn-success" action="#{trainerBean.saveCourseChanges()}" value="Guardar cambios"/>
+                        </h:form>
+                    </div>
+                    <h:panelGroup class="col-md-4" rendered="#{trainerBean.currentCourse.userRegisterCollection.size() > 0}">
+                        <h2>Estudiantes</h2>
+                        <h:dataTable value="#{trainerBean.currentCourse.userRegisterCollection}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombres"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.firstname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Apellidos"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.lastname}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <ui:composition template="../baseTemplate.xhtml">
+            <ui:define name="navbar-sidebar">
+                <ul class="nav in" id="side-menu">
+                    <li>
+                        <h:link outcome="/pages/admin/crudManagment/user/List.xhtml" class="active"><i class="fa fa-users fa-fw"></i> Manejo de usuarios</h:link>
+                    </li>
+                    <li>
+                        <h:link outcome="/pages/admin/crudManagment/courses/List.xhtml" class="active"><i class="fa fa-mortar-board fa-fw"></i> Manejo de cursos</h:link>
+                    </li>
+                </ul>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

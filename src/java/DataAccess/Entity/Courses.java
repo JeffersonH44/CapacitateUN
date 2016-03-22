@@ -90,6 +90,10 @@ public class Courses implements Serializable {
     }
 
     public void setId(Integer id) {
+        if(id == null) {
+            throw new NullPointerException("El id del curos no puede ser nulo");
+        }
+        
         this.id = id;
     }
 
@@ -98,6 +102,9 @@ public class Courses implements Serializable {
     }
 
     public void setName(String name) {
+        if(name == null) throw new NullPointerException("El nombre del curso no puede ser nulo");
+        if(name.equals("")) throw new IllegalArgumentException("El nombre no puede ser vacío");
+        
         this.name = name;
     }
 
@@ -106,6 +113,8 @@ public class Courses implements Serializable {
     }
 
     public void setDate(Date date) {
+        if(date == null) throw new NullPointerException("La fecha del curso no puede ser nula");
+        
         this.date = date;
     }
 
@@ -114,6 +123,8 @@ public class Courses implements Serializable {
     }
 
     public void setTopicID(Topic topicID) {
+        if(topicID == null) throw new NullPointerException("El tópico del curso no puede ser nulo");
+        
         this.topicID = topicID;
     }
 
@@ -122,6 +133,8 @@ public class Courses implements Serializable {
     }
 
     public void setTrainerID(User trainerID) {
+        if(trainerID == null) throw new NullPointerException("El capacitador no puede ser nulo");
+        
         this.trainerID = trainerID;
     }
     

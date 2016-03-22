@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="../../admin.xhtml">
+        <ui:define name="body">
+            
+            <form jsf:id="list-form">
+                
+                <div class="row">
+                    <h2>Lista de cursos</h2>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListCoursesEmpty}" rendered="#{coursesController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{coursesController.items.rowCount > 0}">
+                        <h:dataTable value="#{coursesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_id}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_name}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_date}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_topicID}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.topicID}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCoursesTitle_trainerID}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.trainerID}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{coursesController.prepareView}" value="#{bundle.ListCoursesViewLink}" class="btn btn-info"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{coursesController.prepareEdit}" value="#{bundle.ListCoursesEditLink}" class="btn btn-primary"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{coursesController.destroy}" value="#{bundle.ListCoursesDestroyLink}" class="btn btn-danger"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h:commandButton action="#{coursesController.prepareCreate}" value="#{bundle.ListCoursesCreateLink}" styleClass="btn btn-primary"/>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <h:outputText value="Mostrando #{coursesController.pagination.pageFirstItem + 1}..#{coursesController.pagination.pageLastItem + 1} de #{coursesController.pagination.itemsCount}"/>
+                    </div>
+
+                    <div class="col-sm-4" align="right" >
+                        <ul class="pagination" style="margin: 0px 0;">
+                            <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                <h:commandLink action="#{coursesController.previous}" value="#{bundle.Previous}" 
+                                         disabled="#{!coursesController.pagination.hasPreviousPage}" styleClass="paginate_button previous"/>
+                            </li>
+                            <li class="paginate_button previous" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
+                                <h:commandLink action="#{coursesController.next}" value="#{bundle.Next}" 
+                                             disabled="#{!coursesController.pagination.hasNextPage}" styleClass="paginate_button next"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </form>
+        </ui:define>
+    </ui:composition>
+
+</html>
