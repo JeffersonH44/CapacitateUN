@@ -14,7 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
+ * Bean encargado de hacer el login de usuario y gestión de elementos globales
+ * al usuario.
  * @author Jefferson
  */
 
@@ -84,6 +85,10 @@ public class UserLoginBean implements Serializable {
         this.user = user;
     }
     
+    /**
+     * Función encargada de hacer el login de usuario.
+     * @return La página inicial de acuerdo al usuario.
+     */
     public String login() {
         UserRegister userManager = new UserRegister();
         user = userManager.loginUser(username, password, userDAO);
@@ -92,6 +97,10 @@ public class UserLoginBean implements Serializable {
         return "faces/pages/" + this.getIndexPageByUser();
     }
     
+    /**
+     * Función encargada de hacer el logout del usuario.
+     * @return La página inicial.
+     */
     public String logout() {
         UserRegister userManager = new UserRegister();
         userManager.logoutUser();
@@ -99,11 +108,18 @@ public class UserLoginBean implements Serializable {
         return "/index.xhtml";
     }
     
-        
+    /**
+     * Redirecciona a la página de editar las parámetros del usuario.
+     * @return Página de edición de usuario.
+     */
     public String editUser() {
         return "faces/pages/editUser.xhtml";
     }
     
+    /**
+     * Función encargada de actualizar el usuario con los nuevos atributos.
+     * @return Página príncipal de acuerdo al rol de usuario.
+     */
     public String updateUser() {
         userDAO.update(user);
         this.logout();
@@ -114,15 +130,20 @@ public class UserLoginBean implements Serializable {
         
     }
     
+    /**
+     * Obtiene la página principal del usuario de acuerdo a su rol.
+     * @return Página principal.
+     */
     private String getIndexPageByUser() {
+        if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
+        
         switch (user.getRole()) {
             case User.ADMIN:
                 return "admin/adminIndex.xhtml";
             case User.TRAINER:
                 return "trainer/trainerIndex.xhtml";
-            case User.USER:
+            default:
                 return "user/userIndex.xhtml";
         }
-        return "";
     }
 }

@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- *
+ * Clase encargada del acceso a datos de los capacitadores.
  * @author Jefferson
  */
 @Stateless
@@ -21,6 +21,11 @@ public class TrainerDAO {
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
     
+    /**
+     * Obtiene el capacitador de un curso
+     * @param course
+     * @return el capacitador del curso o nulo en caso de no encontrarlo.
+     */
     public User searchByCourse(Courses course) {
         User trainer;
         Query q = em.createNamedQuery("User.findById");

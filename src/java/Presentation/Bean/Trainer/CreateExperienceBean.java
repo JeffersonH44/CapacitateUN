@@ -17,7 +17,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 /**
- *
+ * Bean encargado de la creación de experiencias del capacitador. (createExperience.xhtml)
  * @author Manu
  */
 @ManagedBean
@@ -29,7 +29,7 @@ public class CreateExperienceBean {
     @EJB
     private ExperienceDAO experienceDAO;
     @EJB
-    private TopicDAO    topicDao;
+    private TopicDAO topicDao;
 
     /**
      * @return the name
@@ -73,6 +73,10 @@ public class CreateExperienceBean {
         this.message = message;
     }
     
+    /**
+     * Crea una nueva experiencia de acuerdo a los parámetros del bean.
+     * @return Página principal de los capacitadores.
+     */
     public String createExperience() {
         HandleTopic topicHandler = new HandleTopic();
         HandleExperience he = new HandleExperience();

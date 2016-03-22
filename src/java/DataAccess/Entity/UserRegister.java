@@ -73,7 +73,13 @@ public class UserRegister implements Serializable {
         return registerID;
     }
 
+    /**
+     * 
+     * @param registerID 
+     */
     public void setRegisterID(Integer registerID) {
+        if(registerID == null) throw new NullPointerException("El id de registro de usuarios no puede ser nulo.");
+        
         this.registerID = registerID;
     }
 
@@ -81,8 +87,14 @@ public class UserRegister implements Serializable {
     public Courses getCoursesID() {
         return coursesID;
     }
-
+    
+    /**
+     * 
+     * @param coursesID 
+     */
     public void setCoursesID(Courses coursesID) {
+        if(coursesID == null) throw new NullPointerException("El curso del registro de usuarios no puede ser nulo.");
+        
         this.coursesID = coursesID;
     }
 
@@ -90,8 +102,32 @@ public class UserRegister implements Serializable {
         return userID;
     }
 
+    /**
+     * 
+     * @param userID 
+     */
     public void setUserID(User userID) {
+        if(userID == null) throw new NullPointerException("El usuario del registro de usuarios no puede ser nulo");
+        
         this.userID = userID;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Setter del estatus del registro de usuarios.
+     * 
+     * @param status
+     * @throws NullPointerException - En caso de que el estatus del registro sea nulo.
+     * @throws IllegalArgumentException - En caso de que el estado no sea activo o retirado.
+     */
+    public void setStatus(String status) {
+        if(status == null) throw new NullPointerException("El estatus del registro de usuarios no puede ser nulo.");
+        if(!status.equals(ACTIVE) && !status.equals(RETIRED)) throw new IllegalArgumentException("el estatus no es válido.");
+        
+        this.status = status;
     }
 
     @Override
@@ -117,14 +153,6 @@ public class UserRegister implements Serializable {
     @Override
     public String toString() {
         return "DataAccess.Entity.UserRegister[ registerID=" + registerID + " ]";
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
     
 }

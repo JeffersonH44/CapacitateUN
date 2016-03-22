@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ * Clase de gestión de CRUD de usuario para administrador (Clase autogenerada)
  * @author Jefferson
  */
 @Stateless

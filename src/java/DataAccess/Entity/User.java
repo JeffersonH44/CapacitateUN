@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * Abstracción de la tabla user de la base de datos.
  * @author Jefferson
  */
 @Entity
@@ -94,8 +94,18 @@ public class User implements Serializable {
     public Integer getId() {
         return id;
     }
-
+    
+    /**
+     * Setter del identificador del usuario.´
+     * 
+     * @param id 
+     * @throws NullPointerException - En caso de que el id del usuario sea nulo.
+     * @throws IllegalArgumentException - En caso de que el id de usuario sea negativo.
+     */
     public void setId(Integer id) {
+        if(id == null) throw new NullPointerException("el id de usuario no puede ser nulo.");
+        if(id < 0) throw new IllegalArgumentException("el id de usuario no puede ser negativo.");
+        
         this.id = id;
     }
 
@@ -103,7 +113,15 @@ public class User implements Serializable {
         return role;
     }
 
+    /**
+     * Setter del rol de usuario.
+     * 
+     * @param role 
+     * @throws IllegalArgumentException - En caso de que el rol no esté dentro de los roles válidos
+     */
     public void setRole(int role) {
+        if(role != USER && role != TRAINER && role != ADMIN) throw new IllegalArgumentException("El rol del usuario no es válido.");
+        
         this.role = role;
     }
 
@@ -111,7 +129,18 @@ public class User implements Serializable {
         return username;
     }
 
+    /**
+     * Setter del usuario.
+     * 
+     * @param username 
+     * @throws NullPointerException - En caso del que el usuario sea nulo.
+     * @throws IllegalArgumentException - En caso de que el usuario esté vacío o no tenga entre 8 y 20 caracteres.
+     */
     public void setUsername(String username) {
+        if(username == null) throw new NullPointerException("El usuario no puede ser nulo.");
+        if(username.equals("")) throw new IllegalArgumentException("El usuario no puede ser vacío");
+        if(username.length() < 8 || username.length() > 20) throw new IllegalArgumentException("El usuario debe estar entre 8 y 20 caracteres.");
+        
         this.username = username;
     }
 
@@ -119,15 +148,34 @@ public class User implements Serializable {
         return password;
     }
 
+    /**
+     * Setter de la contraseña del usuario.
+     * @param password 
+     * @throws NullPointerException - En caso de que la contraseña sea nula.
+     * @throws IllegalArgumentException - En caso de que la contraseña sea vacía o no cumpla las restricciones.
+     */
     public void setPassword(String password) {
+        if(password == null) throw new NullPointerException("La contraseña no puede ser nula.");
+        if(password.equals("")) throw new IllegalArgumentException("La contraseña no puede ser vacía");
+        if(password.length() < 8 || password.length() > 20) throw new IllegalArgumentException("La contraseña debe estar entre 8 y 20 caracteres.");
+        
         this.password = password;
     }
 
     public String getFirstname() {
         return firstname;
     }
-
+    
+    /**
+     * Setter del los nombres del usuario.
+     * @param firstname
+     * @throws NullPointerException - en caso de que nombre sea nulo.
+     * @throws IllegalArgumentException - en caso de que el nombre sea vacío.
+     */
     public void setFirstname(String firstname) {
+        if(firstname == null) throw new NullPointerException("Los nombres del usuario no puede ser nulo.");
+        if(firstname.equals("")) throw new IllegalArgumentException("Los nombres del usuario no pueden ser vacios");
+        
         this.firstname = firstname;
     }
 
@@ -135,7 +183,16 @@ public class User implements Serializable {
         return lastname;
     }
 
+    /**
+     * Setter del los apellidos del usuario.
+     * @param lastname 
+     * @throws NullPointerException - en caso de que los apellidos del usuario sean nulos.
+     * @throws IllegalArgumentException - en caso de que los apellidos del usuario sea vacío.
+     */
     public void setLastname(String lastname) {
+        if(firstname == null) throw new NullPointerException("Los apellidos del usuario no puede ser nulo.");
+        if(firstname.equals("")) throw new IllegalArgumentException("Los apellidos del usuario no pueden ser vacios");
+        
         this.lastname = lastname;
     }
     

@@ -26,11 +26,20 @@ import java.text.DateFormat;
 
 
 /**
- *
+ * Clase encargada de la generación de certificados.
  * @author manu
  */
 public class CertificateGenerator {
-    public boolean createPDF(Courses course){
+    
+    /**
+     * 
+     * @param course
+     * @return verdadero en caso de que el documento se haya generado exitosamente.
+     * @throws FileNotFoundException - en caso de no encontrar el archivo pdf
+     * @throws DocumentException - en caso de que en la generación del documento haya un error.
+     */
+    public boolean createPDF(Courses course) throws FileNotFoundException, DocumentException
+    {
         try{
             User user = new PrivilegeVerifier().getUserLogged();
             
@@ -81,8 +90,8 @@ public class CertificateGenerator {
             document.close();
             return true;
         }catch (FileNotFoundException | DocumentException e) {
-                e.printStackTrace();
+                throw e;
         }
-        return false;
+        //return false;
     }
 }

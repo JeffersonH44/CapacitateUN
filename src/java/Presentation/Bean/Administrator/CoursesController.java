@@ -18,7 +18,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
+/**
+ * Clase encargada del CRUD de cursos para el administrador. (Clase autogenerada)
+ * @author Jefferson
+ */
 @Named("coursesController")
 @SessionScoped
 public class CoursesController implements Serializable {

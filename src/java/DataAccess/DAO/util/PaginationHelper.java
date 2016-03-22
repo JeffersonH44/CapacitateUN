@@ -2,6 +2,10 @@ package DataAccess.DAO.util;
 
 import javax.faces.model.DataModel;
 
+/**
+ * Clase autogenerada.
+ * @author Jefferson
+ */
 public abstract class PaginationHelper {
 
     private int pageSize;
