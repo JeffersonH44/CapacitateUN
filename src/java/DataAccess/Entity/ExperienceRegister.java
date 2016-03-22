@@ -65,6 +65,8 @@ public class ExperienceRegister implements Serializable {
     }
 
     public void setTopicID(Topic topicID) {
+        if(topicID == null) throw new NullPointerException("El tópico en el registro de experiencias no puede ser nulo");
+        
         this.topicID = topicID;
     }
 
@@ -73,6 +75,8 @@ public class ExperienceRegister implements Serializable {
     }
 
     public void setUserID(User userID) {
+        if(userID == null) throw new NullPointerException("El usuario en el registro de experiencias no puede ser nulo");
+        
         this.userID = userID;
     }
 

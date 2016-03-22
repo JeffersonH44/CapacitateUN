@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -25,6 +26,23 @@ public class UserDAO {
         //em = emf.createEntityManager();
         em.persist(user);
         return true;
+    }
+    
+    public boolean update(User user) {
+        User dbUser = this.getById(user.getId());
+        
+        dbUser.setFirstname(user.getFirstname());
+        dbUser.setLastname(user.getLastname());
+        dbUser.setPassword(user.getPassword());
+        
+        return true;
+    }
+    
+    public User getById(int id) {
+        TypedQuery<User> q = em.createNamedQuery("User.findById", User.class);
+        q.setParameter("id", id);
+        
+        return q.getSingleResult();
     }
     
     public User searchByUsername(String username) {
