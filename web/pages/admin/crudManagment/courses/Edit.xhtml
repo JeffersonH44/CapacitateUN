@@ -11,13 +11,21 @@
             <h:outputText value="#{bundle.EditCoursesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h2>Editar curso</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <h2>Editar curso</h2>
+                </div>
+                <h:panelGroup class="col-lg-6" rendered="#{coursesController.selected.userRegisterCollection.size() > 0}">
+                    <h2>Estudiantes</h2>
+                </h:panelGroup>
+            </div>
+            
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="row">
                 <div class="col-lg-4">
-                    <form role="form" jsf:id="edit-form">
+                    <h:form role="form" id="edit-form">
                         
                         <div class="form-group">
                             <h:outputLabel value="#{bundle.EditCoursesLabel_name}" for="name" />
@@ -54,8 +62,35 @@
                             <h:link class="btn btn-default" outcome="/index" value="#{bundle.EditCoursesIndexLink}" />
                         </div>
                         
-                    </form>
+                    </h:form>
                 </div>
+                <h:panelGroup class="col-lg-6" rendered="#{coursesController.selected.userRegisterCollection.size() > 0}">
+                    <h:form role="form" id="students-table">
+                        <h:dataTable value="#{coursesController.selected.userRegisterCollection}" var="item" border="0" cellpadding="2" cellspacing="0" 
+                                     styleClass="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" rules="all">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombres"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.firstname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Apellidos"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userID.lastname}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Acciones"/>
+                                </f:facet>
+                                <div>
+                                    <h:commandButton action="#{coursesController.removeUser(item)}" value="#{bundle.ListUserDestroyLink}" styleClass="btn btn-danger"/>
+                                </div>  
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </h:panelGroup>
             </div>
         </ui:define>
     </ui:composition>
