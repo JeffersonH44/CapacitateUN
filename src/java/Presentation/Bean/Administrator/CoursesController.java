@@ -1,9 +1,13 @@
 package Presentation.Bean.Administrator;
 
+import DataAccess.DAO.CourseDAO.CoursesDAO;
 import DataAccess.Entity.Courses;
 import Presentation.Bean.util.JsfUtil;
 import Presentation.Bean.util.PaginationHelper;
 import DataAccess.DAO.CourseDAO.CoursesFacade;
+import DataAccess.DAO.UserRegistryDAO.UserRegisterDAO;
+import DataAccess.Entity.User;
+import DataAccess.Entity.UserRegister;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -27,15 +31,26 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 @ManagedBean(name = "coursesController",eager = true)
 public class CoursesController implements Serializable {
-
-
     private Courses current;
     private DataModel items = null;
-    @EJB private DataAccess.DAO.CourseDAO.CoursesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    
+    @EJB 
+    private DataAccess.DAO.CourseDAO.CoursesFacade ejbFacade;
+    @EJB
+    private UserRegisterDAO registerDAO;
+    @EJB
+    private CoursesDAO courseDAO;
 
     public CoursesController() {
+    }
+    
+    public void removeUser(UserRegister register) {
+        current.getUserRegisterCollection().remove(register);
+        this.update();
+        registerDAO.remove(register);
+        //return "Edit.xhtml?faces-redirect=true";
     }
 
     public Courses getSelected() {
@@ -49,6 +64,7 @@ public class CoursesController implements Serializable {
     private CoursesFacade getFacade() {
         return ejbFacade;
     }
+    
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -97,6 +113,7 @@ public class CoursesController implements Serializable {
 
     public String prepareEdit() {
         current = (Courses)getItems().getRowData();
+        current = this.getFacade().find(current);
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }

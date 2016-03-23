@@ -52,4 +52,15 @@ public class UserRegisterDAO {
         
         return true;
     }
+    
+    public boolean remove(UserRegister registry) {
+        TypedQuery<UserRegister> q = em.createNamedQuery("UserRegister.findRegister", UserRegister.class);
+        q.setParameter("course_id", registry.getCoursesID());
+        q.setParameter("user_id", registry.getUserID());
+        
+        UserRegister ur = q.getSingleResult();
+        em.remove(ur);
+        
+        return true;
+    }
 }

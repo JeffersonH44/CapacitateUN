@@ -112,6 +112,23 @@ public class User implements Serializable {
     public int getRole() {
         return role;
     }
+    
+    /**
+     * Devuelve el rol en forma de string para las vistas
+     * @return rol
+     */
+    public String getStringRole() {
+        switch(role) {
+            case USER:
+                return "Usuario";
+            case TRAINER:
+                return "Capacitador";
+            case ADMIN:
+                return "Administrador";
+        }
+        
+        return "";
+    }
 
     /**
      * Setter del rol de usuario.

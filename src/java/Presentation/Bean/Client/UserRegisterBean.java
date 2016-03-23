@@ -106,7 +106,7 @@ public class UserRegisterBean {
                 
         UserRegister ur = cr.removeRegister(user, course);
         
-        boolean changed = registerDAO.update(ur);
+        boolean changed = registerDAO.remove(ur);
         
         if(changed) {
             message = "Se ha retirado exitosamente";
