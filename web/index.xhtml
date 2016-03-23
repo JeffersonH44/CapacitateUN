@@ -12,9 +12,9 @@
                 <h4>CapacitateUN</h4>
                 <hr></hr>
                 <form class="login-inner" jsf:id="form-login">
-                    <input type="text" name="Nombre" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="10" /></input>
+                    <input type="text" name="Nombre" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="20" /></input>
                     <h:message for="email-input" style="color: red"/>
-                    <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}" validatorMessage="Error en la Contraseña"><f:validateLength minimum="4" maximum="15"/></input>
+                    <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}" validatorMessage="Error en la Contraseña"><f:validateLength minimum="8" maximum="16"/></input>
                     <h:message for="password-input" style="color: red"/>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
