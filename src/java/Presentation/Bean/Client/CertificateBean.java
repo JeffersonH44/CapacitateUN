@@ -6,8 +6,8 @@
 package Presentation.Bean.Client;
 
 import BusinessLogic.CourseManagement.CertificateGenerator;
-import DataAccess.DAO.UserDAO;
-import DataAccess.DAO.CoursesDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
 import DataAccess.Entity.Courses;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;

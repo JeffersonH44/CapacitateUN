@@ -7,7 +7,7 @@ package Presentation.Bean.Client;
 
 import BusinessLogic.CourseManagement.CoursesRegister;
 import BusinessLogic.UserManagement.PrivilegeVerifier;
-import DataAccess.DAO.UserRegisterDAO;
+import DataAccess.DAO.UserRegistryDAO.UserRegisterDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
 import DataAccess.Entity.UserRegister;

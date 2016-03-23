@@ -1,4 +1,4 @@
-package DataAccess.DAO;
+package DataAccess.DAO.util;
 
 import java.util.List;
 import javax.persistence.EntityManager;

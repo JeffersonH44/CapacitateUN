@@ -5,7 +5,7 @@
  */
 package Presentation.Bean.Client;
 
-import DataAccess.DAO.CoursesDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
 import DataAccess.Entity.Courses;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;

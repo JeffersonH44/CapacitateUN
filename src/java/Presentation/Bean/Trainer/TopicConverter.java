@@ -5,8 +5,8 @@
  */
 package Presentation.Bean.Trainer;
 
-import DataAccess.DAO.CoursesDAO;
-import DataAccess.DAO.TopicDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
+import DataAccess.DAO.TopicDAO.TopicDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import javax.ejb.EJB;

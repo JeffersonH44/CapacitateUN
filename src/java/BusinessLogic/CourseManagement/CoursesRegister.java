@@ -6,9 +6,9 @@
 package BusinessLogic.CourseManagement;
 
 import BusinessLogic.UserManagement.PrivilegeVerifier;
-import DataAccess.DAO.CoursesDAO;
-import DataAccess.DAO.TopicDAO;
-import DataAccess.DAO.UserRegisterDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
+import DataAccess.DAO.TopicDAO.TopicDAO;
+import DataAccess.DAO.UserRegistryDAO.UserRegisterDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;

@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAccess.DAO;
+package DataAccess.DAO.TopicDAO;
 
-import DataAccess.Entity.User;
+import DataAccess.Entity.Topic;
+import DataAccess.DAO.util.AbstractFacade;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * Clase de gestión de CRUD de usuario para administrador (Clase autogenerada)
+ *
  * @author Jefferson
  */
 @Stateless
-public class UserFacade extends AbstractFacade<User> {
+public class TopicFacade extends AbstractFacade<Topic> {
 
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
@@ -25,8 +26,8 @@ public class UserFacade extends AbstractFacade<User> {
         return em;
     }
 
-    public UserFacade() {
-        super(User.class);
+    public TopicFacade() {
+        super(Topic.class);
     }
     
 }
