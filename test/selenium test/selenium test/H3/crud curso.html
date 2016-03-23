@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/CapacitateUN/" />
+<title>crud curso</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">crud curso</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/CapacitateUN/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password-input</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=form-login:j_idt7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manejo de cursos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=list-form:j_idt83</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=create-form:name</td>
+	<td>vuelo medio</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=create-form:date</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.minute.active</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=create-form:topicID</td>
+	<td>label=Área: conduccion, Tema: mecanica general</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=create-form:trainerID</td>
+	<td>label=enseña mucho</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Courses was successfully created.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Show All Courses Items</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'View')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Ver curso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=edit-form:name</td>
+	<td>vuelo avanzado</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Courses was successfully updated</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Show All Courses Items</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Destroy')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Courses was successfully deleted</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

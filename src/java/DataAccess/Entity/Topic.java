@@ -116,8 +116,8 @@ public class Topic implements Serializable {
      * @throws IllegalArgumentException - En caso de que el nombre de tópico sea vacío.
      */
     public void setName(String name) {
-        if(area == null) throw new NullPointerException("El nombre del tópico no puede ser nulo");
-        if(area.equals(name)) throw new IllegalArgumentException("El nombre del área no puede estar vacía");
+        if(name == null) throw new NullPointerException("El nombre del tópico no puede ser nulo");
+        if(name.equals("")) throw new IllegalArgumentException("El nombre del topico no puede estar vacía");
         
         this.name = name;
     }
