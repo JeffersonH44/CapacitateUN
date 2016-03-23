@@ -6,7 +6,7 @@
 package Presentation.Bean.Client;
 
 import BusinessLogic.UserManagement.UserRegister;
-import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.EJB;

@@ -6,7 +6,7 @@
 package Presentation.Bean.Login;
 
 import BusinessLogic.UserManagement.UserRegister;
-import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -127,7 +127,23 @@ public class UserLoginBean implements Serializable {
         this.password = user.getPassword();
         this.login();
         return this.getIndexPageByUser();
+    }
+    
+    /**
+     * Obtiene la página template de acuerdo al usuario registrado.
+     * @return Dirección de la página template.
+     */
+    public String getTemplatePageByUser() {
+        if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
         
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "/pages/admin/admin.xhtml";
+            case User.TRAINER:
+                return "/pages/trainer/trainer.xhtml";
+            default:
+                return "/pages/user/user.xhtml";
+        }
     }
     
     /**

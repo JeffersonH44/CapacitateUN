@@ -6,8 +6,8 @@
 package Presentation.Bean.Client;
 
 import BusinessLogic.CourseManagement.CoursesRegister;
-import DataAccess.DAO.CoursesDAO;
-import DataAccess.DAO.UserRegisterDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
+import DataAccess.DAO.UserRegistryDAO.UserRegisterDAO;
 import DataAccess.Entity.Courses;
 import java.util.List;
 import javax.annotation.PostConstruct;

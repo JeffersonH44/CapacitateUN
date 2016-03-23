@@ -3,7 +3,7 @@ package Presentation.Bean.Administrator;
 import DataAccess.Entity.Courses;
 import Presentation.Bean.util.JsfUtil;
 import Presentation.Bean.util.PaginationHelper;
-import DataAccess.DAO.CoursesFacade;
+import DataAccess.DAO.CourseDAO.CoursesFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -29,7 +29,7 @@ public class CoursesController implements Serializable {
 
     private Courses current;
     private DataModel items = null;
-    @EJB private DataAccess.DAO.CoursesFacade ejbFacade;
+    @EJB private DataAccess.DAO.CourseDAO.CoursesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

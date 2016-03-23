@@ -1,9 +1,9 @@
 package Presentation.Bean.Administrator;
 
-import DataAccess.DAO.TopicFacade;
+import DataAccess.DAO.TopicDAO.TopicFacade;
 import DataAccess.Entity.Topic;
-import DataAccess.DAO.util.JsfUtil;
-import DataAccess.DAO.util.PaginationHelper;
+import Presentation.Bean.util.JsfUtil;
+import Presentation.Bean.util.PaginationHelper;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -25,7 +25,7 @@ public class TopicController implements Serializable {
     private Topic current;
     private DataModel items = null;
     @EJB
-    private DataAccess.DAO.TopicFacade ejbFacade;
+    private DataAccess.DAO.TopicDAO.TopicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

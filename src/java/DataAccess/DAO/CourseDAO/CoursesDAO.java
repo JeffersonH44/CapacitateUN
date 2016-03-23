@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAccess.DAO;
+package DataAccess.DAO.CourseDAO;
 
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;

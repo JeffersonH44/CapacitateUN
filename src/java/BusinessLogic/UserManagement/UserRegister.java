@@ -4,7 +4,7 @@
  */
 package BusinessLogic.UserManagement;
 
-import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
 import javax.ejb.EJB;
 

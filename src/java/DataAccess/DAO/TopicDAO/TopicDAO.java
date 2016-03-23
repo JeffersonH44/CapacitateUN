@@ -7,7 +7,7 @@
 >>>>>>> ExperienceManagement
  * and open the template in the editor.
  */
-package DataAccess.DAO;
+package DataAccess.DAO.TopicDAO;
 
 
 import DataAccess.Entity.Courses;
