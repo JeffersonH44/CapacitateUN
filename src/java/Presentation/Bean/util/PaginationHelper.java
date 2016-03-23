@@ -2,6 +2,10 @@ package Presentation.Bean.util;
 
 import javax.faces.model.DataModel;
 
+/**
+ * Clase auto-generada.
+ * @author Jefferson
+ */
 public abstract class PaginationHelper {
 
     private int pageSize;

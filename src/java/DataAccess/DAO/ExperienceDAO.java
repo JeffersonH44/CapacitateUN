@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- *
+ * Clase encargada del acceso a datos del registro de experiencias.
  * @author Manu
  */
 @Stateless
@@ -20,26 +20,23 @@ public class ExperienceDAO {
     
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
-    //public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");
     
+    /**
+     * Guarda una nueva experiencia en la base de datos.
+     * @param experience - experiencia a guardar.
+     * @return verdadero en caso de persistir la nueva experiencia.
+     */
     public boolean persist(ExperienceRegister experience) {
-        
-        //EntityManager em = emf1.createEntityManager();
-        //em.getTransaction().begin();
-        
-        //try {
         em.persist(experience);
-        //em.getTransaction().commit();
         return true;
-        //} catch(RollbackException e) {
-        //    em.getTransaction().rollback();
-        //    return false;
-        //} finally {
-            //em.close();
-        //}
     }
     
-    public ExperienceRegister searchByTrainerID( User Trainer) {
+    /**
+     * Obtiene un registro de experiencia de acuerdo con el capacitador.
+     * @param Trainer - capacitador.
+     * @return registro de experiencia del capacitador.
+     */
+    public ExperienceRegister searchByTrainerID(User Trainer) {
         
         //EntityManager em = emf1.createEntityManager();
         ExperienceRegister experienceRegister = null;

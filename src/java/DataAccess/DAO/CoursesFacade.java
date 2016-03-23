@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ * Fachada de cursos para CRUD de administración. (clase autogenerada)
  * @author Jefferson
  */
 @Stateless

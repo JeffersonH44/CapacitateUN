@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * Abstracción de la tabla topic de la base de datos
  * @author Jefferson
  */
 @Entity
@@ -74,7 +74,15 @@ public class Topic implements Serializable {
         return id;
     }
 
+    /**
+     * Setter del identificador del tópico
+     * 
+     * @param id 
+     * @throws NullPointerException - En caso de que el tópico sea nulo.
+     */
     public void setId(Integer id) {
+        if(id == null) throw new NullPointerException("El id del tópico no puede ser nulo");
+        
         this.id = id;
     }
 
@@ -82,7 +90,17 @@ public class Topic implements Serializable {
         return area;
     }
 
+    /**
+     * Setter del área del tópico.
+     * 
+     * @param area 
+     * @throws NullPointerException - En caso de que el área sea nula.
+     * @throws IllegalArgumentException - En caso de que el área sea vacía.
+     */
     public void setArea(String area) {
+        if(area == null) throw new NullPointerException("El área del tópico no puede ser nula");
+        if(area.equals("")) throw new IllegalArgumentException("El área del tópico no puede ser vacía.");
+        
         this.area = area;
     }
 
@@ -90,7 +108,17 @@ public class Topic implements Serializable {
         return name;
     }
 
+    /**
+     * Setter del nombre del tópico.
+     * 
+     * @param name 
+     * @throws NullPointerException - En caso de que el nombre del tópico sea nulo.
+     * @throws IllegalArgumentException - En caso de que el nombre de tópico sea vacío.
+     */
     public void setName(String name) {
+        if(area == null) throw new NullPointerException("El nombre del tópico no puede ser nulo");
+        if(area.equals(name)) throw new IllegalArgumentException("El nombre del área no puede estar vacía");
+        
         this.name = name;
     }
 

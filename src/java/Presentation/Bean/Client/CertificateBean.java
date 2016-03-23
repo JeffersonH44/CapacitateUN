@@ -9,13 +9,15 @@ import BusinessLogic.CourseManagement.CertificateGenerator;
 import DataAccess.DAO.UserDAO;
 import DataAccess.DAO.CoursesDAO;
 import DataAccess.Entity.Courses;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
+ * Bean encargado de la generación de certificados.
  * @author manu
  */
 @ManagedBean
@@ -24,6 +26,7 @@ public class CertificateBean implements Serializable {
 
     private Courses course;
     private String message;
+    
     @EJB
     private UserDAO userDAO;
 
@@ -56,11 +59,13 @@ public class CertificateBean implements Serializable {
     }
     
     /**
-     * @return the id
+     * Función que genera los certificados a partir del un curso dado
+     * @param course
+     * @return Página donde se puede ver el certificado.
+     * @throws DocumentException - Ver CertificateGenerator
+     * @throws FileNotFoundException - Ver CertificateGenerator
      */
-
-    
-    public String generateCertification(Courses course) {
+    public String generateCertification(Courses course) throws DocumentException, FileNotFoundException {
         CertificateGenerator cg = new CertificateGenerator();
         
         boolean saved = cg.createPDF(course);
@@ -72,10 +77,4 @@ public class CertificateBean implements Serializable {
         
         return "getCertificate.xhtml?faces-redirect=true";
     }
-    /*
-    public String createUser() {
-        HandleUser hu = new HandleUser();
-        message = hu.createUser(firstname, lastname, username, password, id);
-        return "index.xhtml";
-    }*/
 }

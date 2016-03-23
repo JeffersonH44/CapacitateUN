@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * Entidad que representa una abstracción una fila en la tabla courses de la base de datos.
  * @author Jefferson
  */
 @Entity
@@ -89,6 +89,12 @@ public class Courses implements Serializable {
         return id;
     }
 
+    /**
+     * Setter del identificador del curso.
+     * 
+     * @param id 
+     * @throws NullPointerException - en caso de ser nulo el Id
+     */
     public void setId(Integer id) {
         if(id == null) {
             throw new NullPointerException("El id del curos no puede ser nulo");
@@ -100,7 +106,14 @@ public class Courses implements Serializable {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * setter del nombre del curso
+     * 
+     * @param name - nombre del curso
+     * @throws NullPointerException - en caso de ser nulo el nombre.
+     * @throws IllegalArgumentException - en caso de que el nombre sea vacío.
+     */
     public void setName(String name) {
         if(name == null) throw new NullPointerException("El nombre del curso no puede ser nulo");
         if(name.equals("")) throw new IllegalArgumentException("El nombre no puede ser vacío");
@@ -111,7 +124,14 @@ public class Courses implements Serializable {
     public Date getDate() {
         return date;
     }
-
+    
+    /**
+     * Setter de fecha del curso.
+     * 
+     * @param date - fecha del curso a dar.
+     * @throws NullPointerException - en caso de que la fecha sea nula.
+     * 
+     */
     public void setDate(Date date) {
         if(date == null) throw new NullPointerException("La fecha del curso no puede ser nula");
         
@@ -122,16 +142,29 @@ public class Courses implements Serializable {
         return topicID;
     }
 
+    
+    /**
+     * Setter del tópico del curso.
+     * 
+     * @param topicID 
+     * @throws NullPointerException - En caso de que el tópico del curso sea nulo.
+     */
     public void setTopicID(Topic topicID) {
         if(topicID == null) throw new NullPointerException("El tópico del curso no puede ser nulo");
         
         this.topicID = topicID;
     }
-
+    
     public User getTrainerID() {
         return trainerID;
     }
 
+    /**
+     * Setter del capacitador del curso.
+     * 
+     * @param trainerID 
+     * @throws NullPointerException - En caso de que el capacitador del curso sea nulo.
+     */
     public void setTrainerID(User trainerID) {
         if(trainerID == null) throw new NullPointerException("El capacitador no puede ser nulo");
         
@@ -142,7 +175,12 @@ public class Courses implements Serializable {
     public Collection<UserRegister> getUserRegisterCollection() {
         return userRegisterCollection;
     }
-
+    
+    /**
+     * Setter del registro del curso.
+     * 
+     * @param userRegisterCollection 
+     */
     public void setUserRegisterCollection(Collection<UserRegister> userRegisterCollection) {
         this.userRegisterCollection = userRegisterCollection;
     }
