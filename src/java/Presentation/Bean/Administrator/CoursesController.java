@@ -3,7 +3,7 @@ package Presentation.Bean.Administrator;
 import DataAccess.Entity.Courses;
 import Presentation.Bean.util.JsfUtil;
 import Presentation.Bean.util.PaginationHelper;
-import DataAccess.DAO.CoursesFacade;
+import DataAccess.DAO.CourseDAO.CoursesFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -19,7 +19,10 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.faces.bean.ManagedBean;
 
-
+/**
+ * Clase encargada del CRUD de cursos para el administrador. (Clase autogenerada)
+ * @author Jefferson
+ */
 @Named("coursesController")
 @SessionScoped
 @ManagedBean(name = "coursesController",eager = true)
@@ -28,7 +31,7 @@ public class CoursesController implements Serializable {
 
     private Courses current;
     private DataModel items = null;
-    @EJB private DataAccess.DAO.CoursesFacade ejbFacade;
+    @EJB private DataAccess.DAO.CourseDAO.CoursesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

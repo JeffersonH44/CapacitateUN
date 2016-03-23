@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="../../admin.xhtml">
+        <ui:define name="body">
+            <h2>Crear curso</h2>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="row">
+                <div class="col-lg-4">
+                    <form role="form" jsf:id="create-form">
+                        
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_name}" for="name" />
+                            <h:inputText class="form-control" id="name" value="#{coursesController.selected.name}" title="#{bundle.CreateCoursesTitle_name}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_name}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_date}" />
+                            <h:inputText id="date" class="form-control form_datetime" value="#{coursesController.selected.date}" title="#{bundle.CreateCoursesTitle_date}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:inputText>
+                        </div>
+                        
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_topicID}" for="topicID" />
+                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="topicID" value="#{coursesController.selected.topicID}" title="#{bundle.CreateCoursesTitle_topicID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_topicID}">
+                                <f:selectItems value="#{topicController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </div>  
+                        <div class="form-group">
+                            <h:outputLabel value="#{bundle.CreateCoursesLabel_trainerID}" for="trainerID" />
+                            <h:selectOneMenu class="btn btn-default dropdown-toggle" id="trainerID" value="#{coursesController.selected.trainerID}" title="#{bundle.CreateCoursesTitle_trainerID}" required="true" requiredMessage="#{bundle.CreateCoursesRequiredMessage_trainerID}">
+                                <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <h:commandLink class="btn btn-success" action="#{coursesController.create}" value="#{bundle.CreateCoursesSaveLink}" />
+                        <h:outputText value=" "/>
+                        <h:commandLink class="btn btn-info" action="#{coursesController.prepareList}" value="#{bundle.CreateCoursesShowAllLink}" immediate="true"/>
+                        <h:outputText value=" "/>
+                        <h:link class="btn btn-default" outcome="/index" value="#{bundle.CreateCoursesIndexLink}"/>
+                    </form>
+                </div>
+            </div>
+            
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

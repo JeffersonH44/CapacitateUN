@@ -20,7 +20,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Abstracción de la tabla experience_register de la base de datos.
  * @author Manu
  */
 @Entity
@@ -55,24 +55,48 @@ public class ExperienceRegister implements Serializable {
     public Integer getRegisterID() {
         return registerID;
     }
-
+    
+    /**
+     * Setter del número de registro
+     * 
+     * @param registerID 
+     * @throws NullPointerException - En caso de que el número de registro sea nulo
+     */
     public void setRegisterID(Integer registerID) {
+        if(registerID == null) throw new NullPointerException("El número del registro no puede ser nulo.");
+        
         this.registerID = registerID;
     }
 
     public Topic getTopicID() {
         return topicID;
     }
-
+    
+    /**
+     * Setter del tópico en el registro de experiencias.
+     * 
+     * @param topicID 
+     * @throws NullPointerException - en caso de que el tópico en el registro de experiencias sea nulo.
+     */
     public void setTopicID(Topic topicID) {
+        if(topicID == null) throw new NullPointerException("El tópico en el registro de experiencias no puede ser nulo");
+        
         this.topicID = topicID;
     }
 
     public User getUserID() {
         return userID;
     }
-
+    
+    /**
+     * Setter del capacitador en el registro de experiencias.
+     * 
+     * @param userID 
+     * @throws NullPointerException - En caso de que el capacitador en el registro sea nulo.
+     */
     public void setUserID(User userID) {
+        if(userID == null) throw new NullPointerException("El usuario en el registro de experiencias no puede ser nulo");
+        
         this.userID = userID;
     }
 

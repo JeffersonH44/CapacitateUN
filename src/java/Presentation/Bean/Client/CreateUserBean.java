@@ -6,7 +6,7 @@
 package Presentation.Bean.Client;
 
 import BusinessLogic.UserManagement.UserRegister;
-import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -15,11 +15,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
+ * Bean encargado de la creación del usuario.
  * @author Jefferson
  */
 @ManagedBean(name = "createUserBean", eager = true)
-
 @SessionScoped
 public class CreateUserBean implements Serializable {
 
@@ -116,6 +115,11 @@ public class CreateUserBean implements Serializable {
         this.id = id;
     }
     
+    /**
+     * Método que recibe los argumentos de la vista (createUser.xhtml) y crea un 
+     * nuevo usuario.
+     * @return La página inicial.
+     */
     public String createUser() {
         User user;
         boolean saved= false;
@@ -136,10 +140,4 @@ public class CreateUserBean implements Serializable {
         
         return "index.xhtml";
     }
-    /*
-    public String createUser() {
-        HandleUser hu = new HandleUser();
-        message = hu.createUser(firstname, lastname, username, password, id);
-        return "index.xhtml";
-    }*/
 }

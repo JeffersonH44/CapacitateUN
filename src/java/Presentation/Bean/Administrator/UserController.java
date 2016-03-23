@@ -3,7 +3,7 @@ package Presentation.Bean.Administrator;
 import DataAccess.Entity.User;
 import Presentation.Bean.util.JsfUtil;
 import Presentation.Bean.util.PaginationHelper;
-import DataAccess.DAO.UserFacade;
+import DataAccess.DAO.UserDAO.UserFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,7 +18,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
+/**
+ * Clase encargada del CRUD de usuario para el administrador (clase auto-generada).
+ * @author Jefferson
+ */
 @Named("userController")
 @SessionScoped
 public class UserController implements Serializable {
@@ -26,7 +29,7 @@ public class UserController implements Serializable {
 
     private User current;
     private DataModel items = null;
-    @EJB private DataAccess.DAO.UserFacade ejbFacade;
+    @EJB private DataAccess.DAO.UserDAO.UserFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

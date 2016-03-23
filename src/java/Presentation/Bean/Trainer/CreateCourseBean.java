@@ -8,8 +8,8 @@ package Presentation.Bean.Trainer;
 import BusinessLogic.CourseManagement.CoursesRegister;
 import BusinessLogic.UserManagement.UserRegister;
 import BusinessLogic.UserManagement.PrivilegeVerifier;
-import DataAccess.DAO.CoursesDAO;
-import DataAccess.DAO.TopicDAO;
+import DataAccess.DAO.CourseDAO.CoursesDAO;
+import DataAccess.DAO.TopicDAO.TopicDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.Topic;
 import DataAccess.Entity.User;
@@ -22,7 +22,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 /**
- *
+ * Bean encargado de crear un nuevo curso (CreateNewCourse.xhtml)
  * @author Jefferson
  */
 @ManagedBean
@@ -40,6 +40,10 @@ public class CreateCourseBean implements Serializable {
     @EJB
     private TopicDAO topicDAO;
     
+    /**
+     * Método encargado de obtener los temas de dominio del capacitador de 
+     * la sesión.
+     */
     @PostConstruct
     public void init() {
         CoursesRegister cr = new CoursesRegister();
@@ -116,6 +120,10 @@ public class CreateCourseBean implements Serializable {
         this.date = date;
     }
     
+    /**
+     * Método encargado de crear el curso de acuerdo a la página.
+     * @return Página principal de los capacitadores.
+     */
     public String createCourse() {
         PrivilegeVerifier login = new PrivilegeVerifier();
         user = login.getUserLogged();

@@ -6,7 +6,7 @@
 package Presentation.Bean.Login;
 
 import BusinessLogic.UserManagement.UserRegister;
-import DataAccess.DAO.UserDAO;
+import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -15,7 +15,8 @@ import javax.faces.bean.SessionScoped;
 
 
 /**
- *
+ * Bean encargado de hacer el login de usuario y gestión de elementos globales
+ * al usuario.
  * @author Jefferson
  */
 
@@ -85,8 +86,13 @@ public class UserLoginBean implements Serializable {
         this.user = user;
     }
     
+    /**
+     * Función encargada de hacer el login de usuario.
+     * @return La página inicial de acuerdo al usuario.
+     */
     public String login() {
         UserRegister userManager = new UserRegister();
+
         try {
             user = userManager.loginUser(username, password, userDAO);
         } catch (Exception e) {
@@ -106,10 +112,69 @@ public class UserLoginBean implements Serializable {
         return "";
     }
     
+    /**
+     * Función encargada de hacer el logout del usuario.
+     * @return La página inicial.
+     */
     public String logout() {
         UserRegister userManager = new UserRegister();
         userManager.logoutUser();
         
         return "/index.xhtml";
+    }
+    
+    /**
+     * Redirecciona a la página de editar las parámetros del usuario.
+     * @return Página de edición de usuario.
+     */
+    public String editUser() {
+        return "faces/pages/editUser.xhtml";
+    }
+    
+    /**
+     * Función encargada de actualizar el usuario con los nuevos atributos.
+     * @return Página príncipal de acuerdo al rol de usuario.
+     */
+    public String updateUser() {
+        userDAO.update(user);
+        this.logout();
+        
+        this.password = user.getPassword();
+        this.login();
+        return this.getIndexPageByUser();
+    }
+    
+    /**
+     * Obtiene la página template de acuerdo al usuario registrado.
+     * @return Dirección de la página template.
+     */
+    public String getTemplatePageByUser() {
+        if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
+        
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "/pages/admin/admin.xhtml";
+            case User.TRAINER:
+                return "/pages/trainer/trainer.xhtml";
+            default:
+                return "/pages/user/user.xhtml";
+        }
+    }
+    
+    /**
+     * Obtiene la página principal del usuario de acuerdo a su rol.
+     * @return Página principal.
+     */
+    private String getIndexPageByUser() {
+        if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
+        
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "trainer/trainerIndex.xhtml";
+            default:
+                return "user/userIndex.xhtml";
+        }
     }
 }
