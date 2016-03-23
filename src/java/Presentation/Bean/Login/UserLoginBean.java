@@ -129,7 +129,10 @@ public class UserLoginBean implements Serializable {
         return this.getIndexPageByUser();
     }
     
-    
+    /**
+     * Obtiene la página template de acuerdo al usuario registrado.
+     * @return Dirección de la página template.
+     */
     public String getTemplatePageByUser() {
         if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
         
