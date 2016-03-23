@@ -127,7 +127,20 @@ public class UserLoginBean implements Serializable {
         this.password = user.getPassword();
         this.login();
         return this.getIndexPageByUser();
+    }
+    
+    
+    public String getTemplatePageByUser() {
+        if(user == null) throw new IllegalStateException("El usuario no puede estar nulo para obtener la página");
         
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "/pages/admin/admin.xhtml";
+            case User.TRAINER:
+                return "/pages/trainer/trainer.xhtml";
+            default:
+                return "/pages/user/user.xhtml";
+        }
     }
     
     /**
