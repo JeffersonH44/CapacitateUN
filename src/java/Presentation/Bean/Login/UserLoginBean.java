@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+
 /**
  * Bean encargado de hacer el login de usuario y gestión de elementos globales
  * al usuario.
@@ -20,8 +21,8 @@ import javax.faces.bean.SessionScoped;
  */
 
 @SessionScoped
-@ManagedBean
-public class UserLoginBean implements Serializable {
+@ManagedBean(name = "userLoginBean",eager = true)
+public class UserLoginBean implements Serializable {    
     private String username;
     private String password;
     private String message;
@@ -91,10 +92,24 @@ public class UserLoginBean implements Serializable {
      */
     public String login() {
         UserRegister userManager = new UserRegister();
-        user = userManager.loginUser(username, password, userDAO);
-        message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
+
+        try {
+            user = userManager.loginUser(username, password, userDAO);
+        } catch (Exception e) {
+            message =  "Error en Usuario o Contraseña";
+            return "/index.xhtml";
+        }
         
-        return "faces/pages/" + this.getIndexPageByUser();
+        
+        switch (user.getRole()) {
+            case User.ADMIN:
+                return "faces/pages/admin/adminIndex.xhtml";
+            case User.TRAINER:
+                return "faces/pages/trainer/trainerIndex.xhtml";
+            case User.USER:
+                return "faces/pages/user/userIndex.xhtml";
+        }
+        return "";
     }
     
     /**
