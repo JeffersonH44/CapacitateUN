@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/login.css" rel="stylesheet"/>
     <h:body>
@@ -11,12 +12,15 @@
                 <h4>CapacitateUN</h4>
                 <hr></hr>
                 <form class="login-inner" jsf:id="form-login">
-                    <input type="text" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}"></input>
-                    <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}"></input>
+                    <input type="text" name="Nombre" class="form-control email" id="email-input" placeholder="Usuario" jsf:value="#{userLoginBean.username}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="10" /></input>
+                    <h:message for="email-input" style="color: red"/>
+                    <input type="password" class="form-control password" id="password-input" placeholder="Contraseña" jsf:value="#{userLoginBean.password}" validatorMessage="Error en la Contraseña"><f:validateLength minimum="4" maximum="15"/></input>
+                    <h:message for="password-input" style="color: red"/>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
                     </label>
                     <input jsf:action="#{userLoginBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
+                    
                 </form>
                 <form jsf:id="form-buttons">
                     <div class="input-group-btn" jsf:id="form-options">

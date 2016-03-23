@@ -17,10 +17,12 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.faces.bean.ManagedBean;
 
 
 @Named("coursesController")
 @SessionScoped
+@ManagedBean(name = "coursesController",eager = true)
 public class CoursesController implements Serializable {
 
 

@@ -17,7 +17,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Jefferson
  */
-@ManagedBean
+@ManagedBean(name = "createUserBean", eager = true)
 
 @SessionScoped
 public class CreateUserBean implements Serializable {

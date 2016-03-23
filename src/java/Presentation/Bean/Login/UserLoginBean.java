@@ -13,14 +13,15 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+
 /**
  *
  * @author Jefferson
  */
 
 @SessionScoped
-@ManagedBean
-public class UserLoginBean implements Serializable {
+@ManagedBean(name = "userLoginBean",eager = true)
+public class UserLoginBean implements Serializable {    
     private String username;
     private String password;
     private String message;
