@@ -87,8 +87,14 @@ public class UserLoginBean implements Serializable {
     
     public String login() {
         UserRegister userManager = new UserRegister();
-        user = userManager.loginUser(username, password, userDAO);
-        message = user == null ? "No se pudo iniciar sesión" : "Se ha iniciado sesión correctamente";
+        try {
+            user = userManager.loginUser(username, password, userDAO);
+        } catch (Exception e) {
+            message =  "Error en Usuario o Contraseña";
+            return "/index.xhtml";
+        }
+        
+        
         switch (user.getRole()) {
             case User.ADMIN:
                 return "faces/pages/admin/adminIndex.xhtml";

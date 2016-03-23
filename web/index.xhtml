@@ -20,8 +20,9 @@
                         <input type="checkbox" id="remember" value="Remember me"> Recordarme </input>
                     </label>
                     <input jsf:action="#{userLoginBean.login()}" class="btn btn-block btn-lg btn-success submit" type="submit" value="Entrar"></input>
-                    
+                    <h:outputText value="#{userLoginBean.message}" style="color: red"/>
                 </form>
+                
                 <form jsf:id="form-buttons">
                     <div class="input-group-btn" jsf:id="form-options">
                         <button jsf:action="createUser" class="btn btn-sm btn-primary register" value="Regístrate">Regístrate</button>
@@ -30,7 +31,7 @@
                     </div>
                 </form>
                 <hr style="border-top: 0.5px; border-bottom: 0.5px"></hr>
-                <div class="alert alert-success" role="alert" jsf:id="message" >#{createUserBean.message}</div>
+                <div class="alert alert-success" role="alert" jsf:id="message" >#{createUserBean.message}</div>                
             </div>
         </div>
     </h:body>
