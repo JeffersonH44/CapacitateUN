@@ -10,6 +10,7 @@ import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -117,9 +118,16 @@ public class CreateUserBean implements Serializable {
     
     public String createUser() {
         User user;
-        UserRegister hu = new UserRegister();
-        user = hu.createUser(firstname, lastname, username, password, id);
-        boolean saved = userDAO.persist(user);
+        boolean saved= false;
+        try {
+            UserRegister hu = new UserRegister();
+            user = hu.createUser(firstname, lastname, username, password, id);
+            saved = userDAO.persist(user);
+        } catch (EJBException e) {
+            return "createUser.xhtml";
+        }
+        
+        
         if(saved) {
             message = "El usuario se ha creado correctamente";
         } else {

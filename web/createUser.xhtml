@@ -14,19 +14,19 @@
             <div class="login">
                     <h4>CapacitateUN</h4>
                         <hr></hr>
-                            <form class="login-inner" jsf:id="form">
+                        <h:form class="login-inner" id="form">
                                 <input type="text" class="form-control" id="firstname" placeholder="Nombres" jsf:value="#{createUserBean.firstname}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="10" /></input>
                                 <h:message for="firstname" style="color: red"/>
                                 <input type="text" class="form-control" id="lastname" placeholder="Apellidos" jsf:value="#{createUserBean.lastname}" validatorMessage="Error en el apellido"><f:validateLength minimum="3" maximum="10" /></input>
                                 <h:message for="lastname" style="color: red"/>
-                                <input type="text" class="form-control" id="id" placeholder="Cédula" jsf:value="#{createUserBean.id}"  validatorMessage="Error en la Cedula"><f:validateRegex pattern="((?=.*\d).{4,20})" /></input>
+                                <input type="text" class="form-control" id="id" placeholder="Cédula" jsf:value="#{createUserBean.id}"  validatorMessage="Error en la Cedula"></input>
                                 <h:message for="id" style="color: red"/>
                                 <input type="text" class="form-control" id="username" placeholder="Usuario" jsf:value="#{createUserBean.username}" validatorMessage="Error en el usuario"><f:validateLength minimum="3" maximum="10" /></input>
                                 <h:message for="username" style="color: red"/>
-                                <input type="password" class="form-control password" id="password" placeholder="Contraseña" jsf:value="#{createUserBean.password}" validatorMessage="Error en la contraseña"><f:validateLength minimum="3" maximum="10" /></input>
+                                <input type="password"  class="form-control password" id="password" placeholder="Contraseña" jsf:value="#{createUserBean.password}"  validatorMessage="Error en la contraseña"><f:validateLength minimum="3" maximum="10" /></input>
                                 <h:message for="password" style="color: red"/>
                                 <button class="btn btn-block btn-lg btn-success submit" jsf:action="#{createUserBean.createUser()}">Registrarse</button>
-                            </form>
+                            </h:form>
             </div>
         </div>
     </h:body>
