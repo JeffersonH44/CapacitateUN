@@ -4,65 +4,62 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/CapacitateUN/" />
-<title>Creacion de usuario</title>
+<title>login trainer</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Creacion de usuario</td></tr>
+<tr><td rowspan="1" colspan="3">login trainer</td></tr>
 </thead><tbody>
-<!--Oprimir boton crear-->
 <tr>
 	<td>open</td>
-	<td>http://localhost:8080/CapacitateUN</td>
+	<td>http://localhost:8080/CapacitateUN/</td>
 	<td></td>
 </tr>
+<!--Login-->
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email-input</td>
+	<td>trainer</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password-input</td>
+	<td>trainer</td>
+</tr>
+<!--Oprimir boton Entrar-->
 <tr>
 	<td>clickAndWait</td>
-	<td>name=form-buttons:j_idt8</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=firstname</td>
-	<td>JorgeA</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=lastname</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=lastname</td>
-	<td>Bonilla Bohorquez</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=id</td>
-	<td>1030622885</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=username</td>
-	<td>jorge4138</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=password</td>
-	<td>123456789</td>
-</tr>
-<!--Oprimir Registrarse-->
-<tr>
-	<td>clickAndWait</td>
-	<td>name=form:j_idt9</td>
+	<td>name=form-login:j_idt7</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>
-	<td>El usuario se ha creado correctamente</td>
+	<td>Mis experiencias</td>
 	<td></td>
 </tr>
+<!--usar el boton log out-->
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='wrapper']/nav/ul/li[2]/a/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Salir</td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
