@@ -15,9 +15,9 @@
                     <h4>CapacitateUN</h4>
                         <hr></hr>
                             <form class="login-inner" jsf:id="form">
-                                <input type="text" class="form-control" id="firstname" placeholder="Nombres" jsf:value="#{createUserBean.firstname}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="10" /></input>
+                                <input type="text" class="form-control" id="firstname" placeholder="Nombres" jsf:value="#{createUserBean.firstname}" validatorMessage="Error en el nombre"><f:validateLength minimum="3" maximum="20" /></input>
                                 <h:message for="firstname" style="color: red"/>
-                                <input type="text" class="form-control" id="lastname" placeholder="Apellidos" jsf:value="#{createUserBean.lastname}" validatorMessage="Error en el apellido"><f:validateLength minimum="3" maximum="10" /></input>
+                                <input type="text" class="form-control" id="lastname" placeholder="Apellidos" jsf:value="#{createUserBean.lastname}" validatorMessage="Error en el apellido"><f:validateLength minimum="3" maximum="20" /></input>
                                 <h:message for="lastname" style="color: red"/>
                                 <input type="text" class="form-control" id="id" placeholder="Cédula" jsf:value="#{createUserBean.id}"  validatorMessage="Error en la Cedula"><f:validateLength minimum="3" maximum="10" /></input>
                                 <h:message for="id" style="color: red"/>
