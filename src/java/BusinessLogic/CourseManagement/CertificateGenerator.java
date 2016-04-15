@@ -29,7 +29,7 @@ import java.text.DateFormat;
  * Clase encargada de la generación de certificados.
  * @author manu
  */
-public class CertificateGenerator {
+public class CertificateGenerator implements Serializable {
     
     /**
      * 

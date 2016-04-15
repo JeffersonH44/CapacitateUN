@@ -11,6 +11,7 @@ import DataAccess.DAO.UserRegistryDAO.UserRegisterDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
 import DataAccess.Entity.UserRegister;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
@@ -25,7 +26,7 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class UserRegisterBean {
+public class UserRegisterBean implements Serializable {
     @EJB
     private UserRegisterDAO registerDAO;
     private Courses course;

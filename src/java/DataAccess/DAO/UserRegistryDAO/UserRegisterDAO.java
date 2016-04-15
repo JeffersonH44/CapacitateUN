@@ -8,6 +8,7 @@ package DataAccess.DAO.UserRegistryDAO;
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
 import DataAccess.Entity.UserRegister;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ import javax.persistence.TypedQuery;
  * @author Jefferson
  */
 @Stateless
-public class UserRegisterDAO {
+public class UserRegisterDAO implements Serializable {
     
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;

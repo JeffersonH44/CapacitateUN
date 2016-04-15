@@ -5,6 +5,7 @@
 package DataAccess.DAO.UserDAO;
 
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +17,7 @@ import javax.persistence.TypedQuery;
  * @author Jefferson
  */
 @Stateless
-public class UserDAO {
+public class UserDAO implements Serializable {
     
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;

@@ -12,6 +12,7 @@ import DataAccess.DAO.ExperienceDAO.ExperienceDAO;
 import DataAccess.DAO.TopicDAO.TopicDAO;
 import DataAccess.Entity.ExperienceRegister;
 import DataAccess.Entity.Topic;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -22,7 +23,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class CreateExperienceBean {
+public class CreateExperienceBean implements Serializable {
     private String name;
     private String area;
     private String message;

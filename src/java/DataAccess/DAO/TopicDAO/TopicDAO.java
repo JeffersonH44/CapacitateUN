@@ -18,6 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import DataAccess.Entity.Topic;
+import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -28,7 +29,7 @@ import javax.persistence.TypedQuery;
  * @author Manu
  */
 @Stateless
-public class TopicDAO {
+public class TopicDAO implements Serializable {
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
     //public EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoPersistenceU");

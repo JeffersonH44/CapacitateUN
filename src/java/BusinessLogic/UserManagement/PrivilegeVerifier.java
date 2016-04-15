@@ -6,6 +6,7 @@
 package BusinessLogic.UserManagement;
 
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import java.util.Map;
 import javax.faces.context.FacesContext;
 
@@ -13,7 +14,7 @@ import javax.faces.context.FacesContext;
  * Clase encargada del manejo del usuario de la sesión.
  * @author Jefferson
  */
-public class PrivilegeVerifier {
+public class PrivilegeVerifier implements Serializable {
     
     /**
      * Hace el login del usuario

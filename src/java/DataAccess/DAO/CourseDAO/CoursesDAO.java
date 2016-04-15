@@ -7,6 +7,7 @@ package DataAccess.DAO.CourseDAO;
 
 import DataAccess.Entity.Courses;
 import DataAccess.Entity.User;
+import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,7 +20,7 @@ import javax.persistence.TypedQuery;
  * @author Jefferson
  */
 @Stateless
-public class CoursesDAO {
+public class CoursesDAO implements Serializable {
     @PersistenceContext(unitName = "BancoPersistenceU")
     private EntityManager em;
     
