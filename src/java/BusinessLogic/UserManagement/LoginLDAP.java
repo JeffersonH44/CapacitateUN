@@ -27,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
  * @author root
  */
 public class LoginLDAP {
-    
+
     String ldapHost = "127.0.0.1";
     String dn = "cn=admin,dc=arqsoft,dc=com";
     String password = "ArqSoft2016i";
@@ -36,7 +36,7 @@ public class LoginLDAP {
     int ldapVersion = LDAPConnection.LDAP_V3;
 
     private LDAPConnection lc = new LDAPConnection();
-    
+
     char base64Table[] = new char[64];
 
     private void startBase64Table() {
@@ -53,8 +53,7 @@ public class LoginLDAP {
         base64Table[j++] = '+';
         base64Table[j++] = '/';
     }
-    
-    
+
     public String login(String nombreUsuario, String contrasena) {
 
         System.out.println("DATOS ---> " + nombreUsuario + " - " + contrasena);
@@ -133,26 +132,37 @@ public class LoginLDAP {
         desconectar();
         return role;
     }
-    
-    public boolean registrar(String id, String name, String lastName, String password, String username, String role) throws LDAPException {
-        try {
 
+    public boolean registrar(String id, String name, String lastName, String password, String username, String role) throws LDAPException {
+        
+        switch(role) {
+            case "Usuario":
+                role = "702";
+                break;
+            case "Capacitador":
+                role = "703";
+                break;
+            case "Administrador":
+                role = "701";
+                break;
+        }
+        try {    
             if (conectar()) {
                 LDAPAttribute attribute = null;
                 LDAPAttributeSet attributeSet = new LDAPAttributeSet();
                 attributeSet.add(new LDAPAttribute("objectclass", new String[]{"inetOrgPerson", "posixAccount", "top"}));
-                attributeSet.add(new LDAPAttribute("cn", name+" "+lastName));
+                attributeSet.add(new LDAPAttribute("cn", name + " " + lastName));
                 attributeSet.add(new LDAPAttribute("givenname", name));
                 attributeSet.add(new LDAPAttribute("uidNumber", id));
-                attributeSet.add(new LDAPAttribute("uid", name+" "+lastName));
+                attributeSet.add(new LDAPAttribute("uid", name + " " + lastName));
                 attributeSet.add(new LDAPAttribute("gidNumber", role));
-                attributeSet.add(new LDAPAttribute("homeDirectory", "/home/users/"+name.toLowerCase().charAt(0)+lastName.toLowerCase()));
+                attributeSet.add(new LDAPAttribute("homeDirectory", "/home/users/" + name.toLowerCase().charAt(0) + lastName.toLowerCase()));
                 attributeSet.add(new LDAPAttribute("sn", lastName));
                 attributeSet.add(new LDAPAttribute("userPassword", "{MD5}" + hexToBase64(MD5(password))));
-                String dn = "cn=" +username+ ",ou=Capacitaciones,dc=arqsoft,dc=com";
+                String dn = "cn=" + username + ",ou=Capacitaciones,dc=arqsoft,dc=com";
                 LDAPEntry newEntry = new LDAPEntry(dn, attributeSet);
-                lc.add( newEntry );
-                System.out.println( "\nAdded object: " + dn + " successfully." );
+                lc.add(newEntry);
+                System.out.println("\nAdded object: " + dn + " successfully.");
                 desconectar();
                 return true;
             } else {
@@ -164,7 +174,8 @@ public class LoginLDAP {
             return false;
         }
     }
-    public void ModificarPassword(String username, String password) {
+
+    public void changePassword(String username, String password) {
 
         if (!lc.isConnected()) {
             if (!conectar()) {
@@ -174,17 +185,63 @@ public class LoginLDAP {
         try {
             LDAPAttribute atrubuto;
             atrubuto = new LDAPAttribute("userPassword", "{MD5}" + hexToBase64(MD5(password)));
-            String dn = "cn=" +username+ ",ou=Capacitaciones,dc=arqsoft,dc=com";
+            String dn = "cn=" + username + ",ou=Capacitaciones,dc=arqsoft,dc=com";
             lc.modify(dn, new LDAPModification(LDAPModification.REPLACE, atrubuto));
             System.out.println("Atributo Modificado OK...");
-            desconectar();
         } catch (LDAPException | NoSuchAlgorithmException ex) {
             System.err.println("Error: LdapError");
             ex.printStackTrace();
         }
     }
     
-    
+    public void changeRole(String username, String role) {
+        if (!lc.isConnected()) {
+            if (!conectar()) {
+                System.out.println("Error en la conexion");
+            }
+        }
+        switch(role) {
+            case "Usuario":
+                role = "702";
+                break;
+            case "Capacitador":
+                role = "703";
+                break;
+            case "Administrador":
+                role = "701";
+                break;
+        }
+        try {
+            LDAPAttribute atrubuto;
+            atrubuto = new LDAPAttribute("gidNumber", role);
+            String dn = "cn=" + username + ",ou=Capacitaciones,dc=arqsoft,dc=com";
+            lc.modify(dn, new LDAPModification(LDAPModification.REPLACE, atrubuto));
+            System.out.println("Atributo Modificado OK...");
+        } catch (LDAPException ex) {
+            System.err.println("Error: LdapError");
+            ex.printStackTrace();
+        }
+    }
+
+    public void DeleteUser(String username) {
+        if (!lc.isConnected()) {
+            if (!conectar()) {
+                System.out.println("Error en la conexion");
+            }
+        }
+        String dn = "cn=" + username + ",ou=Capacitaciones,dc=arqsoft,dc=com";
+        try {
+            lc.delete(dn);
+            System.out.println("\nEntry: " + dn + " Fue Eliminado Correctamente...");
+        } catch (LDAPException e) {
+            if (e.getResultCode() == LDAPException.NO_SUCH_OBJECT) {
+                System.err.println("Error: NO existe ese usuario...");
+            } else {
+                System.err.println("Error: " + e.toString());
+            }
+        }
+    }
+
     private String MD5(String s) throws NoSuchAlgorithmException {
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(s.getBytes(), 0, s.length());

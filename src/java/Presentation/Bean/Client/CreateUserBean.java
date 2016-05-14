@@ -5,6 +5,7 @@
  */
 package Presentation.Bean.Client;
 
+import BusinessLogic.UserManagement.LoginLDAP;
 import BusinessLogic.UserManagement.UserRegister;
 import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.Entity.User;
@@ -16,6 +17,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  * Bean encargado de la creación del usuario.
+ *
  * @author Jefferson
  */
 @ManagedBean(name = "createUserBean", eager = true)
@@ -100,7 +102,7 @@ public class CreateUserBean implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
-    
+
     /**
      * @return the id
      */
@@ -114,14 +116,16 @@ public class CreateUserBean implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     /**
-     * Método que recibe los argumentos de la vista (createUser.xhtml) y crea un 
+     * Método que recibe los argumentos de la vista (createUser.xhtml) y crea un
      * nuevo usuario.
+     *
      * @return La página inicial.
      */
     public String createUser() {
         User user;
+        LoginLDAP conecction = new LoginLDAP();
         try {
             UserRegister hu = new UserRegister();
             user = hu.createUser(firstname, lastname, username, password, id);
@@ -129,14 +133,18 @@ public class CreateUserBean implements Serializable {
         } catch (EJBException e) {
             return "createUser.xhtml";
         }
-        
-        
-        if(user != null) {
+
+        if (user != null) {
+            try {
+                conecction.registrar(Integer.toString(id), firstname, lastname, password, username, "702");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             message = "El usuario se ha creado correctamente";
         } else {
             message = "El usuario no se ha podido crear";
         }
-        
+
         return "index.xhtml";
     }
 }

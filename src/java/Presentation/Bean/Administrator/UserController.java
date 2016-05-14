@@ -1,5 +1,6 @@
 package Presentation.Bean.Administrator;
 
+import BusinessLogic.UserManagement.LoginLDAP;
 import DataAccess.Entity.User;
 import Presentation.Bean.util.JsfUtil;
 import Presentation.Bean.util.PaginationHelper;
@@ -85,9 +86,12 @@ public class UserController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
+            LoginLDAP ldap = new LoginLDAP();
+            ldap.registrar(current.getId().toString(), current.getFirstname(), current.getLastname(), current.getPassword(), current.getUsername(), current.getStringRole());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
             return prepareCreate();
         } catch (Exception e) {
+            e.printStackTrace();
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
@@ -102,6 +106,9 @@ public class UserController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
+            LoginLDAP ldap = new LoginLDAP();
+            ldap.changePassword(current.getUsername(), current.getPassword());
+            ldap.changeRole(current.getUsername(), current.getStringRole());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
             return "View";
         } catch (Exception e) {
@@ -135,6 +142,8 @@ public class UserController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
+            LoginLDAP ldap = new LoginLDAP();
+            ldap.DeleteUser(current.getUsername());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
