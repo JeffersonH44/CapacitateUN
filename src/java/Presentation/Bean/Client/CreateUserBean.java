@@ -122,17 +122,16 @@ public class CreateUserBean implements Serializable {
      */
     public String createUser() {
         User user;
-        boolean saved= false;
         try {
             UserRegister hu = new UserRegister();
             user = hu.createUser(firstname, lastname, username, password, id);
-            saved = userDAO.persist(user);
+            user = userDAO.persist(user);
         } catch (EJBException e) {
             return "createUser.xhtml";
         }
         
         
-        if(saved) {
+        if(user != null) {
             message = "El usuario se ha creado correctamente";
         } else {
             message = "El usuario no se ha podido crear";

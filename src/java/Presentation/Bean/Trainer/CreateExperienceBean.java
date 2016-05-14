@@ -86,9 +86,9 @@ public class CreateExperienceBean implements Serializable {
         Topic topic = topicHandler.createTopic(name, area);
         topicDao.persist(topic);
         ExperienceRegister exp = he.CreateExperience(topic, user.getUserLogged());
-        boolean saved = experienceDAO.persist(exp);
+        exp = experienceDAO.persist(exp);
         
-        if (saved) {
+        if (exp != null) {
             message = "la expereriencia con ID: " + exp.getRegisterID()+ " ha sido guardada con exito .";
         } else {
             message = "fallo en la creación de experiencia";

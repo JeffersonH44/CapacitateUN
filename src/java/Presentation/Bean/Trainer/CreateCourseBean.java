@@ -131,8 +131,8 @@ public class CreateCourseBean implements Serializable {
         CoursesRegister cr = new CoursesRegister();
         Courses course = cr.createCourse(name, topic, user, date);
         
-        boolean saved = courseDAO.persist(course);
-        if(saved) {
+        course = courseDAO.persist(course);
+        if(course != null) {
             message = "El curso " + name + " ha sido creado exitosamente!";
         } else {
             message = "El curso no se ha podido crear!";

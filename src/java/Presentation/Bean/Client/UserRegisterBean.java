@@ -86,8 +86,8 @@ public class UserRegisterBean implements Serializable {
                 
         UserRegister ur = cr.addRegistry(course, user);
         
-        boolean saved = registerDAO.persist(ur);
-        if(saved) {
+        ur = registerDAO.persist(ur);
+        if(ur != null) {
             message = "Se ha registrado en el curso exitosamente";
         } else {
             message = "No se ha podido registrar en el curso";
