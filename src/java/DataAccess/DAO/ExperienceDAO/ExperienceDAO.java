@@ -26,9 +26,9 @@ public class ExperienceDAO {
      * @param experience - experiencia a guardar.
      * @return verdadero en caso de persistir la nueva experiencia.
      */
-    public boolean persist(ExperienceRegister experience) {
+    public ExperienceRegister persist(ExperienceRegister experience) {
         em.persist(experience);
-        return true;
+        return experience;
     }
     
     /**

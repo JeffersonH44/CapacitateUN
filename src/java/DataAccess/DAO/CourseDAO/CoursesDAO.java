@@ -29,9 +29,9 @@ public class CoursesDAO implements Serializable {
      * @param course - curso a guardar.
      * @return verdadero en caso de persistir el curso.
      */
-    public boolean persist(Courses course) {
+    public Courses persist(Courses course) {
         em.persist(course);
-        return true;
+        return course;
     }
     
     /**

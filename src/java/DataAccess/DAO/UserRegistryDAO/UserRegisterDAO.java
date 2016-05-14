@@ -32,9 +32,9 @@ public class UserRegisterDAO implements Serializable {
      * @param registry - registro del curso
      * @return verdadero en caso de que se haya guardado exitosamente
      */
-    public boolean persist(UserRegister registry) {
+    public UserRegister persist(UserRegister registry) {
         em.persist(registry);
-        return true;
+        return registry;
     }
     
     /**

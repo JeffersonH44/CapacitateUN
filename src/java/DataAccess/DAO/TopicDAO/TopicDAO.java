@@ -39,10 +39,10 @@ public class TopicDAO implements Serializable {
      * @param topic - tópico a guardar
      * @return verdadero en caso de que se guarde exitosamente.
      */
-    public boolean persist(Topic topic) {
+    public Topic persist(Topic topic) {
         //em = emf.createEntityManager();
         em.persist(topic);
-        return true;
+        return topic;
     }
     
     /**

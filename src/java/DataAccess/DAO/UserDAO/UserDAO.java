@@ -8,6 +8,7 @@ import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -28,10 +29,10 @@ public class UserDAO implements Serializable {
      * @param user
      * @return verdadero en caso de que guarde exitosamente.
      */
-    public boolean persist(User user) {
+    public User persist(User user) {
         //em = emf.createEntityManager();
         em.persist(user);
-        return true;
+        return user;
     }
     
     /**
@@ -68,10 +69,15 @@ public class UserDAO implements Serializable {
      */
     public User searchByUsername(String username) {
         User user;
-        Query query = em.createNamedQuery("User.findByUsername");
+        TypedQuery<User> query = em.createNamedQuery("User.findByUsername", User.class);
         query.setParameter("username", username);
         
-        user = (User) query.getSingleResult();
+        try {
+            user = query.getSingleResult();
+        } catch(NoResultException ex) {
+            return null;
+        }
+        
         return user;
     }  
 }
