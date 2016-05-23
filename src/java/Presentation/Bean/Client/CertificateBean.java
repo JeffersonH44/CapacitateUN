@@ -9,8 +9,10 @@ import BusinessLogic.CourseManagement.CertificateGenerator;
 import DataAccess.DAO.UserDAO.UserDAO;
 import DataAccess.DAO.CourseDAO.CoursesDAO;
 import DataAccess.Entity.Courses;
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -65,7 +67,7 @@ public class CertificateBean implements Serializable {
      * @throws DocumentException - Ver CertificateGenerator
      * @throws FileNotFoundException - Ver CertificateGenerator
      */
-    public String generateCertification(Courses course) throws DocumentException, FileNotFoundException {
+    public String generateCertification(Courses course) throws DocumentException, FileNotFoundException, BadElementException, IOException {
         CertificateGenerator cg = new CertificateGenerator();
         
         boolean saved = cg.createPDF(course);
