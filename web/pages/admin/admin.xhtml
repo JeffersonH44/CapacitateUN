@@ -12,6 +12,7 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="/pages/baseTemplate.xhtml">
             <ui:define name="navbar-sidebar">
+                <ui:fragment rendered="#{loggedBean.loggedUserRole == 3}">
                 <ul class="nav in" id="side-menu">
                     <li>
                         <h:link outcome="/pages/admin/crudManagment/user/List.xhtml" class="active"><i class="fa fa-users fa-fw"></i> Manejo de usuarios</h:link>
@@ -20,6 +21,7 @@ and open the template in the editor.
                         <h:link outcome="/pages/admin/crudManagment/courses/List.xhtml" class="active"><i class="fa fa-mortar-board fa-fw"></i> Manejo de cursos</h:link>
                     </li>
                 </ul>
+                </ui:fragment>
             </ui:define>
         </ui:composition>
     </h:body>

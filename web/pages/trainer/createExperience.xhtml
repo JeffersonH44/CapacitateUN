@@ -11,6 +11,7 @@
     <h:body>
         <ui:composition template="trainerIndex.xhtml">
             <ui:define name="body">
+                <ui:fragment rendered="#{loggedBean.loggedUserRole == 2}">
                 <h2>Registrar experiencia</h2>
                 <div class="col-lg-4">
                     <form class="login-inner" jsf:id="form">
@@ -30,7 +31,7 @@
                         <h:commandButton value="Crear" class="btn btn-success" action="#{createExperienceBean.createExperience()}"/>
                     </form>
                 </div>
-                
+                </ui:fragment>
             </ui:define>
         </ui:composition>
         

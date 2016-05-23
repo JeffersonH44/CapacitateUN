@@ -13,6 +13,7 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="trainerIndex.xhtml">
             <ui:define name="body">
+                <ui:fragment rendered="#{loggedBean.loggedUserRole == 2}">
                 <div class="row">
                     <div class="col-lg-4">
                         <h2>Editar curso</h2>
@@ -60,6 +61,7 @@ and open the template in the editor.
                         </h:dataTable>
                     </h:panelGroup>
                 </div>
+                </ui:fragment>
             </ui:define>
         </ui:composition>
     </h:body>

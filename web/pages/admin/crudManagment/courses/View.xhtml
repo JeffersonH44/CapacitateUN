@@ -8,6 +8,7 @@
 
     <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
+            <ui:fragment rendered="#{loggedBean.loggedUserRole == 3}">
             <h2>Ver curso</h2>
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -45,6 +46,7 @@
                 
 
             </form>
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 

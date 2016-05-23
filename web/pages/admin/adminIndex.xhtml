@@ -11,11 +11,11 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/pages/admin/admin.xhtml">
         <ui:define name="body">
-            <form jsf:id="main-form">
+            <h:form id="main-form" rendered="#{loggedBean.loggedUserRole == 3}">
                 
                 <h2>Bienvenido a la vista de administrador!</h2>
                 
-            </form>
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>

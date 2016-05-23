@@ -13,6 +13,7 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="trainerIndex.xhtml">
             <ui:define name="body">
+                <ui:fragment rendered="#{loggedBean.loggedUserRole == 2}">
                 <h2>Editar experiencia</h2>
                 <div class="col-lg-4">
                     <form class="login-inner" jsf:id="form">
@@ -32,7 +33,7 @@ and open the template in the editor.
                         <h:commandButton value="Crear" class="btn btn-success" action="#{trainerBean.saveTopicChanges()}"/>
                     </form>
                 </div>
-                
+                </ui:fragment>
             </ui:define>
         </ui:composition>
         

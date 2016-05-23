@@ -8,7 +8,7 @@
 
     <ui:composition template="../../admin.xhtml">
         <ui:define name="body">
-            
+            <ui:fragment rendered="#{loggedBean.loggedUserRole == 3}">
             <form jsf:id="list-form">
                 
                 <div class="row">
@@ -91,6 +91,7 @@
                 </div>
                 
             </form>
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 

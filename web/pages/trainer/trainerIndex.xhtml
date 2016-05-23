@@ -12,6 +12,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/pages/trainer/trainer.xhtml">
         <ui:define name="body">
+            <ui:fragment rendered="#{loggedBean.loggedUserRole == 2}">
             <form jsf:id="main-form">
                 <h2> Mis cursos </h2>
                 <div class="row" jsf:id="my-courses-table">
@@ -91,6 +92,7 @@ and open the template in the editor.
                     <h:link outcome="/pages/trainer/createExperience.xhtml" class="btn btn-primary">Registrar nueva experiencia</h:link>
                 </div>
             </form>
+            </ui:fragment>
         </ui:define>
     </ui:composition>
 </html>
