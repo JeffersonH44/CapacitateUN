@@ -5,6 +5,7 @@
  */
 package BusinessLogic.WebService;
 
+import BusinessLogic.UserManagement.LoginLDAP;
 import DataAccess.DAO.CourseDAO.CoursesDAO;
 import DataAccess.DAO.ExperienceDAO.ExperienceDAO;
 import DataAccess.DAO.TopicDAO.TopicDAO;
@@ -38,6 +39,7 @@ public class ManageCourseFromRH {
     private ExperienceDAO experienceDAO;
     @EJB
     private UserRegisterDAO registryDAO;
+    LoginLDAP conecction = new LoginLDAP();
     
     @WebMethod(operationName = "createCourse")
     public ROB createCourse(@WebParam(name = "course") Course courseToCreate) {
@@ -51,7 +53,9 @@ public class ManageCourseFromRH {
                 trainer.setUsername(courseToCreate.getStringId());
                 trainer.setId(courseToCreate.getId());
                 trainer.setPassword(companyName);
-
+                
+                conecction.registrar(Integer.toString(trainer.getId()), trainer.getFirstname(), trainer.getLastname(), trainer.getPassword(), trainer.getUsername(), "703");
+                
                 trainer = userDAO.persist(trainer);
             }
 
@@ -81,6 +85,7 @@ public class ManageCourseFromRH {
                     currentStudent.setRole(DataAccess.Entity.User.USER);
                     currentStudent.setPassword(user.getStringDocument());
 
+                    conecction.registrar(Integer.toString(currentStudent.getId()), currentStudent.getFirstname(), currentStudent.getLastname(), currentStudent.getPassword(), currentStudent.getUsername(), "702");
                     currentStudent = userDAO.persist(currentStudent);
                 }
 
